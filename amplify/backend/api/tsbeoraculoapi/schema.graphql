@@ -2,7 +2,7 @@
 # all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
 input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
 
-type Model {
+type ModelAI {
   id: ID!
   name: String!
   description: String!
@@ -24,7 +24,7 @@ type Calculation {
   result_TIF: AWSURL!
   result_PNG: AWSURL!
   is_to_block_chain: Boolean!
-  model: Model @belongsTo
+  modelAI: ModelAI @belongsTo
   user: User @belongsTo
 }
 
