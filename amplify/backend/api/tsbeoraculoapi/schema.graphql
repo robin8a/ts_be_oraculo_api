@@ -9,25 +9,23 @@ type Model {
   document_link: String!
   api_link: String!
   version: String!
-  isApproved: Boolean!
-  tokensCost: Int!
+  is_approved: Boolean!
+  tokens_cost: Int!
+  cost_tokens: Int!
   calculations: [Calculation] @hasMany
-  cost_tokens: Int
 }
 
 type Calculation {
   id: ID!
-  polygon: AWSJSON
-  startDate: AWSTimestamp
-  endDate: AWSTimestamp
-  satelliteTIF: AWSURL
-  resultTIF: AWSURL
-  resultPNG: AWSURL
-  isToBlockChain: Boolean
+  polygon: AWSJSON!
+  start_date: AWSTimestamp!
+  end_date: AWSTimestamp!
+  satellite_TIF: AWSURL!
+  result_TIF: AWSURL!
+  result_PNG: AWSURL!
+  is_to_block_chain: Boolean!
   model: Model @belongsTo
   user: User @belongsTo
-  modelID: ID!
-  userID: ID!
 }
 
 type User {
