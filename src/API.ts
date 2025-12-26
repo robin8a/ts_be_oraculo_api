@@ -1880,6 +1880,357 @@ export type DeletePermVersionInput = {
   id: string,
 };
 
+export type CreateUnitOfMeasureInput = {
+  id?: string | null,
+  name: string,
+  abbreviation?: string | null,
+};
+
+export type ModelUnitOfMeasureConditionInput = {
+  name?: ModelStringInput | null,
+  abbreviation?: ModelStringInput | null,
+  and?: Array< ModelUnitOfMeasureConditionInput | null > | null,
+  or?: Array< ModelUnitOfMeasureConditionInput | null > | null,
+  not?: ModelUnitOfMeasureConditionInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+};
+
+export type UnitOfMeasure = {
+  __typename: "UnitOfMeasure",
+  id: string,
+  name: string,
+  abbreviation?: string | null,
+  features?: ModelFeatureConnection | null,
+  createdAt: string,
+  updatedAt: string,
+};
+
+export type ModelFeatureConnection = {
+  __typename: "ModelFeatureConnection",
+  items:  Array<Feature | null >,
+  nextToken?: string | null,
+};
+
+export type Feature = {
+  __typename: "Feature",
+  id: string,
+  feature_type?: string | null,
+  name: string,
+  description?: string | null,
+  feature_group?: string | null,
+  default_value?: number | null,
+  is_float?: boolean | null,
+  unitOfMeasure?: UnitOfMeasure | null,
+  templateFeatures?: ModelTemplateFeatureConnection | null,
+  rawDatas?: ModelRawDataConnection | null,
+  createdAt: string,
+  updatedAt: string,
+  unitOfMeasureFeaturesId?: string | null,
+};
+
+export type ModelTemplateFeatureConnection = {
+  __typename: "ModelTemplateFeatureConnection",
+  items:  Array<TemplateFeature | null >,
+  nextToken?: string | null,
+};
+
+export type TemplateFeature = {
+  __typename: "TemplateFeature",
+  id: string,
+  template?: Template | null,
+  feature?: Feature | null,
+  createdAt: string,
+  updatedAt: string,
+  templateTemplateFeaturesId?: string | null,
+  featureTemplateFeaturesId?: string | null,
+};
+
+export type Template = {
+  __typename: "Template",
+  id: string,
+  name: string,
+  description?: string | null,
+  type: number,
+  version?: string | null,
+  is_latest: boolean,
+  templateParent?: Template | null,
+  templates?: ModelTemplateConnection | null,
+  templateFeatures?: ModelTemplateFeatureConnection | null,
+  trees?: ModelTreeConnection | null,
+  createdAt: string,
+  updatedAt: string,
+  templateTemplatesId?: string | null,
+};
+
+export type ModelTemplateConnection = {
+  __typename: "ModelTemplateConnection",
+  items:  Array<Template | null >,
+  nextToken?: string | null,
+};
+
+export type ModelTreeConnection = {
+  __typename: "ModelTreeConnection",
+  items:  Array<Tree | null >,
+  nextToken?: string | null,
+};
+
+export type Tree = {
+  __typename: "Tree",
+  id: string,
+  name: string,
+  status?: string | null,
+  project?: Project | null,
+  template?: Template | null,
+  rawData?: ModelRawDataConnection | null,
+  createdAt: string,
+  updatedAt: string,
+  projectTreesId?: string | null,
+  templateTreesId?: string | null,
+};
+
+export type Project = {
+  __typename: "Project",
+  id: string,
+  name: string,
+  status: string,
+  trees?: ModelTreeConnection | null,
+  createdAt: string,
+  updatedAt: string,
+};
+
+export type ModelRawDataConnection = {
+  __typename: "ModelRawDataConnection",
+  items:  Array<RawData | null >,
+  nextToken?: string | null,
+};
+
+export type RawData = {
+  __typename: "RawData",
+  id: string,
+  name?: string | null,
+  valueFloat?: number | null,
+  valueString?: string | null,
+  timestamp?: string | null,
+  feature?: Feature | null,
+  tree?: Tree | null,
+  createdAt: string,
+  updatedAt: string,
+  treeRawDataId?: string | null,
+  featureRawDatasId?: string | null,
+};
+
+export type UpdateUnitOfMeasureInput = {
+  id: string,
+  name?: string | null,
+  abbreviation?: string | null,
+};
+
+export type DeleteUnitOfMeasureInput = {
+  id: string,
+};
+
+export type CreateProjectInput = {
+  id?: string | null,
+  name: string,
+  status: string,
+};
+
+export type ModelProjectConditionInput = {
+  name?: ModelStringInput | null,
+  status?: ModelStringInput | null,
+  and?: Array< ModelProjectConditionInput | null > | null,
+  or?: Array< ModelProjectConditionInput | null > | null,
+  not?: ModelProjectConditionInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+};
+
+export type UpdateProjectInput = {
+  id: string,
+  name?: string | null,
+  status?: string | null,
+};
+
+export type DeleteProjectInput = {
+  id: string,
+};
+
+export type CreateTemplateInput = {
+  id?: string | null,
+  name: string,
+  description?: string | null,
+  type: number,
+  version?: string | null,
+  is_latest: boolean,
+  templateTemplatesId?: string | null,
+};
+
+export type ModelTemplateConditionInput = {
+  name?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  type?: ModelIntInput | null,
+  version?: ModelStringInput | null,
+  is_latest?: ModelBooleanInput | null,
+  and?: Array< ModelTemplateConditionInput | null > | null,
+  or?: Array< ModelTemplateConditionInput | null > | null,
+  not?: ModelTemplateConditionInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  templateTemplatesId?: ModelIDInput | null,
+};
+
+export type UpdateTemplateInput = {
+  id: string,
+  name?: string | null,
+  description?: string | null,
+  type?: number | null,
+  version?: string | null,
+  is_latest?: boolean | null,
+  templateTemplatesId?: string | null,
+};
+
+export type DeleteTemplateInput = {
+  id: string,
+};
+
+export type CreateTreeInput = {
+  id?: string | null,
+  name: string,
+  status?: string | null,
+  projectTreesId?: string | null,
+  templateTreesId?: string | null,
+};
+
+export type ModelTreeConditionInput = {
+  name?: ModelStringInput | null,
+  status?: ModelStringInput | null,
+  and?: Array< ModelTreeConditionInput | null > | null,
+  or?: Array< ModelTreeConditionInput | null > | null,
+  not?: ModelTreeConditionInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  projectTreesId?: ModelIDInput | null,
+  templateTreesId?: ModelIDInput | null,
+};
+
+export type UpdateTreeInput = {
+  id: string,
+  name?: string | null,
+  status?: string | null,
+  projectTreesId?: string | null,
+  templateTreesId?: string | null,
+};
+
+export type DeleteTreeInput = {
+  id: string,
+};
+
+export type CreateTemplateFeatureInput = {
+  id?: string | null,
+  templateTemplateFeaturesId?: string | null,
+  featureTemplateFeaturesId?: string | null,
+};
+
+export type ModelTemplateFeatureConditionInput = {
+  and?: Array< ModelTemplateFeatureConditionInput | null > | null,
+  or?: Array< ModelTemplateFeatureConditionInput | null > | null,
+  not?: ModelTemplateFeatureConditionInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  templateTemplateFeaturesId?: ModelIDInput | null,
+  featureTemplateFeaturesId?: ModelIDInput | null,
+};
+
+export type UpdateTemplateFeatureInput = {
+  id: string,
+  templateTemplateFeaturesId?: string | null,
+  featureTemplateFeaturesId?: string | null,
+};
+
+export type DeleteTemplateFeatureInput = {
+  id: string,
+};
+
+export type CreateFeatureInput = {
+  id?: string | null,
+  feature_type?: string | null,
+  name: string,
+  description?: string | null,
+  feature_group?: string | null,
+  default_value?: number | null,
+  is_float?: boolean | null,
+  unitOfMeasureFeaturesId?: string | null,
+};
+
+export type ModelFeatureConditionInput = {
+  feature_type?: ModelStringInput | null,
+  name?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  feature_group?: ModelStringInput | null,
+  default_value?: ModelFloatInput | null,
+  is_float?: ModelBooleanInput | null,
+  and?: Array< ModelFeatureConditionInput | null > | null,
+  or?: Array< ModelFeatureConditionInput | null > | null,
+  not?: ModelFeatureConditionInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  unitOfMeasureFeaturesId?: ModelIDInput | null,
+};
+
+export type UpdateFeatureInput = {
+  id: string,
+  feature_type?: string | null,
+  name?: string | null,
+  description?: string | null,
+  feature_group?: string | null,
+  default_value?: number | null,
+  is_float?: boolean | null,
+  unitOfMeasureFeaturesId?: string | null,
+};
+
+export type DeleteFeatureInput = {
+  id: string,
+};
+
+export type CreateRawDataInput = {
+  id?: string | null,
+  name?: string | null,
+  valueFloat?: number | null,
+  valueString?: string | null,
+  timestamp?: string | null,
+  treeRawDataId?: string | null,
+  featureRawDatasId?: string | null,
+};
+
+export type ModelRawDataConditionInput = {
+  name?: ModelStringInput | null,
+  valueFloat?: ModelFloatInput | null,
+  valueString?: ModelStringInput | null,
+  timestamp?: ModelStringInput | null,
+  and?: Array< ModelRawDataConditionInput | null > | null,
+  or?: Array< ModelRawDataConditionInput | null > | null,
+  not?: ModelRawDataConditionInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  treeRawDataId?: ModelIDInput | null,
+  featureRawDatasId?: ModelIDInput | null,
+};
+
+export type UpdateRawDataInput = {
+  id: string,
+  name?: string | null,
+  valueFloat?: number | null,
+  valueString?: string | null,
+  timestamp?: string | null,
+  treeRawDataId?: string | null,
+  featureRawDatasId?: string | null,
+};
+
+export type DeleteRawDataInput = {
+  id: string,
+};
+
 export type ModelModelAIFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
@@ -2433,6 +2784,110 @@ export type ModelPermVersionConnection = {
   nextToken?: string | null,
 };
 
+export type ModelUnitOfMeasureFilterInput = {
+  id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  abbreviation?: ModelStringInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  and?: Array< ModelUnitOfMeasureFilterInput | null > | null,
+  or?: Array< ModelUnitOfMeasureFilterInput | null > | null,
+  not?: ModelUnitOfMeasureFilterInput | null,
+};
+
+export type ModelUnitOfMeasureConnection = {
+  __typename: "ModelUnitOfMeasureConnection",
+  items:  Array<UnitOfMeasure | null >,
+  nextToken?: string | null,
+};
+
+export type ModelProjectFilterInput = {
+  id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  status?: ModelStringInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  and?: Array< ModelProjectFilterInput | null > | null,
+  or?: Array< ModelProjectFilterInput | null > | null,
+  not?: ModelProjectFilterInput | null,
+};
+
+export type ModelProjectConnection = {
+  __typename: "ModelProjectConnection",
+  items:  Array<Project | null >,
+  nextToken?: string | null,
+};
+
+export type ModelTemplateFilterInput = {
+  id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  type?: ModelIntInput | null,
+  version?: ModelStringInput | null,
+  is_latest?: ModelBooleanInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  and?: Array< ModelTemplateFilterInput | null > | null,
+  or?: Array< ModelTemplateFilterInput | null > | null,
+  not?: ModelTemplateFilterInput | null,
+  templateTemplatesId?: ModelIDInput | null,
+};
+
+export type ModelTreeFilterInput = {
+  id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  status?: ModelStringInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  and?: Array< ModelTreeFilterInput | null > | null,
+  or?: Array< ModelTreeFilterInput | null > | null,
+  not?: ModelTreeFilterInput | null,
+  projectTreesId?: ModelIDInput | null,
+  templateTreesId?: ModelIDInput | null,
+};
+
+export type ModelTemplateFeatureFilterInput = {
+  id?: ModelIDInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  and?: Array< ModelTemplateFeatureFilterInput | null > | null,
+  or?: Array< ModelTemplateFeatureFilterInput | null > | null,
+  not?: ModelTemplateFeatureFilterInput | null,
+  templateTemplateFeaturesId?: ModelIDInput | null,
+  featureTemplateFeaturesId?: ModelIDInput | null,
+};
+
+export type ModelFeatureFilterInput = {
+  id?: ModelIDInput | null,
+  feature_type?: ModelStringInput | null,
+  name?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  feature_group?: ModelStringInput | null,
+  default_value?: ModelFloatInput | null,
+  is_float?: ModelBooleanInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  and?: Array< ModelFeatureFilterInput | null > | null,
+  or?: Array< ModelFeatureFilterInput | null > | null,
+  not?: ModelFeatureFilterInput | null,
+  unitOfMeasureFeaturesId?: ModelIDInput | null,
+};
+
+export type ModelRawDataFilterInput = {
+  id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  valueFloat?: ModelFloatInput | null,
+  valueString?: ModelStringInput | null,
+  timestamp?: ModelStringInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  and?: Array< ModelRawDataFilterInput | null > | null,
+  or?: Array< ModelRawDataFilterInput | null > | null,
+  not?: ModelRawDataFilterInput | null,
+  treeRawDataId?: ModelIDInput | null,
+  featureRawDatasId?: ModelIDInput | null,
+};
+
 export enum ModelSortDirection {
   ASC = "ASC",
   DESC = "DESC",
@@ -2923,6 +3378,91 @@ export type ModelSubscriptionPermVersionFilterInput = {
   createdAt?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionPermVersionFilterInput | null > | null,
   or?: Array< ModelSubscriptionPermVersionFilterInput | null > | null,
+};
+
+export type ModelSubscriptionUnitOfMeasureFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  name?: ModelSubscriptionStringInput | null,
+  abbreviation?: ModelSubscriptionStringInput | null,
+  createdAt?: ModelSubscriptionStringInput | null,
+  updatedAt?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionUnitOfMeasureFilterInput | null > | null,
+  or?: Array< ModelSubscriptionUnitOfMeasureFilterInput | null > | null,
+  unitOfMeasureFeaturesId?: ModelSubscriptionIDInput | null,
+};
+
+export type ModelSubscriptionProjectFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  name?: ModelSubscriptionStringInput | null,
+  status?: ModelSubscriptionStringInput | null,
+  createdAt?: ModelSubscriptionStringInput | null,
+  updatedAt?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionProjectFilterInput | null > | null,
+  or?: Array< ModelSubscriptionProjectFilterInput | null > | null,
+  projectTreesId?: ModelSubscriptionIDInput | null,
+};
+
+export type ModelSubscriptionTemplateFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  name?: ModelSubscriptionStringInput | null,
+  description?: ModelSubscriptionStringInput | null,
+  type?: ModelSubscriptionIntInput | null,
+  version?: ModelSubscriptionStringInput | null,
+  is_latest?: ModelSubscriptionBooleanInput | null,
+  createdAt?: ModelSubscriptionStringInput | null,
+  updatedAt?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionTemplateFilterInput | null > | null,
+  or?: Array< ModelSubscriptionTemplateFilterInput | null > | null,
+  templateTemplatesId?: ModelSubscriptionIDInput | null,
+  templateTemplateFeaturesId?: ModelSubscriptionIDInput | null,
+  templateTreesId?: ModelSubscriptionIDInput | null,
+};
+
+export type ModelSubscriptionTreeFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  name?: ModelSubscriptionStringInput | null,
+  status?: ModelSubscriptionStringInput | null,
+  createdAt?: ModelSubscriptionStringInput | null,
+  updatedAt?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionTreeFilterInput | null > | null,
+  or?: Array< ModelSubscriptionTreeFilterInput | null > | null,
+  treeRawDataId?: ModelSubscriptionIDInput | null,
+};
+
+export type ModelSubscriptionTemplateFeatureFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  createdAt?: ModelSubscriptionStringInput | null,
+  updatedAt?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionTemplateFeatureFilterInput | null > | null,
+  or?: Array< ModelSubscriptionTemplateFeatureFilterInput | null > | null,
+};
+
+export type ModelSubscriptionFeatureFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  feature_type?: ModelSubscriptionStringInput | null,
+  name?: ModelSubscriptionStringInput | null,
+  description?: ModelSubscriptionStringInput | null,
+  feature_group?: ModelSubscriptionStringInput | null,
+  default_value?: ModelSubscriptionFloatInput | null,
+  is_float?: ModelSubscriptionBooleanInput | null,
+  createdAt?: ModelSubscriptionStringInput | null,
+  updatedAt?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionFeatureFilterInput | null > | null,
+  or?: Array< ModelSubscriptionFeatureFilterInput | null > | null,
+  featureTemplateFeaturesId?: ModelSubscriptionIDInput | null,
+  featureRawDatasId?: ModelSubscriptionIDInput | null,
+};
+
+export type ModelSubscriptionRawDataFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  name?: ModelSubscriptionStringInput | null,
+  valueFloat?: ModelSubscriptionFloatInput | null,
+  valueString?: ModelSubscriptionStringInput | null,
+  timestamp?: ModelSubscriptionStringInput | null,
+  createdAt?: ModelSubscriptionStringInput | null,
+  updatedAt?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionRawDataFilterInput | null > | null,
+  or?: Array< ModelSubscriptionRawDataFilterInput | null > | null,
 };
 
 export type CreateModelAIMutationVariables = {
@@ -5760,6 +6300,747 @@ export type DeletePermVersionMutation = {
   } | null,
 };
 
+export type CreateUnitOfMeasureMutationVariables = {
+  input: CreateUnitOfMeasureInput,
+  condition?: ModelUnitOfMeasureConditionInput | null,
+};
+
+export type CreateUnitOfMeasureMutation = {
+  createUnitOfMeasure?:  {
+    __typename: "UnitOfMeasure",
+    id: string,
+    name: string,
+    abbreviation?: string | null,
+    features?:  {
+      __typename: "ModelFeatureConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type UpdateUnitOfMeasureMutationVariables = {
+  input: UpdateUnitOfMeasureInput,
+  condition?: ModelUnitOfMeasureConditionInput | null,
+};
+
+export type UpdateUnitOfMeasureMutation = {
+  updateUnitOfMeasure?:  {
+    __typename: "UnitOfMeasure",
+    id: string,
+    name: string,
+    abbreviation?: string | null,
+    features?:  {
+      __typename: "ModelFeatureConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type DeleteUnitOfMeasureMutationVariables = {
+  input: DeleteUnitOfMeasureInput,
+  condition?: ModelUnitOfMeasureConditionInput | null,
+};
+
+export type DeleteUnitOfMeasureMutation = {
+  deleteUnitOfMeasure?:  {
+    __typename: "UnitOfMeasure",
+    id: string,
+    name: string,
+    abbreviation?: string | null,
+    features?:  {
+      __typename: "ModelFeatureConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type CreateProjectMutationVariables = {
+  input: CreateProjectInput,
+  condition?: ModelProjectConditionInput | null,
+};
+
+export type CreateProjectMutation = {
+  createProject?:  {
+    __typename: "Project",
+    id: string,
+    name: string,
+    status: string,
+    trees?:  {
+      __typename: "ModelTreeConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type UpdateProjectMutationVariables = {
+  input: UpdateProjectInput,
+  condition?: ModelProjectConditionInput | null,
+};
+
+export type UpdateProjectMutation = {
+  updateProject?:  {
+    __typename: "Project",
+    id: string,
+    name: string,
+    status: string,
+    trees?:  {
+      __typename: "ModelTreeConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type DeleteProjectMutationVariables = {
+  input: DeleteProjectInput,
+  condition?: ModelProjectConditionInput | null,
+};
+
+export type DeleteProjectMutation = {
+  deleteProject?:  {
+    __typename: "Project",
+    id: string,
+    name: string,
+    status: string,
+    trees?:  {
+      __typename: "ModelTreeConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type CreateTemplateMutationVariables = {
+  input: CreateTemplateInput,
+  condition?: ModelTemplateConditionInput | null,
+};
+
+export type CreateTemplateMutation = {
+  createTemplate?:  {
+    __typename: "Template",
+    id: string,
+    name: string,
+    description?: string | null,
+    type: number,
+    version?: string | null,
+    is_latest: boolean,
+    templateParent?:  {
+      __typename: "Template",
+      id: string,
+      name: string,
+      description?: string | null,
+      type: number,
+      version?: string | null,
+      is_latest: boolean,
+      createdAt: string,
+      updatedAt: string,
+      templateTemplatesId?: string | null,
+    } | null,
+    templates?:  {
+      __typename: "ModelTemplateConnection",
+      nextToken?: string | null,
+    } | null,
+    templateFeatures?:  {
+      __typename: "ModelTemplateFeatureConnection",
+      nextToken?: string | null,
+    } | null,
+    trees?:  {
+      __typename: "ModelTreeConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    templateTemplatesId?: string | null,
+  } | null,
+};
+
+export type UpdateTemplateMutationVariables = {
+  input: UpdateTemplateInput,
+  condition?: ModelTemplateConditionInput | null,
+};
+
+export type UpdateTemplateMutation = {
+  updateTemplate?:  {
+    __typename: "Template",
+    id: string,
+    name: string,
+    description?: string | null,
+    type: number,
+    version?: string | null,
+    is_latest: boolean,
+    templateParent?:  {
+      __typename: "Template",
+      id: string,
+      name: string,
+      description?: string | null,
+      type: number,
+      version?: string | null,
+      is_latest: boolean,
+      createdAt: string,
+      updatedAt: string,
+      templateTemplatesId?: string | null,
+    } | null,
+    templates?:  {
+      __typename: "ModelTemplateConnection",
+      nextToken?: string | null,
+    } | null,
+    templateFeatures?:  {
+      __typename: "ModelTemplateFeatureConnection",
+      nextToken?: string | null,
+    } | null,
+    trees?:  {
+      __typename: "ModelTreeConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    templateTemplatesId?: string | null,
+  } | null,
+};
+
+export type DeleteTemplateMutationVariables = {
+  input: DeleteTemplateInput,
+  condition?: ModelTemplateConditionInput | null,
+};
+
+export type DeleteTemplateMutation = {
+  deleteTemplate?:  {
+    __typename: "Template",
+    id: string,
+    name: string,
+    description?: string | null,
+    type: number,
+    version?: string | null,
+    is_latest: boolean,
+    templateParent?:  {
+      __typename: "Template",
+      id: string,
+      name: string,
+      description?: string | null,
+      type: number,
+      version?: string | null,
+      is_latest: boolean,
+      createdAt: string,
+      updatedAt: string,
+      templateTemplatesId?: string | null,
+    } | null,
+    templates?:  {
+      __typename: "ModelTemplateConnection",
+      nextToken?: string | null,
+    } | null,
+    templateFeatures?:  {
+      __typename: "ModelTemplateFeatureConnection",
+      nextToken?: string | null,
+    } | null,
+    trees?:  {
+      __typename: "ModelTreeConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    templateTemplatesId?: string | null,
+  } | null,
+};
+
+export type CreateTreeMutationVariables = {
+  input: CreateTreeInput,
+  condition?: ModelTreeConditionInput | null,
+};
+
+export type CreateTreeMutation = {
+  createTree?:  {
+    __typename: "Tree",
+    id: string,
+    name: string,
+    status?: string | null,
+    project?:  {
+      __typename: "Project",
+      id: string,
+      name: string,
+      status: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    template?:  {
+      __typename: "Template",
+      id: string,
+      name: string,
+      description?: string | null,
+      type: number,
+      version?: string | null,
+      is_latest: boolean,
+      createdAt: string,
+      updatedAt: string,
+      templateTemplatesId?: string | null,
+    } | null,
+    rawData?:  {
+      __typename: "ModelRawDataConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    projectTreesId?: string | null,
+    templateTreesId?: string | null,
+  } | null,
+};
+
+export type UpdateTreeMutationVariables = {
+  input: UpdateTreeInput,
+  condition?: ModelTreeConditionInput | null,
+};
+
+export type UpdateTreeMutation = {
+  updateTree?:  {
+    __typename: "Tree",
+    id: string,
+    name: string,
+    status?: string | null,
+    project?:  {
+      __typename: "Project",
+      id: string,
+      name: string,
+      status: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    template?:  {
+      __typename: "Template",
+      id: string,
+      name: string,
+      description?: string | null,
+      type: number,
+      version?: string | null,
+      is_latest: boolean,
+      createdAt: string,
+      updatedAt: string,
+      templateTemplatesId?: string | null,
+    } | null,
+    rawData?:  {
+      __typename: "ModelRawDataConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    projectTreesId?: string | null,
+    templateTreesId?: string | null,
+  } | null,
+};
+
+export type DeleteTreeMutationVariables = {
+  input: DeleteTreeInput,
+  condition?: ModelTreeConditionInput | null,
+};
+
+export type DeleteTreeMutation = {
+  deleteTree?:  {
+    __typename: "Tree",
+    id: string,
+    name: string,
+    status?: string | null,
+    project?:  {
+      __typename: "Project",
+      id: string,
+      name: string,
+      status: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    template?:  {
+      __typename: "Template",
+      id: string,
+      name: string,
+      description?: string | null,
+      type: number,
+      version?: string | null,
+      is_latest: boolean,
+      createdAt: string,
+      updatedAt: string,
+      templateTemplatesId?: string | null,
+    } | null,
+    rawData?:  {
+      __typename: "ModelRawDataConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    projectTreesId?: string | null,
+    templateTreesId?: string | null,
+  } | null,
+};
+
+export type CreateTemplateFeatureMutationVariables = {
+  input: CreateTemplateFeatureInput,
+  condition?: ModelTemplateFeatureConditionInput | null,
+};
+
+export type CreateTemplateFeatureMutation = {
+  createTemplateFeature?:  {
+    __typename: "TemplateFeature",
+    id: string,
+    template?:  {
+      __typename: "Template",
+      id: string,
+      name: string,
+      description?: string | null,
+      type: number,
+      version?: string | null,
+      is_latest: boolean,
+      createdAt: string,
+      updatedAt: string,
+      templateTemplatesId?: string | null,
+    } | null,
+    feature?:  {
+      __typename: "Feature",
+      id: string,
+      feature_type?: string | null,
+      name: string,
+      description?: string | null,
+      feature_group?: string | null,
+      default_value?: number | null,
+      is_float?: boolean | null,
+      createdAt: string,
+      updatedAt: string,
+      unitOfMeasureFeaturesId?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    templateTemplateFeaturesId?: string | null,
+    featureTemplateFeaturesId?: string | null,
+  } | null,
+};
+
+export type UpdateTemplateFeatureMutationVariables = {
+  input: UpdateTemplateFeatureInput,
+  condition?: ModelTemplateFeatureConditionInput | null,
+};
+
+export type UpdateTemplateFeatureMutation = {
+  updateTemplateFeature?:  {
+    __typename: "TemplateFeature",
+    id: string,
+    template?:  {
+      __typename: "Template",
+      id: string,
+      name: string,
+      description?: string | null,
+      type: number,
+      version?: string | null,
+      is_latest: boolean,
+      createdAt: string,
+      updatedAt: string,
+      templateTemplatesId?: string | null,
+    } | null,
+    feature?:  {
+      __typename: "Feature",
+      id: string,
+      feature_type?: string | null,
+      name: string,
+      description?: string | null,
+      feature_group?: string | null,
+      default_value?: number | null,
+      is_float?: boolean | null,
+      createdAt: string,
+      updatedAt: string,
+      unitOfMeasureFeaturesId?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    templateTemplateFeaturesId?: string | null,
+    featureTemplateFeaturesId?: string | null,
+  } | null,
+};
+
+export type DeleteTemplateFeatureMutationVariables = {
+  input: DeleteTemplateFeatureInput,
+  condition?: ModelTemplateFeatureConditionInput | null,
+};
+
+export type DeleteTemplateFeatureMutation = {
+  deleteTemplateFeature?:  {
+    __typename: "TemplateFeature",
+    id: string,
+    template?:  {
+      __typename: "Template",
+      id: string,
+      name: string,
+      description?: string | null,
+      type: number,
+      version?: string | null,
+      is_latest: boolean,
+      createdAt: string,
+      updatedAt: string,
+      templateTemplatesId?: string | null,
+    } | null,
+    feature?:  {
+      __typename: "Feature",
+      id: string,
+      feature_type?: string | null,
+      name: string,
+      description?: string | null,
+      feature_group?: string | null,
+      default_value?: number | null,
+      is_float?: boolean | null,
+      createdAt: string,
+      updatedAt: string,
+      unitOfMeasureFeaturesId?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    templateTemplateFeaturesId?: string | null,
+    featureTemplateFeaturesId?: string | null,
+  } | null,
+};
+
+export type CreateFeatureMutationVariables = {
+  input: CreateFeatureInput,
+  condition?: ModelFeatureConditionInput | null,
+};
+
+export type CreateFeatureMutation = {
+  createFeature?:  {
+    __typename: "Feature",
+    id: string,
+    feature_type?: string | null,
+    name: string,
+    description?: string | null,
+    feature_group?: string | null,
+    default_value?: number | null,
+    is_float?: boolean | null,
+    unitOfMeasure?:  {
+      __typename: "UnitOfMeasure",
+      id: string,
+      name: string,
+      abbreviation?: string | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    templateFeatures?:  {
+      __typename: "ModelTemplateFeatureConnection",
+      nextToken?: string | null,
+    } | null,
+    rawDatas?:  {
+      __typename: "ModelRawDataConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    unitOfMeasureFeaturesId?: string | null,
+  } | null,
+};
+
+export type UpdateFeatureMutationVariables = {
+  input: UpdateFeatureInput,
+  condition?: ModelFeatureConditionInput | null,
+};
+
+export type UpdateFeatureMutation = {
+  updateFeature?:  {
+    __typename: "Feature",
+    id: string,
+    feature_type?: string | null,
+    name: string,
+    description?: string | null,
+    feature_group?: string | null,
+    default_value?: number | null,
+    is_float?: boolean | null,
+    unitOfMeasure?:  {
+      __typename: "UnitOfMeasure",
+      id: string,
+      name: string,
+      abbreviation?: string | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    templateFeatures?:  {
+      __typename: "ModelTemplateFeatureConnection",
+      nextToken?: string | null,
+    } | null,
+    rawDatas?:  {
+      __typename: "ModelRawDataConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    unitOfMeasureFeaturesId?: string | null,
+  } | null,
+};
+
+export type DeleteFeatureMutationVariables = {
+  input: DeleteFeatureInput,
+  condition?: ModelFeatureConditionInput | null,
+};
+
+export type DeleteFeatureMutation = {
+  deleteFeature?:  {
+    __typename: "Feature",
+    id: string,
+    feature_type?: string | null,
+    name: string,
+    description?: string | null,
+    feature_group?: string | null,
+    default_value?: number | null,
+    is_float?: boolean | null,
+    unitOfMeasure?:  {
+      __typename: "UnitOfMeasure",
+      id: string,
+      name: string,
+      abbreviation?: string | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    templateFeatures?:  {
+      __typename: "ModelTemplateFeatureConnection",
+      nextToken?: string | null,
+    } | null,
+    rawDatas?:  {
+      __typename: "ModelRawDataConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    unitOfMeasureFeaturesId?: string | null,
+  } | null,
+};
+
+export type CreateRawDataMutationVariables = {
+  input: CreateRawDataInput,
+  condition?: ModelRawDataConditionInput | null,
+};
+
+export type CreateRawDataMutation = {
+  createRawData?:  {
+    __typename: "RawData",
+    id: string,
+    name?: string | null,
+    valueFloat?: number | null,
+    valueString?: string | null,
+    timestamp?: string | null,
+    feature?:  {
+      __typename: "Feature",
+      id: string,
+      feature_type?: string | null,
+      name: string,
+      description?: string | null,
+      feature_group?: string | null,
+      default_value?: number | null,
+      is_float?: boolean | null,
+      createdAt: string,
+      updatedAt: string,
+      unitOfMeasureFeaturesId?: string | null,
+    } | null,
+    tree?:  {
+      __typename: "Tree",
+      id: string,
+      name: string,
+      status?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      projectTreesId?: string | null,
+      templateTreesId?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    treeRawDataId?: string | null,
+    featureRawDatasId?: string | null,
+  } | null,
+};
+
+export type UpdateRawDataMutationVariables = {
+  input: UpdateRawDataInput,
+  condition?: ModelRawDataConditionInput | null,
+};
+
+export type UpdateRawDataMutation = {
+  updateRawData?:  {
+    __typename: "RawData",
+    id: string,
+    name?: string | null,
+    valueFloat?: number | null,
+    valueString?: string | null,
+    timestamp?: string | null,
+    feature?:  {
+      __typename: "Feature",
+      id: string,
+      feature_type?: string | null,
+      name: string,
+      description?: string | null,
+      feature_group?: string | null,
+      default_value?: number | null,
+      is_float?: boolean | null,
+      createdAt: string,
+      updatedAt: string,
+      unitOfMeasureFeaturesId?: string | null,
+    } | null,
+    tree?:  {
+      __typename: "Tree",
+      id: string,
+      name: string,
+      status?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      projectTreesId?: string | null,
+      templateTreesId?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    treeRawDataId?: string | null,
+    featureRawDatasId?: string | null,
+  } | null,
+};
+
+export type DeleteRawDataMutationVariables = {
+  input: DeleteRawDataInput,
+  condition?: ModelRawDataConditionInput | null,
+};
+
+export type DeleteRawDataMutation = {
+  deleteRawData?:  {
+    __typename: "RawData",
+    id: string,
+    name?: string | null,
+    valueFloat?: number | null,
+    valueString?: string | null,
+    timestamp?: string | null,
+    feature?:  {
+      __typename: "Feature",
+      id: string,
+      feature_type?: string | null,
+      name: string,
+      description?: string | null,
+      feature_group?: string | null,
+      default_value?: number | null,
+      is_float?: boolean | null,
+      createdAt: string,
+      updatedAt: string,
+      unitOfMeasureFeaturesId?: string | null,
+    } | null,
+    tree?:  {
+      __typename: "Tree",
+      id: string,
+      name: string,
+      status?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      projectTreesId?: string | null,
+      templateTreesId?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    treeRawDataId?: string | null,
+    featureRawDatasId?: string | null,
+  } | null,
+};
+
 export type GetModelAIQueryVariables = {
   id: string,
 };
@@ -7427,6 +8708,408 @@ export type ListPermVersionsQuery = {
       id: string,
       updatedAt?: string | null,
       createdAt: string,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetUnitOfMeasureQueryVariables = {
+  id: string,
+};
+
+export type GetUnitOfMeasureQuery = {
+  getUnitOfMeasure?:  {
+    __typename: "UnitOfMeasure",
+    id: string,
+    name: string,
+    abbreviation?: string | null,
+    features?:  {
+      __typename: "ModelFeatureConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type ListUnitOfMeasuresQueryVariables = {
+  filter?: ModelUnitOfMeasureFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListUnitOfMeasuresQuery = {
+  listUnitOfMeasures?:  {
+    __typename: "ModelUnitOfMeasureConnection",
+    items:  Array< {
+      __typename: "UnitOfMeasure",
+      id: string,
+      name: string,
+      abbreviation?: string | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetProjectQueryVariables = {
+  id: string,
+};
+
+export type GetProjectQuery = {
+  getProject?:  {
+    __typename: "Project",
+    id: string,
+    name: string,
+    status: string,
+    trees?:  {
+      __typename: "ModelTreeConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type ListProjectsQueryVariables = {
+  filter?: ModelProjectFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListProjectsQuery = {
+  listProjects?:  {
+    __typename: "ModelProjectConnection",
+    items:  Array< {
+      __typename: "Project",
+      id: string,
+      name: string,
+      status: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetTemplateQueryVariables = {
+  id: string,
+};
+
+export type GetTemplateQuery = {
+  getTemplate?:  {
+    __typename: "Template",
+    id: string,
+    name: string,
+    description?: string | null,
+    type: number,
+    version?: string | null,
+    is_latest: boolean,
+    templateParent?:  {
+      __typename: "Template",
+      id: string,
+      name: string,
+      description?: string | null,
+      type: number,
+      version?: string | null,
+      is_latest: boolean,
+      createdAt: string,
+      updatedAt: string,
+      templateTemplatesId?: string | null,
+    } | null,
+    templates?:  {
+      __typename: "ModelTemplateConnection",
+      nextToken?: string | null,
+    } | null,
+    templateFeatures?:  {
+      __typename: "ModelTemplateFeatureConnection",
+      nextToken?: string | null,
+    } | null,
+    trees?:  {
+      __typename: "ModelTreeConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    templateTemplatesId?: string | null,
+  } | null,
+};
+
+export type ListTemplatesQueryVariables = {
+  filter?: ModelTemplateFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListTemplatesQuery = {
+  listTemplates?:  {
+    __typename: "ModelTemplateConnection",
+    items:  Array< {
+      __typename: "Template",
+      id: string,
+      name: string,
+      description?: string | null,
+      type: number,
+      version?: string | null,
+      is_latest: boolean,
+      createdAt: string,
+      updatedAt: string,
+      templateTemplatesId?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetTreeQueryVariables = {
+  id: string,
+};
+
+export type GetTreeQuery = {
+  getTree?:  {
+    __typename: "Tree",
+    id: string,
+    name: string,
+    status?: string | null,
+    project?:  {
+      __typename: "Project",
+      id: string,
+      name: string,
+      status: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    template?:  {
+      __typename: "Template",
+      id: string,
+      name: string,
+      description?: string | null,
+      type: number,
+      version?: string | null,
+      is_latest: boolean,
+      createdAt: string,
+      updatedAt: string,
+      templateTemplatesId?: string | null,
+    } | null,
+    rawData?:  {
+      __typename: "ModelRawDataConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    projectTreesId?: string | null,
+    templateTreesId?: string | null,
+  } | null,
+};
+
+export type ListTreesQueryVariables = {
+  filter?: ModelTreeFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListTreesQuery = {
+  listTrees?:  {
+    __typename: "ModelTreeConnection",
+    items:  Array< {
+      __typename: "Tree",
+      id: string,
+      name: string,
+      status?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      projectTreesId?: string | null,
+      templateTreesId?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetTemplateFeatureQueryVariables = {
+  id: string,
+};
+
+export type GetTemplateFeatureQuery = {
+  getTemplateFeature?:  {
+    __typename: "TemplateFeature",
+    id: string,
+    template?:  {
+      __typename: "Template",
+      id: string,
+      name: string,
+      description?: string | null,
+      type: number,
+      version?: string | null,
+      is_latest: boolean,
+      createdAt: string,
+      updatedAt: string,
+      templateTemplatesId?: string | null,
+    } | null,
+    feature?:  {
+      __typename: "Feature",
+      id: string,
+      feature_type?: string | null,
+      name: string,
+      description?: string | null,
+      feature_group?: string | null,
+      default_value?: number | null,
+      is_float?: boolean | null,
+      createdAt: string,
+      updatedAt: string,
+      unitOfMeasureFeaturesId?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    templateTemplateFeaturesId?: string | null,
+    featureTemplateFeaturesId?: string | null,
+  } | null,
+};
+
+export type ListTemplateFeaturesQueryVariables = {
+  filter?: ModelTemplateFeatureFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListTemplateFeaturesQuery = {
+  listTemplateFeatures?:  {
+    __typename: "ModelTemplateFeatureConnection",
+    items:  Array< {
+      __typename: "TemplateFeature",
+      id: string,
+      createdAt: string,
+      updatedAt: string,
+      templateTemplateFeaturesId?: string | null,
+      featureTemplateFeaturesId?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetFeatureQueryVariables = {
+  id: string,
+};
+
+export type GetFeatureQuery = {
+  getFeature?:  {
+    __typename: "Feature",
+    id: string,
+    feature_type?: string | null,
+    name: string,
+    description?: string | null,
+    feature_group?: string | null,
+    default_value?: number | null,
+    is_float?: boolean | null,
+    unitOfMeasure?:  {
+      __typename: "UnitOfMeasure",
+      id: string,
+      name: string,
+      abbreviation?: string | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    templateFeatures?:  {
+      __typename: "ModelTemplateFeatureConnection",
+      nextToken?: string | null,
+    } | null,
+    rawDatas?:  {
+      __typename: "ModelRawDataConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    unitOfMeasureFeaturesId?: string | null,
+  } | null,
+};
+
+export type ListFeaturesQueryVariables = {
+  filter?: ModelFeatureFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListFeaturesQuery = {
+  listFeatures?:  {
+    __typename: "ModelFeatureConnection",
+    items:  Array< {
+      __typename: "Feature",
+      id: string,
+      feature_type?: string | null,
+      name: string,
+      description?: string | null,
+      feature_group?: string | null,
+      default_value?: number | null,
+      is_float?: boolean | null,
+      createdAt: string,
+      updatedAt: string,
+      unitOfMeasureFeaturesId?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetRawDataQueryVariables = {
+  id: string,
+};
+
+export type GetRawDataQuery = {
+  getRawData?:  {
+    __typename: "RawData",
+    id: string,
+    name?: string | null,
+    valueFloat?: number | null,
+    valueString?: string | null,
+    timestamp?: string | null,
+    feature?:  {
+      __typename: "Feature",
+      id: string,
+      feature_type?: string | null,
+      name: string,
+      description?: string | null,
+      feature_group?: string | null,
+      default_value?: number | null,
+      is_float?: boolean | null,
+      createdAt: string,
+      updatedAt: string,
+      unitOfMeasureFeaturesId?: string | null,
+    } | null,
+    tree?:  {
+      __typename: "Tree",
+      id: string,
+      name: string,
+      status?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      projectTreesId?: string | null,
+      templateTreesId?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    treeRawDataId?: string | null,
+    featureRawDatasId?: string | null,
+  } | null,
+};
+
+export type ListRawDataQueryVariables = {
+  filter?: ModelRawDataFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListRawDataQuery = {
+  listRawData?:  {
+    __typename: "ModelRawDataConnection",
+    items:  Array< {
+      __typename: "RawData",
+      id: string,
+      name?: string | null,
+      valueFloat?: number | null,
+      valueString?: string | null,
+      timestamp?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      treeRawDataId?: string | null,
+      featureRawDatasId?: string | null,
     } | null >,
     nextToken?: string | null,
   } | null,
@@ -11200,5 +12883,725 @@ export type OnDeletePermVersionSubscription = {
     id: string,
     updatedAt?: string | null,
     createdAt: string,
+  } | null,
+};
+
+export type OnCreateUnitOfMeasureSubscriptionVariables = {
+  filter?: ModelSubscriptionUnitOfMeasureFilterInput | null,
+};
+
+export type OnCreateUnitOfMeasureSubscription = {
+  onCreateUnitOfMeasure?:  {
+    __typename: "UnitOfMeasure",
+    id: string,
+    name: string,
+    abbreviation?: string | null,
+    features?:  {
+      __typename: "ModelFeatureConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnUpdateUnitOfMeasureSubscriptionVariables = {
+  filter?: ModelSubscriptionUnitOfMeasureFilterInput | null,
+};
+
+export type OnUpdateUnitOfMeasureSubscription = {
+  onUpdateUnitOfMeasure?:  {
+    __typename: "UnitOfMeasure",
+    id: string,
+    name: string,
+    abbreviation?: string | null,
+    features?:  {
+      __typename: "ModelFeatureConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnDeleteUnitOfMeasureSubscriptionVariables = {
+  filter?: ModelSubscriptionUnitOfMeasureFilterInput | null,
+};
+
+export type OnDeleteUnitOfMeasureSubscription = {
+  onDeleteUnitOfMeasure?:  {
+    __typename: "UnitOfMeasure",
+    id: string,
+    name: string,
+    abbreviation?: string | null,
+    features?:  {
+      __typename: "ModelFeatureConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnCreateProjectSubscriptionVariables = {
+  filter?: ModelSubscriptionProjectFilterInput | null,
+};
+
+export type OnCreateProjectSubscription = {
+  onCreateProject?:  {
+    __typename: "Project",
+    id: string,
+    name: string,
+    status: string,
+    trees?:  {
+      __typename: "ModelTreeConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnUpdateProjectSubscriptionVariables = {
+  filter?: ModelSubscriptionProjectFilterInput | null,
+};
+
+export type OnUpdateProjectSubscription = {
+  onUpdateProject?:  {
+    __typename: "Project",
+    id: string,
+    name: string,
+    status: string,
+    trees?:  {
+      __typename: "ModelTreeConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnDeleteProjectSubscriptionVariables = {
+  filter?: ModelSubscriptionProjectFilterInput | null,
+};
+
+export type OnDeleteProjectSubscription = {
+  onDeleteProject?:  {
+    __typename: "Project",
+    id: string,
+    name: string,
+    status: string,
+    trees?:  {
+      __typename: "ModelTreeConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnCreateTemplateSubscriptionVariables = {
+  filter?: ModelSubscriptionTemplateFilterInput | null,
+};
+
+export type OnCreateTemplateSubscription = {
+  onCreateTemplate?:  {
+    __typename: "Template",
+    id: string,
+    name: string,
+    description?: string | null,
+    type: number,
+    version?: string | null,
+    is_latest: boolean,
+    templateParent?:  {
+      __typename: "Template",
+      id: string,
+      name: string,
+      description?: string | null,
+      type: number,
+      version?: string | null,
+      is_latest: boolean,
+      createdAt: string,
+      updatedAt: string,
+      templateTemplatesId?: string | null,
+    } | null,
+    templates?:  {
+      __typename: "ModelTemplateConnection",
+      nextToken?: string | null,
+    } | null,
+    templateFeatures?:  {
+      __typename: "ModelTemplateFeatureConnection",
+      nextToken?: string | null,
+    } | null,
+    trees?:  {
+      __typename: "ModelTreeConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    templateTemplatesId?: string | null,
+  } | null,
+};
+
+export type OnUpdateTemplateSubscriptionVariables = {
+  filter?: ModelSubscriptionTemplateFilterInput | null,
+};
+
+export type OnUpdateTemplateSubscription = {
+  onUpdateTemplate?:  {
+    __typename: "Template",
+    id: string,
+    name: string,
+    description?: string | null,
+    type: number,
+    version?: string | null,
+    is_latest: boolean,
+    templateParent?:  {
+      __typename: "Template",
+      id: string,
+      name: string,
+      description?: string | null,
+      type: number,
+      version?: string | null,
+      is_latest: boolean,
+      createdAt: string,
+      updatedAt: string,
+      templateTemplatesId?: string | null,
+    } | null,
+    templates?:  {
+      __typename: "ModelTemplateConnection",
+      nextToken?: string | null,
+    } | null,
+    templateFeatures?:  {
+      __typename: "ModelTemplateFeatureConnection",
+      nextToken?: string | null,
+    } | null,
+    trees?:  {
+      __typename: "ModelTreeConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    templateTemplatesId?: string | null,
+  } | null,
+};
+
+export type OnDeleteTemplateSubscriptionVariables = {
+  filter?: ModelSubscriptionTemplateFilterInput | null,
+};
+
+export type OnDeleteTemplateSubscription = {
+  onDeleteTemplate?:  {
+    __typename: "Template",
+    id: string,
+    name: string,
+    description?: string | null,
+    type: number,
+    version?: string | null,
+    is_latest: boolean,
+    templateParent?:  {
+      __typename: "Template",
+      id: string,
+      name: string,
+      description?: string | null,
+      type: number,
+      version?: string | null,
+      is_latest: boolean,
+      createdAt: string,
+      updatedAt: string,
+      templateTemplatesId?: string | null,
+    } | null,
+    templates?:  {
+      __typename: "ModelTemplateConnection",
+      nextToken?: string | null,
+    } | null,
+    templateFeatures?:  {
+      __typename: "ModelTemplateFeatureConnection",
+      nextToken?: string | null,
+    } | null,
+    trees?:  {
+      __typename: "ModelTreeConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    templateTemplatesId?: string | null,
+  } | null,
+};
+
+export type OnCreateTreeSubscriptionVariables = {
+  filter?: ModelSubscriptionTreeFilterInput | null,
+};
+
+export type OnCreateTreeSubscription = {
+  onCreateTree?:  {
+    __typename: "Tree",
+    id: string,
+    name: string,
+    status?: string | null,
+    project?:  {
+      __typename: "Project",
+      id: string,
+      name: string,
+      status: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    template?:  {
+      __typename: "Template",
+      id: string,
+      name: string,
+      description?: string | null,
+      type: number,
+      version?: string | null,
+      is_latest: boolean,
+      createdAt: string,
+      updatedAt: string,
+      templateTemplatesId?: string | null,
+    } | null,
+    rawData?:  {
+      __typename: "ModelRawDataConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    projectTreesId?: string | null,
+    templateTreesId?: string | null,
+  } | null,
+};
+
+export type OnUpdateTreeSubscriptionVariables = {
+  filter?: ModelSubscriptionTreeFilterInput | null,
+};
+
+export type OnUpdateTreeSubscription = {
+  onUpdateTree?:  {
+    __typename: "Tree",
+    id: string,
+    name: string,
+    status?: string | null,
+    project?:  {
+      __typename: "Project",
+      id: string,
+      name: string,
+      status: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    template?:  {
+      __typename: "Template",
+      id: string,
+      name: string,
+      description?: string | null,
+      type: number,
+      version?: string | null,
+      is_latest: boolean,
+      createdAt: string,
+      updatedAt: string,
+      templateTemplatesId?: string | null,
+    } | null,
+    rawData?:  {
+      __typename: "ModelRawDataConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    projectTreesId?: string | null,
+    templateTreesId?: string | null,
+  } | null,
+};
+
+export type OnDeleteTreeSubscriptionVariables = {
+  filter?: ModelSubscriptionTreeFilterInput | null,
+};
+
+export type OnDeleteTreeSubscription = {
+  onDeleteTree?:  {
+    __typename: "Tree",
+    id: string,
+    name: string,
+    status?: string | null,
+    project?:  {
+      __typename: "Project",
+      id: string,
+      name: string,
+      status: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    template?:  {
+      __typename: "Template",
+      id: string,
+      name: string,
+      description?: string | null,
+      type: number,
+      version?: string | null,
+      is_latest: boolean,
+      createdAt: string,
+      updatedAt: string,
+      templateTemplatesId?: string | null,
+    } | null,
+    rawData?:  {
+      __typename: "ModelRawDataConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    projectTreesId?: string | null,
+    templateTreesId?: string | null,
+  } | null,
+};
+
+export type OnCreateTemplateFeatureSubscriptionVariables = {
+  filter?: ModelSubscriptionTemplateFeatureFilterInput | null,
+};
+
+export type OnCreateTemplateFeatureSubscription = {
+  onCreateTemplateFeature?:  {
+    __typename: "TemplateFeature",
+    id: string,
+    template?:  {
+      __typename: "Template",
+      id: string,
+      name: string,
+      description?: string | null,
+      type: number,
+      version?: string | null,
+      is_latest: boolean,
+      createdAt: string,
+      updatedAt: string,
+      templateTemplatesId?: string | null,
+    } | null,
+    feature?:  {
+      __typename: "Feature",
+      id: string,
+      feature_type?: string | null,
+      name: string,
+      description?: string | null,
+      feature_group?: string | null,
+      default_value?: number | null,
+      is_float?: boolean | null,
+      createdAt: string,
+      updatedAt: string,
+      unitOfMeasureFeaturesId?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    templateTemplateFeaturesId?: string | null,
+    featureTemplateFeaturesId?: string | null,
+  } | null,
+};
+
+export type OnUpdateTemplateFeatureSubscriptionVariables = {
+  filter?: ModelSubscriptionTemplateFeatureFilterInput | null,
+};
+
+export type OnUpdateTemplateFeatureSubscription = {
+  onUpdateTemplateFeature?:  {
+    __typename: "TemplateFeature",
+    id: string,
+    template?:  {
+      __typename: "Template",
+      id: string,
+      name: string,
+      description?: string | null,
+      type: number,
+      version?: string | null,
+      is_latest: boolean,
+      createdAt: string,
+      updatedAt: string,
+      templateTemplatesId?: string | null,
+    } | null,
+    feature?:  {
+      __typename: "Feature",
+      id: string,
+      feature_type?: string | null,
+      name: string,
+      description?: string | null,
+      feature_group?: string | null,
+      default_value?: number | null,
+      is_float?: boolean | null,
+      createdAt: string,
+      updatedAt: string,
+      unitOfMeasureFeaturesId?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    templateTemplateFeaturesId?: string | null,
+    featureTemplateFeaturesId?: string | null,
+  } | null,
+};
+
+export type OnDeleteTemplateFeatureSubscriptionVariables = {
+  filter?: ModelSubscriptionTemplateFeatureFilterInput | null,
+};
+
+export type OnDeleteTemplateFeatureSubscription = {
+  onDeleteTemplateFeature?:  {
+    __typename: "TemplateFeature",
+    id: string,
+    template?:  {
+      __typename: "Template",
+      id: string,
+      name: string,
+      description?: string | null,
+      type: number,
+      version?: string | null,
+      is_latest: boolean,
+      createdAt: string,
+      updatedAt: string,
+      templateTemplatesId?: string | null,
+    } | null,
+    feature?:  {
+      __typename: "Feature",
+      id: string,
+      feature_type?: string | null,
+      name: string,
+      description?: string | null,
+      feature_group?: string | null,
+      default_value?: number | null,
+      is_float?: boolean | null,
+      createdAt: string,
+      updatedAt: string,
+      unitOfMeasureFeaturesId?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    templateTemplateFeaturesId?: string | null,
+    featureTemplateFeaturesId?: string | null,
+  } | null,
+};
+
+export type OnCreateFeatureSubscriptionVariables = {
+  filter?: ModelSubscriptionFeatureFilterInput | null,
+};
+
+export type OnCreateFeatureSubscription = {
+  onCreateFeature?:  {
+    __typename: "Feature",
+    id: string,
+    feature_type?: string | null,
+    name: string,
+    description?: string | null,
+    feature_group?: string | null,
+    default_value?: number | null,
+    is_float?: boolean | null,
+    unitOfMeasure?:  {
+      __typename: "UnitOfMeasure",
+      id: string,
+      name: string,
+      abbreviation?: string | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    templateFeatures?:  {
+      __typename: "ModelTemplateFeatureConnection",
+      nextToken?: string | null,
+    } | null,
+    rawDatas?:  {
+      __typename: "ModelRawDataConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    unitOfMeasureFeaturesId?: string | null,
+  } | null,
+};
+
+export type OnUpdateFeatureSubscriptionVariables = {
+  filter?: ModelSubscriptionFeatureFilterInput | null,
+};
+
+export type OnUpdateFeatureSubscription = {
+  onUpdateFeature?:  {
+    __typename: "Feature",
+    id: string,
+    feature_type?: string | null,
+    name: string,
+    description?: string | null,
+    feature_group?: string | null,
+    default_value?: number | null,
+    is_float?: boolean | null,
+    unitOfMeasure?:  {
+      __typename: "UnitOfMeasure",
+      id: string,
+      name: string,
+      abbreviation?: string | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    templateFeatures?:  {
+      __typename: "ModelTemplateFeatureConnection",
+      nextToken?: string | null,
+    } | null,
+    rawDatas?:  {
+      __typename: "ModelRawDataConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    unitOfMeasureFeaturesId?: string | null,
+  } | null,
+};
+
+export type OnDeleteFeatureSubscriptionVariables = {
+  filter?: ModelSubscriptionFeatureFilterInput | null,
+};
+
+export type OnDeleteFeatureSubscription = {
+  onDeleteFeature?:  {
+    __typename: "Feature",
+    id: string,
+    feature_type?: string | null,
+    name: string,
+    description?: string | null,
+    feature_group?: string | null,
+    default_value?: number | null,
+    is_float?: boolean | null,
+    unitOfMeasure?:  {
+      __typename: "UnitOfMeasure",
+      id: string,
+      name: string,
+      abbreviation?: string | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    templateFeatures?:  {
+      __typename: "ModelTemplateFeatureConnection",
+      nextToken?: string | null,
+    } | null,
+    rawDatas?:  {
+      __typename: "ModelRawDataConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    unitOfMeasureFeaturesId?: string | null,
+  } | null,
+};
+
+export type OnCreateRawDataSubscriptionVariables = {
+  filter?: ModelSubscriptionRawDataFilterInput | null,
+};
+
+export type OnCreateRawDataSubscription = {
+  onCreateRawData?:  {
+    __typename: "RawData",
+    id: string,
+    name?: string | null,
+    valueFloat?: number | null,
+    valueString?: string | null,
+    timestamp?: string | null,
+    feature?:  {
+      __typename: "Feature",
+      id: string,
+      feature_type?: string | null,
+      name: string,
+      description?: string | null,
+      feature_group?: string | null,
+      default_value?: number | null,
+      is_float?: boolean | null,
+      createdAt: string,
+      updatedAt: string,
+      unitOfMeasureFeaturesId?: string | null,
+    } | null,
+    tree?:  {
+      __typename: "Tree",
+      id: string,
+      name: string,
+      status?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      projectTreesId?: string | null,
+      templateTreesId?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    treeRawDataId?: string | null,
+    featureRawDatasId?: string | null,
+  } | null,
+};
+
+export type OnUpdateRawDataSubscriptionVariables = {
+  filter?: ModelSubscriptionRawDataFilterInput | null,
+};
+
+export type OnUpdateRawDataSubscription = {
+  onUpdateRawData?:  {
+    __typename: "RawData",
+    id: string,
+    name?: string | null,
+    valueFloat?: number | null,
+    valueString?: string | null,
+    timestamp?: string | null,
+    feature?:  {
+      __typename: "Feature",
+      id: string,
+      feature_type?: string | null,
+      name: string,
+      description?: string | null,
+      feature_group?: string | null,
+      default_value?: number | null,
+      is_float?: boolean | null,
+      createdAt: string,
+      updatedAt: string,
+      unitOfMeasureFeaturesId?: string | null,
+    } | null,
+    tree?:  {
+      __typename: "Tree",
+      id: string,
+      name: string,
+      status?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      projectTreesId?: string | null,
+      templateTreesId?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    treeRawDataId?: string | null,
+    featureRawDatasId?: string | null,
+  } | null,
+};
+
+export type OnDeleteRawDataSubscriptionVariables = {
+  filter?: ModelSubscriptionRawDataFilterInput | null,
+};
+
+export type OnDeleteRawDataSubscription = {
+  onDeleteRawData?:  {
+    __typename: "RawData",
+    id: string,
+    name?: string | null,
+    valueFloat?: number | null,
+    valueString?: string | null,
+    timestamp?: string | null,
+    feature?:  {
+      __typename: "Feature",
+      id: string,
+      feature_type?: string | null,
+      name: string,
+      description?: string | null,
+      feature_group?: string | null,
+      default_value?: number | null,
+      is_float?: boolean | null,
+      createdAt: string,
+      updatedAt: string,
+      unitOfMeasureFeaturesId?: string | null,
+    } | null,
+    tree?:  {
+      __typename: "Tree",
+      id: string,
+      name: string,
+      status?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      projectTreesId?: string | null,
+      templateTreesId?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    treeRawDataId?: string | null,
+    featureRawDatasId?: string | null,
   } | null,
 };

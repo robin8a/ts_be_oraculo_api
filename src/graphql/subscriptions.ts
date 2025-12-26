@@ -2819,3 +2819,714 @@ export const onDeletePermVersion = /* GraphQL */ `subscription OnDeletePermVersi
   APITypes.OnDeletePermVersionSubscriptionVariables,
   APITypes.OnDeletePermVersionSubscription
 >;
+export const onCreateUnitOfMeasure = /* GraphQL */ `subscription OnCreateUnitOfMeasure(
+  $filter: ModelSubscriptionUnitOfMeasureFilterInput
+) {
+  onCreateUnitOfMeasure(filter: $filter) {
+    id
+    name
+    abbreviation
+    features {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnCreateUnitOfMeasureSubscriptionVariables,
+  APITypes.OnCreateUnitOfMeasureSubscription
+>;
+export const onUpdateUnitOfMeasure = /* GraphQL */ `subscription OnUpdateUnitOfMeasure(
+  $filter: ModelSubscriptionUnitOfMeasureFilterInput
+) {
+  onUpdateUnitOfMeasure(filter: $filter) {
+    id
+    name
+    abbreviation
+    features {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnUpdateUnitOfMeasureSubscriptionVariables,
+  APITypes.OnUpdateUnitOfMeasureSubscription
+>;
+export const onDeleteUnitOfMeasure = /* GraphQL */ `subscription OnDeleteUnitOfMeasure(
+  $filter: ModelSubscriptionUnitOfMeasureFilterInput
+) {
+  onDeleteUnitOfMeasure(filter: $filter) {
+    id
+    name
+    abbreviation
+    features {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnDeleteUnitOfMeasureSubscriptionVariables,
+  APITypes.OnDeleteUnitOfMeasureSubscription
+>;
+export const onCreateProject = /* GraphQL */ `subscription OnCreateProject($filter: ModelSubscriptionProjectFilterInput) {
+  onCreateProject(filter: $filter) {
+    id
+    name
+    status
+    trees {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnCreateProjectSubscriptionVariables,
+  APITypes.OnCreateProjectSubscription
+>;
+export const onUpdateProject = /* GraphQL */ `subscription OnUpdateProject($filter: ModelSubscriptionProjectFilterInput) {
+  onUpdateProject(filter: $filter) {
+    id
+    name
+    status
+    trees {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnUpdateProjectSubscriptionVariables,
+  APITypes.OnUpdateProjectSubscription
+>;
+export const onDeleteProject = /* GraphQL */ `subscription OnDeleteProject($filter: ModelSubscriptionProjectFilterInput) {
+  onDeleteProject(filter: $filter) {
+    id
+    name
+    status
+    trees {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnDeleteProjectSubscriptionVariables,
+  APITypes.OnDeleteProjectSubscription
+>;
+export const onCreateTemplate = /* GraphQL */ `subscription OnCreateTemplate($filter: ModelSubscriptionTemplateFilterInput) {
+  onCreateTemplate(filter: $filter) {
+    id
+    name
+    description
+    type
+    version
+    is_latest
+    templateParent {
+      id
+      name
+      description
+      type
+      version
+      is_latest
+      createdAt
+      updatedAt
+      templateTemplatesId
+      __typename
+    }
+    templates {
+      nextToken
+      __typename
+    }
+    templateFeatures {
+      nextToken
+      __typename
+    }
+    trees {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    templateTemplatesId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnCreateTemplateSubscriptionVariables,
+  APITypes.OnCreateTemplateSubscription
+>;
+export const onUpdateTemplate = /* GraphQL */ `subscription OnUpdateTemplate($filter: ModelSubscriptionTemplateFilterInput) {
+  onUpdateTemplate(filter: $filter) {
+    id
+    name
+    description
+    type
+    version
+    is_latest
+    templateParent {
+      id
+      name
+      description
+      type
+      version
+      is_latest
+      createdAt
+      updatedAt
+      templateTemplatesId
+      __typename
+    }
+    templates {
+      nextToken
+      __typename
+    }
+    templateFeatures {
+      nextToken
+      __typename
+    }
+    trees {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    templateTemplatesId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnUpdateTemplateSubscriptionVariables,
+  APITypes.OnUpdateTemplateSubscription
+>;
+export const onDeleteTemplate = /* GraphQL */ `subscription OnDeleteTemplate($filter: ModelSubscriptionTemplateFilterInput) {
+  onDeleteTemplate(filter: $filter) {
+    id
+    name
+    description
+    type
+    version
+    is_latest
+    templateParent {
+      id
+      name
+      description
+      type
+      version
+      is_latest
+      createdAt
+      updatedAt
+      templateTemplatesId
+      __typename
+    }
+    templates {
+      nextToken
+      __typename
+    }
+    templateFeatures {
+      nextToken
+      __typename
+    }
+    trees {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    templateTemplatesId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnDeleteTemplateSubscriptionVariables,
+  APITypes.OnDeleteTemplateSubscription
+>;
+export const onCreateTree = /* GraphQL */ `subscription OnCreateTree($filter: ModelSubscriptionTreeFilterInput) {
+  onCreateTree(filter: $filter) {
+    id
+    name
+    status
+    project {
+      id
+      name
+      status
+      createdAt
+      updatedAt
+      __typename
+    }
+    template {
+      id
+      name
+      description
+      type
+      version
+      is_latest
+      createdAt
+      updatedAt
+      templateTemplatesId
+      __typename
+    }
+    rawData {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    projectTreesId
+    templateTreesId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnCreateTreeSubscriptionVariables,
+  APITypes.OnCreateTreeSubscription
+>;
+export const onUpdateTree = /* GraphQL */ `subscription OnUpdateTree($filter: ModelSubscriptionTreeFilterInput) {
+  onUpdateTree(filter: $filter) {
+    id
+    name
+    status
+    project {
+      id
+      name
+      status
+      createdAt
+      updatedAt
+      __typename
+    }
+    template {
+      id
+      name
+      description
+      type
+      version
+      is_latest
+      createdAt
+      updatedAt
+      templateTemplatesId
+      __typename
+    }
+    rawData {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    projectTreesId
+    templateTreesId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnUpdateTreeSubscriptionVariables,
+  APITypes.OnUpdateTreeSubscription
+>;
+export const onDeleteTree = /* GraphQL */ `subscription OnDeleteTree($filter: ModelSubscriptionTreeFilterInput) {
+  onDeleteTree(filter: $filter) {
+    id
+    name
+    status
+    project {
+      id
+      name
+      status
+      createdAt
+      updatedAt
+      __typename
+    }
+    template {
+      id
+      name
+      description
+      type
+      version
+      is_latest
+      createdAt
+      updatedAt
+      templateTemplatesId
+      __typename
+    }
+    rawData {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    projectTreesId
+    templateTreesId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnDeleteTreeSubscriptionVariables,
+  APITypes.OnDeleteTreeSubscription
+>;
+export const onCreateTemplateFeature = /* GraphQL */ `subscription OnCreateTemplateFeature(
+  $filter: ModelSubscriptionTemplateFeatureFilterInput
+) {
+  onCreateTemplateFeature(filter: $filter) {
+    id
+    template {
+      id
+      name
+      description
+      type
+      version
+      is_latest
+      createdAt
+      updatedAt
+      templateTemplatesId
+      __typename
+    }
+    feature {
+      id
+      feature_type
+      name
+      description
+      feature_group
+      default_value
+      is_float
+      createdAt
+      updatedAt
+      unitOfMeasureFeaturesId
+      __typename
+    }
+    createdAt
+    updatedAt
+    templateTemplateFeaturesId
+    featureTemplateFeaturesId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnCreateTemplateFeatureSubscriptionVariables,
+  APITypes.OnCreateTemplateFeatureSubscription
+>;
+export const onUpdateTemplateFeature = /* GraphQL */ `subscription OnUpdateTemplateFeature(
+  $filter: ModelSubscriptionTemplateFeatureFilterInput
+) {
+  onUpdateTemplateFeature(filter: $filter) {
+    id
+    template {
+      id
+      name
+      description
+      type
+      version
+      is_latest
+      createdAt
+      updatedAt
+      templateTemplatesId
+      __typename
+    }
+    feature {
+      id
+      feature_type
+      name
+      description
+      feature_group
+      default_value
+      is_float
+      createdAt
+      updatedAt
+      unitOfMeasureFeaturesId
+      __typename
+    }
+    createdAt
+    updatedAt
+    templateTemplateFeaturesId
+    featureTemplateFeaturesId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnUpdateTemplateFeatureSubscriptionVariables,
+  APITypes.OnUpdateTemplateFeatureSubscription
+>;
+export const onDeleteTemplateFeature = /* GraphQL */ `subscription OnDeleteTemplateFeature(
+  $filter: ModelSubscriptionTemplateFeatureFilterInput
+) {
+  onDeleteTemplateFeature(filter: $filter) {
+    id
+    template {
+      id
+      name
+      description
+      type
+      version
+      is_latest
+      createdAt
+      updatedAt
+      templateTemplatesId
+      __typename
+    }
+    feature {
+      id
+      feature_type
+      name
+      description
+      feature_group
+      default_value
+      is_float
+      createdAt
+      updatedAt
+      unitOfMeasureFeaturesId
+      __typename
+    }
+    createdAt
+    updatedAt
+    templateTemplateFeaturesId
+    featureTemplateFeaturesId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnDeleteTemplateFeatureSubscriptionVariables,
+  APITypes.OnDeleteTemplateFeatureSubscription
+>;
+export const onCreateFeature = /* GraphQL */ `subscription OnCreateFeature($filter: ModelSubscriptionFeatureFilterInput) {
+  onCreateFeature(filter: $filter) {
+    id
+    feature_type
+    name
+    description
+    feature_group
+    default_value
+    is_float
+    unitOfMeasure {
+      id
+      name
+      abbreviation
+      createdAt
+      updatedAt
+      __typename
+    }
+    templateFeatures {
+      nextToken
+      __typename
+    }
+    rawDatas {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    unitOfMeasureFeaturesId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnCreateFeatureSubscriptionVariables,
+  APITypes.OnCreateFeatureSubscription
+>;
+export const onUpdateFeature = /* GraphQL */ `subscription OnUpdateFeature($filter: ModelSubscriptionFeatureFilterInput) {
+  onUpdateFeature(filter: $filter) {
+    id
+    feature_type
+    name
+    description
+    feature_group
+    default_value
+    is_float
+    unitOfMeasure {
+      id
+      name
+      abbreviation
+      createdAt
+      updatedAt
+      __typename
+    }
+    templateFeatures {
+      nextToken
+      __typename
+    }
+    rawDatas {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    unitOfMeasureFeaturesId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnUpdateFeatureSubscriptionVariables,
+  APITypes.OnUpdateFeatureSubscription
+>;
+export const onDeleteFeature = /* GraphQL */ `subscription OnDeleteFeature($filter: ModelSubscriptionFeatureFilterInput) {
+  onDeleteFeature(filter: $filter) {
+    id
+    feature_type
+    name
+    description
+    feature_group
+    default_value
+    is_float
+    unitOfMeasure {
+      id
+      name
+      abbreviation
+      createdAt
+      updatedAt
+      __typename
+    }
+    templateFeatures {
+      nextToken
+      __typename
+    }
+    rawDatas {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    unitOfMeasureFeaturesId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnDeleteFeatureSubscriptionVariables,
+  APITypes.OnDeleteFeatureSubscription
+>;
+export const onCreateRawData = /* GraphQL */ `subscription OnCreateRawData($filter: ModelSubscriptionRawDataFilterInput) {
+  onCreateRawData(filter: $filter) {
+    id
+    name
+    valueFloat
+    valueString
+    timestamp
+    feature {
+      id
+      feature_type
+      name
+      description
+      feature_group
+      default_value
+      is_float
+      createdAt
+      updatedAt
+      unitOfMeasureFeaturesId
+      __typename
+    }
+    tree {
+      id
+      name
+      status
+      createdAt
+      updatedAt
+      projectTreesId
+      templateTreesId
+      __typename
+    }
+    createdAt
+    updatedAt
+    treeRawDataId
+    featureRawDatasId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnCreateRawDataSubscriptionVariables,
+  APITypes.OnCreateRawDataSubscription
+>;
+export const onUpdateRawData = /* GraphQL */ `subscription OnUpdateRawData($filter: ModelSubscriptionRawDataFilterInput) {
+  onUpdateRawData(filter: $filter) {
+    id
+    name
+    valueFloat
+    valueString
+    timestamp
+    feature {
+      id
+      feature_type
+      name
+      description
+      feature_group
+      default_value
+      is_float
+      createdAt
+      updatedAt
+      unitOfMeasureFeaturesId
+      __typename
+    }
+    tree {
+      id
+      name
+      status
+      createdAt
+      updatedAt
+      projectTreesId
+      templateTreesId
+      __typename
+    }
+    createdAt
+    updatedAt
+    treeRawDataId
+    featureRawDatasId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnUpdateRawDataSubscriptionVariables,
+  APITypes.OnUpdateRawDataSubscription
+>;
+export const onDeleteRawData = /* GraphQL */ `subscription OnDeleteRawData($filter: ModelSubscriptionRawDataFilterInput) {
+  onDeleteRawData(filter: $filter) {
+    id
+    name
+    valueFloat
+    valueString
+    timestamp
+    feature {
+      id
+      feature_type
+      name
+      description
+      feature_group
+      default_value
+      is_float
+      createdAt
+      updatedAt
+      unitOfMeasureFeaturesId
+      __typename
+    }
+    tree {
+      id
+      name
+      status
+      createdAt
+      updatedAt
+      projectTreesId
+      templateTreesId
+      __typename
+    }
+    createdAt
+    updatedAt
+    treeRawDataId
+    featureRawDatasId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnDeleteRawDataSubscriptionVariables,
+  APITypes.OnDeleteRawDataSubscription
+>;

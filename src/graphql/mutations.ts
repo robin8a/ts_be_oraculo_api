@@ -2933,3 +2933,765 @@ export const deletePermVersion = /* GraphQL */ `mutation DeletePermVersion(
   APITypes.DeletePermVersionMutationVariables,
   APITypes.DeletePermVersionMutation
 >;
+export const createUnitOfMeasure = /* GraphQL */ `mutation CreateUnitOfMeasure(
+  $input: CreateUnitOfMeasureInput!
+  $condition: ModelUnitOfMeasureConditionInput
+) {
+  createUnitOfMeasure(input: $input, condition: $condition) {
+    id
+    name
+    abbreviation
+    features {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.CreateUnitOfMeasureMutationVariables,
+  APITypes.CreateUnitOfMeasureMutation
+>;
+export const updateUnitOfMeasure = /* GraphQL */ `mutation UpdateUnitOfMeasure(
+  $input: UpdateUnitOfMeasureInput!
+  $condition: ModelUnitOfMeasureConditionInput
+) {
+  updateUnitOfMeasure(input: $input, condition: $condition) {
+    id
+    name
+    abbreviation
+    features {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.UpdateUnitOfMeasureMutationVariables,
+  APITypes.UpdateUnitOfMeasureMutation
+>;
+export const deleteUnitOfMeasure = /* GraphQL */ `mutation DeleteUnitOfMeasure(
+  $input: DeleteUnitOfMeasureInput!
+  $condition: ModelUnitOfMeasureConditionInput
+) {
+  deleteUnitOfMeasure(input: $input, condition: $condition) {
+    id
+    name
+    abbreviation
+    features {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.DeleteUnitOfMeasureMutationVariables,
+  APITypes.DeleteUnitOfMeasureMutation
+>;
+export const createProject = /* GraphQL */ `mutation CreateProject(
+  $input: CreateProjectInput!
+  $condition: ModelProjectConditionInput
+) {
+  createProject(input: $input, condition: $condition) {
+    id
+    name
+    status
+    trees {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.CreateProjectMutationVariables,
+  APITypes.CreateProjectMutation
+>;
+export const updateProject = /* GraphQL */ `mutation UpdateProject(
+  $input: UpdateProjectInput!
+  $condition: ModelProjectConditionInput
+) {
+  updateProject(input: $input, condition: $condition) {
+    id
+    name
+    status
+    trees {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.UpdateProjectMutationVariables,
+  APITypes.UpdateProjectMutation
+>;
+export const deleteProject = /* GraphQL */ `mutation DeleteProject(
+  $input: DeleteProjectInput!
+  $condition: ModelProjectConditionInput
+) {
+  deleteProject(input: $input, condition: $condition) {
+    id
+    name
+    status
+    trees {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.DeleteProjectMutationVariables,
+  APITypes.DeleteProjectMutation
+>;
+export const createTemplate = /* GraphQL */ `mutation CreateTemplate(
+  $input: CreateTemplateInput!
+  $condition: ModelTemplateConditionInput
+) {
+  createTemplate(input: $input, condition: $condition) {
+    id
+    name
+    description
+    type
+    version
+    is_latest
+    templateParent {
+      id
+      name
+      description
+      type
+      version
+      is_latest
+      createdAt
+      updatedAt
+      templateTemplatesId
+      __typename
+    }
+    templates {
+      nextToken
+      __typename
+    }
+    templateFeatures {
+      nextToken
+      __typename
+    }
+    trees {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    templateTemplatesId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.CreateTemplateMutationVariables,
+  APITypes.CreateTemplateMutation
+>;
+export const updateTemplate = /* GraphQL */ `mutation UpdateTemplate(
+  $input: UpdateTemplateInput!
+  $condition: ModelTemplateConditionInput
+) {
+  updateTemplate(input: $input, condition: $condition) {
+    id
+    name
+    description
+    type
+    version
+    is_latest
+    templateParent {
+      id
+      name
+      description
+      type
+      version
+      is_latest
+      createdAt
+      updatedAt
+      templateTemplatesId
+      __typename
+    }
+    templates {
+      nextToken
+      __typename
+    }
+    templateFeatures {
+      nextToken
+      __typename
+    }
+    trees {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    templateTemplatesId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.UpdateTemplateMutationVariables,
+  APITypes.UpdateTemplateMutation
+>;
+export const deleteTemplate = /* GraphQL */ `mutation DeleteTemplate(
+  $input: DeleteTemplateInput!
+  $condition: ModelTemplateConditionInput
+) {
+  deleteTemplate(input: $input, condition: $condition) {
+    id
+    name
+    description
+    type
+    version
+    is_latest
+    templateParent {
+      id
+      name
+      description
+      type
+      version
+      is_latest
+      createdAt
+      updatedAt
+      templateTemplatesId
+      __typename
+    }
+    templates {
+      nextToken
+      __typename
+    }
+    templateFeatures {
+      nextToken
+      __typename
+    }
+    trees {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    templateTemplatesId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.DeleteTemplateMutationVariables,
+  APITypes.DeleteTemplateMutation
+>;
+export const createTree = /* GraphQL */ `mutation CreateTree(
+  $input: CreateTreeInput!
+  $condition: ModelTreeConditionInput
+) {
+  createTree(input: $input, condition: $condition) {
+    id
+    name
+    status
+    project {
+      id
+      name
+      status
+      createdAt
+      updatedAt
+      __typename
+    }
+    template {
+      id
+      name
+      description
+      type
+      version
+      is_latest
+      createdAt
+      updatedAt
+      templateTemplatesId
+      __typename
+    }
+    rawData {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    projectTreesId
+    templateTreesId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.CreateTreeMutationVariables,
+  APITypes.CreateTreeMutation
+>;
+export const updateTree = /* GraphQL */ `mutation UpdateTree(
+  $input: UpdateTreeInput!
+  $condition: ModelTreeConditionInput
+) {
+  updateTree(input: $input, condition: $condition) {
+    id
+    name
+    status
+    project {
+      id
+      name
+      status
+      createdAt
+      updatedAt
+      __typename
+    }
+    template {
+      id
+      name
+      description
+      type
+      version
+      is_latest
+      createdAt
+      updatedAt
+      templateTemplatesId
+      __typename
+    }
+    rawData {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    projectTreesId
+    templateTreesId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.UpdateTreeMutationVariables,
+  APITypes.UpdateTreeMutation
+>;
+export const deleteTree = /* GraphQL */ `mutation DeleteTree(
+  $input: DeleteTreeInput!
+  $condition: ModelTreeConditionInput
+) {
+  deleteTree(input: $input, condition: $condition) {
+    id
+    name
+    status
+    project {
+      id
+      name
+      status
+      createdAt
+      updatedAt
+      __typename
+    }
+    template {
+      id
+      name
+      description
+      type
+      version
+      is_latest
+      createdAt
+      updatedAt
+      templateTemplatesId
+      __typename
+    }
+    rawData {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    projectTreesId
+    templateTreesId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.DeleteTreeMutationVariables,
+  APITypes.DeleteTreeMutation
+>;
+export const createTemplateFeature = /* GraphQL */ `mutation CreateTemplateFeature(
+  $input: CreateTemplateFeatureInput!
+  $condition: ModelTemplateFeatureConditionInput
+) {
+  createTemplateFeature(input: $input, condition: $condition) {
+    id
+    template {
+      id
+      name
+      description
+      type
+      version
+      is_latest
+      createdAt
+      updatedAt
+      templateTemplatesId
+      __typename
+    }
+    feature {
+      id
+      feature_type
+      name
+      description
+      feature_group
+      default_value
+      is_float
+      createdAt
+      updatedAt
+      unitOfMeasureFeaturesId
+      __typename
+    }
+    createdAt
+    updatedAt
+    templateTemplateFeaturesId
+    featureTemplateFeaturesId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.CreateTemplateFeatureMutationVariables,
+  APITypes.CreateTemplateFeatureMutation
+>;
+export const updateTemplateFeature = /* GraphQL */ `mutation UpdateTemplateFeature(
+  $input: UpdateTemplateFeatureInput!
+  $condition: ModelTemplateFeatureConditionInput
+) {
+  updateTemplateFeature(input: $input, condition: $condition) {
+    id
+    template {
+      id
+      name
+      description
+      type
+      version
+      is_latest
+      createdAt
+      updatedAt
+      templateTemplatesId
+      __typename
+    }
+    feature {
+      id
+      feature_type
+      name
+      description
+      feature_group
+      default_value
+      is_float
+      createdAt
+      updatedAt
+      unitOfMeasureFeaturesId
+      __typename
+    }
+    createdAt
+    updatedAt
+    templateTemplateFeaturesId
+    featureTemplateFeaturesId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.UpdateTemplateFeatureMutationVariables,
+  APITypes.UpdateTemplateFeatureMutation
+>;
+export const deleteTemplateFeature = /* GraphQL */ `mutation DeleteTemplateFeature(
+  $input: DeleteTemplateFeatureInput!
+  $condition: ModelTemplateFeatureConditionInput
+) {
+  deleteTemplateFeature(input: $input, condition: $condition) {
+    id
+    template {
+      id
+      name
+      description
+      type
+      version
+      is_latest
+      createdAt
+      updatedAt
+      templateTemplatesId
+      __typename
+    }
+    feature {
+      id
+      feature_type
+      name
+      description
+      feature_group
+      default_value
+      is_float
+      createdAt
+      updatedAt
+      unitOfMeasureFeaturesId
+      __typename
+    }
+    createdAt
+    updatedAt
+    templateTemplateFeaturesId
+    featureTemplateFeaturesId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.DeleteTemplateFeatureMutationVariables,
+  APITypes.DeleteTemplateFeatureMutation
+>;
+export const createFeature = /* GraphQL */ `mutation CreateFeature(
+  $input: CreateFeatureInput!
+  $condition: ModelFeatureConditionInput
+) {
+  createFeature(input: $input, condition: $condition) {
+    id
+    feature_type
+    name
+    description
+    feature_group
+    default_value
+    is_float
+    unitOfMeasure {
+      id
+      name
+      abbreviation
+      createdAt
+      updatedAt
+      __typename
+    }
+    templateFeatures {
+      nextToken
+      __typename
+    }
+    rawDatas {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    unitOfMeasureFeaturesId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.CreateFeatureMutationVariables,
+  APITypes.CreateFeatureMutation
+>;
+export const updateFeature = /* GraphQL */ `mutation UpdateFeature(
+  $input: UpdateFeatureInput!
+  $condition: ModelFeatureConditionInput
+) {
+  updateFeature(input: $input, condition: $condition) {
+    id
+    feature_type
+    name
+    description
+    feature_group
+    default_value
+    is_float
+    unitOfMeasure {
+      id
+      name
+      abbreviation
+      createdAt
+      updatedAt
+      __typename
+    }
+    templateFeatures {
+      nextToken
+      __typename
+    }
+    rawDatas {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    unitOfMeasureFeaturesId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.UpdateFeatureMutationVariables,
+  APITypes.UpdateFeatureMutation
+>;
+export const deleteFeature = /* GraphQL */ `mutation DeleteFeature(
+  $input: DeleteFeatureInput!
+  $condition: ModelFeatureConditionInput
+) {
+  deleteFeature(input: $input, condition: $condition) {
+    id
+    feature_type
+    name
+    description
+    feature_group
+    default_value
+    is_float
+    unitOfMeasure {
+      id
+      name
+      abbreviation
+      createdAt
+      updatedAt
+      __typename
+    }
+    templateFeatures {
+      nextToken
+      __typename
+    }
+    rawDatas {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    unitOfMeasureFeaturesId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.DeleteFeatureMutationVariables,
+  APITypes.DeleteFeatureMutation
+>;
+export const createRawData = /* GraphQL */ `mutation CreateRawData(
+  $input: CreateRawDataInput!
+  $condition: ModelRawDataConditionInput
+) {
+  createRawData(input: $input, condition: $condition) {
+    id
+    name
+    valueFloat
+    valueString
+    timestamp
+    feature {
+      id
+      feature_type
+      name
+      description
+      feature_group
+      default_value
+      is_float
+      createdAt
+      updatedAt
+      unitOfMeasureFeaturesId
+      __typename
+    }
+    tree {
+      id
+      name
+      status
+      createdAt
+      updatedAt
+      projectTreesId
+      templateTreesId
+      __typename
+    }
+    createdAt
+    updatedAt
+    treeRawDataId
+    featureRawDatasId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.CreateRawDataMutationVariables,
+  APITypes.CreateRawDataMutation
+>;
+export const updateRawData = /* GraphQL */ `mutation UpdateRawData(
+  $input: UpdateRawDataInput!
+  $condition: ModelRawDataConditionInput
+) {
+  updateRawData(input: $input, condition: $condition) {
+    id
+    name
+    valueFloat
+    valueString
+    timestamp
+    feature {
+      id
+      feature_type
+      name
+      description
+      feature_group
+      default_value
+      is_float
+      createdAt
+      updatedAt
+      unitOfMeasureFeaturesId
+      __typename
+    }
+    tree {
+      id
+      name
+      status
+      createdAt
+      updatedAt
+      projectTreesId
+      templateTreesId
+      __typename
+    }
+    createdAt
+    updatedAt
+    treeRawDataId
+    featureRawDatasId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.UpdateRawDataMutationVariables,
+  APITypes.UpdateRawDataMutation
+>;
+export const deleteRawData = /* GraphQL */ `mutation DeleteRawData(
+  $input: DeleteRawDataInput!
+  $condition: ModelRawDataConditionInput
+) {
+  deleteRawData(input: $input, condition: $condition) {
+    id
+    name
+    valueFloat
+    valueString
+    timestamp
+    feature {
+      id
+      feature_type
+      name
+      description
+      feature_group
+      default_value
+      is_float
+      createdAt
+      updatedAt
+      unitOfMeasureFeaturesId
+      __typename
+    }
+    tree {
+      id
+      name
+      status
+      createdAt
+      updatedAt
+      projectTreesId
+      templateTreesId
+      __typename
+    }
+    createdAt
+    updatedAt
+    treeRawDataId
+    featureRawDatasId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.DeleteRawDataMutationVariables,
+  APITypes.DeleteRawDataMutation
+>;

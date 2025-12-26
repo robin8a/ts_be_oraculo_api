@@ -1710,6 +1710,402 @@ export const listPermVersions = /* GraphQL */ `query ListPermVersions(
   APITypes.ListPermVersionsQueryVariables,
   APITypes.ListPermVersionsQuery
 >;
+export const getUnitOfMeasure = /* GraphQL */ `query GetUnitOfMeasure($id: ID!) {
+  getUnitOfMeasure(id: $id) {
+    id
+    name
+    abbreviation
+    features {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.GetUnitOfMeasureQueryVariables,
+  APITypes.GetUnitOfMeasureQuery
+>;
+export const listUnitOfMeasures = /* GraphQL */ `query ListUnitOfMeasures(
+  $filter: ModelUnitOfMeasureFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listUnitOfMeasures(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      abbreviation
+      createdAt
+      updatedAt
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.ListUnitOfMeasuresQueryVariables,
+  APITypes.ListUnitOfMeasuresQuery
+>;
+export const getProject = /* GraphQL */ `query GetProject($id: ID!) {
+  getProject(id: $id) {
+    id
+    name
+    status
+    trees {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.GetProjectQueryVariables,
+  APITypes.GetProjectQuery
+>;
+export const listProjects = /* GraphQL */ `query ListProjects(
+  $filter: ModelProjectFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listProjects(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      status
+      createdAt
+      updatedAt
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.ListProjectsQueryVariables,
+  APITypes.ListProjectsQuery
+>;
+export const getTemplate = /* GraphQL */ `query GetTemplate($id: ID!) {
+  getTemplate(id: $id) {
+    id
+    name
+    description
+    type
+    version
+    is_latest
+    templateParent {
+      id
+      name
+      description
+      type
+      version
+      is_latest
+      createdAt
+      updatedAt
+      templateTemplatesId
+      __typename
+    }
+    templates {
+      nextToken
+      __typename
+    }
+    templateFeatures {
+      nextToken
+      __typename
+    }
+    trees {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    templateTemplatesId
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.GetTemplateQueryVariables,
+  APITypes.GetTemplateQuery
+>;
+export const listTemplates = /* GraphQL */ `query ListTemplates(
+  $filter: ModelTemplateFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTemplates(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      description
+      type
+      version
+      is_latest
+      createdAt
+      updatedAt
+      templateTemplatesId
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.ListTemplatesQueryVariables,
+  APITypes.ListTemplatesQuery
+>;
+export const getTree = /* GraphQL */ `query GetTree($id: ID!) {
+  getTree(id: $id) {
+    id
+    name
+    status
+    project {
+      id
+      name
+      status
+      createdAt
+      updatedAt
+      __typename
+    }
+    template {
+      id
+      name
+      description
+      type
+      version
+      is_latest
+      createdAt
+      updatedAt
+      templateTemplatesId
+      __typename
+    }
+    rawData {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    projectTreesId
+    templateTreesId
+    __typename
+  }
+}
+` as GeneratedQuery<APITypes.GetTreeQueryVariables, APITypes.GetTreeQuery>;
+export const listTrees = /* GraphQL */ `query ListTrees(
+  $filter: ModelTreeFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTrees(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      status
+      createdAt
+      updatedAt
+      projectTreesId
+      templateTreesId
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<APITypes.ListTreesQueryVariables, APITypes.ListTreesQuery>;
+export const getTemplateFeature = /* GraphQL */ `query GetTemplateFeature($id: ID!) {
+  getTemplateFeature(id: $id) {
+    id
+    template {
+      id
+      name
+      description
+      type
+      version
+      is_latest
+      createdAt
+      updatedAt
+      templateTemplatesId
+      __typename
+    }
+    feature {
+      id
+      feature_type
+      name
+      description
+      feature_group
+      default_value
+      is_float
+      createdAt
+      updatedAt
+      unitOfMeasureFeaturesId
+      __typename
+    }
+    createdAt
+    updatedAt
+    templateTemplateFeaturesId
+    featureTemplateFeaturesId
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.GetTemplateFeatureQueryVariables,
+  APITypes.GetTemplateFeatureQuery
+>;
+export const listTemplateFeatures = /* GraphQL */ `query ListTemplateFeatures(
+  $filter: ModelTemplateFeatureFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTemplateFeatures(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      createdAt
+      updatedAt
+      templateTemplateFeaturesId
+      featureTemplateFeaturesId
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.ListTemplateFeaturesQueryVariables,
+  APITypes.ListTemplateFeaturesQuery
+>;
+export const getFeature = /* GraphQL */ `query GetFeature($id: ID!) {
+  getFeature(id: $id) {
+    id
+    feature_type
+    name
+    description
+    feature_group
+    default_value
+    is_float
+    unitOfMeasure {
+      id
+      name
+      abbreviation
+      createdAt
+      updatedAt
+      __typename
+    }
+    templateFeatures {
+      nextToken
+      __typename
+    }
+    rawDatas {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    unitOfMeasureFeaturesId
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.GetFeatureQueryVariables,
+  APITypes.GetFeatureQuery
+>;
+export const listFeatures = /* GraphQL */ `query ListFeatures(
+  $filter: ModelFeatureFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listFeatures(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      feature_type
+      name
+      description
+      feature_group
+      default_value
+      is_float
+      createdAt
+      updatedAt
+      unitOfMeasureFeaturesId
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.ListFeaturesQueryVariables,
+  APITypes.ListFeaturesQuery
+>;
+export const getRawData = /* GraphQL */ `query GetRawData($id: ID!) {
+  getRawData(id: $id) {
+    id
+    name
+    valueFloat
+    valueString
+    timestamp
+    feature {
+      id
+      feature_type
+      name
+      description
+      feature_group
+      default_value
+      is_float
+      createdAt
+      updatedAt
+      unitOfMeasureFeaturesId
+      __typename
+    }
+    tree {
+      id
+      name
+      status
+      createdAt
+      updatedAt
+      projectTreesId
+      templateTreesId
+      __typename
+    }
+    createdAt
+    updatedAt
+    treeRawDataId
+    featureRawDatasId
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.GetRawDataQueryVariables,
+  APITypes.GetRawDataQuery
+>;
+export const listRawData = /* GraphQL */ `query ListRawData(
+  $filter: ModelRawDataFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listRawData(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      valueFloat
+      valueString
+      timestamp
+      createdAt
+      updatedAt
+      treeRawDataId
+      featureRawDatasId
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.ListRawDataQueryVariables,
+  APITypes.ListRawDataQuery
+>;
 export const consultaAnalisesByProyectoId = /* GraphQL */ `query ConsultaAnalisesByProyectoId(
   $proyectoId: ID!
   $sortDirection: ModelSortDirection
