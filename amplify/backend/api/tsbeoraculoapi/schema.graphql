@@ -573,7 +573,8 @@ type RawData @model {
   name: String
   valueFloat: Float
   valueString: String
-  timestamp: AWSDateTime
+  start_date: AWSDateTime
+  end_date: AWSDateTime
   feature: Feature @belongsTo 
   tree: Tree @belongsTo
 }

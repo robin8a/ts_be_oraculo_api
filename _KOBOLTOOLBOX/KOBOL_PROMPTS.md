@@ -1,6 +1,9 @@
+Help to create a script:
 
-Help to create a script that uses 
+1. Get data from kobotoolbox using API
 
-url: 
-API KEY: 
+url:
+API KEY:
 
+- From the project: "Levantamiento Info Parcelas"
+- 
