@@ -3572,7 +3572,8 @@ export const createRawData = /* GraphQL */ `mutation CreateRawData(
     name
     valueFloat
     valueString
-    timestamp
+    start_date
+    end_date
     feature {
       id
       feature_type
@@ -3616,7 +3617,8 @@ export const updateRawData = /* GraphQL */ `mutation UpdateRawData(
     name
     valueFloat
     valueString
-    timestamp
+    start_date
+    end_date
     feature {
       id
       feature_type
@@ -3660,7 +3662,8 @@ export const deleteRawData = /* GraphQL */ `mutation DeleteRawData(
     name
     valueFloat
     valueString
-    timestamp
+    start_date
+    end_date
     feature {
       id
       feature_type

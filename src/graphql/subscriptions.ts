@@ -3413,7 +3413,8 @@ export const onCreateRawData = /* GraphQL */ `subscription OnCreateRawData($filt
     name
     valueFloat
     valueString
-    timestamp
+    start_date
+    end_date
     feature {
       id
       feature_type
@@ -3454,7 +3455,8 @@ export const onUpdateRawData = /* GraphQL */ `subscription OnUpdateRawData($filt
     name
     valueFloat
     valueString
-    timestamp
+    start_date
+    end_date
     feature {
       id
       feature_type
@@ -3495,7 +3497,8 @@ export const onDeleteRawData = /* GraphQL */ `subscription OnDeleteRawData($filt
     name
     valueFloat
     valueString
-    timestamp
+    start_date
+    end_date
     feature {
       id
       feature_type

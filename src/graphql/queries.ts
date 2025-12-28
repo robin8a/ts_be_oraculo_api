@@ -2045,7 +2045,8 @@ export const getRawData = /* GraphQL */ `query GetRawData($id: ID!) {
     name
     valueFloat
     valueString
-    timestamp
+    start_date
+    end_date
     feature {
       id
       feature_type
@@ -2091,7 +2092,8 @@ export const listRawData = /* GraphQL */ `query ListRawData(
       name
       valueFloat
       valueString
-      timestamp
+      start_date
+      end_date
       createdAt
       updatedAt
       treeRawDataId
