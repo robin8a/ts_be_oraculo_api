@@ -46,4 +46,12 @@ aws lambda update-function-url-config \
     --function-name kobotoolboxProxy-dev \
     --cors file://cors-config-no-options.json \
     --profile 879381245127_AdministratorAccess
+
+aws lambda get-function-configuration \
+  --profile 879381245127_AdministratorAccess \
+  --function-name audioToFeatures-dev \
+  --region us-east-1 \
+  --query 'Environment.Variables' \
+  --output jso
+  
 ```
