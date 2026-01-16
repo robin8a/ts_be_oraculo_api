@@ -3063,6 +3063,7 @@ export const onCreateTree = /* GraphQL */ `subscription OnCreateTree($filter: Mo
   onCreateTree(filter: $filter) {
     id
     name
+    are_audios_processed
     status
     project {
       id
@@ -3103,6 +3104,7 @@ export const onUpdateTree = /* GraphQL */ `subscription OnUpdateTree($filter: Mo
   onUpdateTree(filter: $filter) {
     id
     name
+    are_audios_processed
     status
     project {
       id
@@ -3143,6 +3145,7 @@ export const onDeleteTree = /* GraphQL */ `subscription OnDeleteTree($filter: Mo
   onDeleteTree(filter: $filter) {
     id
     name
+    are_audios_processed
     status
     project {
       id
@@ -3431,6 +3434,7 @@ export const onCreateRawData = /* GraphQL */ `subscription OnCreateRawData($filt
     tree {
       id
       name
+      are_audios_processed
       status
       createdAt
       updatedAt
@@ -3473,6 +3477,7 @@ export const onUpdateRawData = /* GraphQL */ `subscription OnUpdateRawData($filt
     tree {
       id
       name
+      are_audios_processed
       status
       createdAt
       updatedAt
@@ -3515,6 +3520,7 @@ export const onDeleteRawData = /* GraphQL */ `subscription OnDeleteRawData($filt
     tree {
       id
       name
+      are_audios_processed
       status
       createdAt
       updatedAt

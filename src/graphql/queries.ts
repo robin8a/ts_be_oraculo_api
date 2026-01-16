@@ -1862,6 +1862,7 @@ export const getTree = /* GraphQL */ `query GetTree($id: ID!) {
   getTree(id: $id) {
     id
     name
+    are_audios_processed
     status
     project {
       id
@@ -1904,6 +1905,7 @@ export const listTrees = /* GraphQL */ `query ListTrees(
     items {
       id
       name
+      are_audios_processed
       status
       createdAt
       updatedAt
@@ -2063,6 +2065,7 @@ export const getRawData = /* GraphQL */ `query GetRawData($id: ID!) {
     tree {
       id
       name
+      are_audios_processed
       status
       createdAt
       updatedAt

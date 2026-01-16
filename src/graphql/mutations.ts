@@ -3201,6 +3201,7 @@ export const createTree = /* GraphQL */ `mutation CreateTree(
   createTree(input: $input, condition: $condition) {
     id
     name
+    are_audios_processed
     status
     project {
       id
@@ -3244,6 +3245,7 @@ export const updateTree = /* GraphQL */ `mutation UpdateTree(
   updateTree(input: $input, condition: $condition) {
     id
     name
+    are_audios_processed
     status
     project {
       id
@@ -3287,6 +3289,7 @@ export const deleteTree = /* GraphQL */ `mutation DeleteTree(
   deleteTree(input: $input, condition: $condition) {
     id
     name
+    are_audios_processed
     status
     project {
       id
@@ -3590,6 +3593,7 @@ export const createRawData = /* GraphQL */ `mutation CreateRawData(
     tree {
       id
       name
+      are_audios_processed
       status
       createdAt
       updatedAt
@@ -3635,6 +3639,7 @@ export const updateRawData = /* GraphQL */ `mutation UpdateRawData(
     tree {
       id
       name
+      are_audios_processed
       status
       createdAt
       updatedAt
@@ -3680,6 +3685,7 @@ export const deleteRawData = /* GraphQL */ `mutation DeleteRawData(
     tree {
       id
       name
+      are_audios_processed
       status
       createdAt
       updatedAt

@@ -1979,6 +1979,7 @@ export type Tree = {
   __typename: "Tree",
   id: string,
   name: string,
+  are_audios_processed?: boolean | null,
   status?: string | null,
   project?: Project | null,
   template?: Template | null,
@@ -2098,6 +2099,7 @@ export type DeleteTemplateInput = {
 export type CreateTreeInput = {
   id?: string | null,
   name: string,
+  are_audios_processed?: boolean | null,
   status?: string | null,
   projectTreesId?: string | null,
   templateTreesId?: string | null,
@@ -2105,6 +2107,7 @@ export type CreateTreeInput = {
 
 export type ModelTreeConditionInput = {
   name?: ModelStringInput | null,
+  are_audios_processed?: ModelBooleanInput | null,
   status?: ModelStringInput | null,
   and?: Array< ModelTreeConditionInput | null > | null,
   or?: Array< ModelTreeConditionInput | null > | null,
@@ -2118,6 +2121,7 @@ export type ModelTreeConditionInput = {
 export type UpdateTreeInput = {
   id: string,
   name?: string | null,
+  are_audios_processed?: boolean | null,
   status?: string | null,
   projectTreesId?: string | null,
   templateTreesId?: string | null,
@@ -2840,6 +2844,7 @@ export type ModelTemplateFilterInput = {
 export type ModelTreeFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
+  are_audios_processed?: ModelBooleanInput | null,
   status?: ModelStringInput | null,
   createdAt?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
@@ -3426,6 +3431,7 @@ export type ModelSubscriptionTemplateFilterInput = {
 export type ModelSubscriptionTreeFilterInput = {
   id?: ModelSubscriptionIDInput | null,
   name?: ModelSubscriptionStringInput | null,
+  are_audios_processed?: ModelSubscriptionBooleanInput | null,
   status?: ModelSubscriptionStringInput | null,
   createdAt?: ModelSubscriptionStringInput | null,
   updatedAt?: ModelSubscriptionStringInput | null,
@@ -6568,6 +6574,7 @@ export type CreateTreeMutation = {
     __typename: "Tree",
     id: string,
     name: string,
+    are_audios_processed?: boolean | null,
     status?: string | null,
     project?:  {
       __typename: "Project",
@@ -6610,6 +6617,7 @@ export type UpdateTreeMutation = {
     __typename: "Tree",
     id: string,
     name: string,
+    are_audios_processed?: boolean | null,
     status?: string | null,
     project?:  {
       __typename: "Project",
@@ -6652,6 +6660,7 @@ export type DeleteTreeMutation = {
     __typename: "Tree",
     id: string,
     name: string,
+    are_audios_processed?: boolean | null,
     status?: string | null,
     project?:  {
       __typename: "Project",
@@ -6949,6 +6958,7 @@ export type CreateRawDataMutation = {
       __typename: "Tree",
       id: string,
       name: string,
+      are_audios_processed?: boolean | null,
       status?: string | null,
       createdAt: string,
       updatedAt: string,
@@ -6993,6 +7003,7 @@ export type UpdateRawDataMutation = {
       __typename: "Tree",
       id: string,
       name: string,
+      are_audios_processed?: boolean | null,
       status?: string | null,
       createdAt: string,
       updatedAt: string,
@@ -7037,6 +7048,7 @@ export type DeleteRawDataMutation = {
       __typename: "Tree",
       id: string,
       name: string,
+      are_audios_processed?: boolean | null,
       status?: string | null,
       createdAt: string,
       updatedAt: string,
@@ -8879,6 +8891,7 @@ export type GetTreeQuery = {
     __typename: "Tree",
     id: string,
     name: string,
+    are_audios_processed?: boolean | null,
     status?: string | null,
     project?:  {
       __typename: "Project",
@@ -8924,6 +8937,7 @@ export type ListTreesQuery = {
       __typename: "Tree",
       id: string,
       name: string,
+      are_audios_processed?: boolean | null,
       status?: string | null,
       createdAt: string,
       updatedAt: string,
@@ -9087,6 +9101,7 @@ export type GetRawDataQuery = {
       __typename: "Tree",
       id: string,
       name: string,
+      are_audios_processed?: boolean | null,
       status?: string | null,
       createdAt: string,
       updatedAt: string,
@@ -13149,6 +13164,7 @@ export type OnCreateTreeSubscription = {
     __typename: "Tree",
     id: string,
     name: string,
+    are_audios_processed?: boolean | null,
     status?: string | null,
     project?:  {
       __typename: "Project",
@@ -13190,6 +13206,7 @@ export type OnUpdateTreeSubscription = {
     __typename: "Tree",
     id: string,
     name: string,
+    are_audios_processed?: boolean | null,
     status?: string | null,
     project?:  {
       __typename: "Project",
@@ -13231,6 +13248,7 @@ export type OnDeleteTreeSubscription = {
     __typename: "Tree",
     id: string,
     name: string,
+    are_audios_processed?: boolean | null,
     status?: string | null,
     project?:  {
       __typename: "Project",
@@ -13521,6 +13539,7 @@ export type OnCreateRawDataSubscription = {
       __typename: "Tree",
       id: string,
       name: string,
+      are_audios_processed?: boolean | null,
       status?: string | null,
       createdAt: string,
       updatedAt: string,
@@ -13564,6 +13583,7 @@ export type OnUpdateRawDataSubscription = {
       __typename: "Tree",
       id: string,
       name: string,
+      are_audios_processed?: boolean | null,
       status?: string | null,
       createdAt: string,
       updatedAt: string,
@@ -13607,6 +13627,7 @@ export type OnDeleteRawDataSubscription = {
       __typename: "Tree",
       id: string,
       name: string,
+      are_audios_processed?: boolean | null,
       status?: string | null,
       createdAt: string,
       updatedAt: string,
