@@ -1,0 +1,4 @@
+{
+  "body": "{\"templateId\": \"YOUR_TEMPLATE_ID\", \"geminiApiKey\": \"YOUR_GEMINI_API_KEY\", \"treeIds\": []}",
+  "httpMethod": "POST"
+}

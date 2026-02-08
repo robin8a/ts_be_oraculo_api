@@ -13,9 +13,12 @@ AWS_REGION="${AWS_REGION:-us-east-1}"
 AWS_PROFILE="${AWS_PROFILE:-879381245127_AdministratorAccess}"
 PROFILE_ARGS=(--profile "$AWS_PROFILE")
 
+# Base64-encode payload so the Lambda Invoke request body is valid (avoids InvalidRequestContentException / invalid UTF-8)
+PAYLOAD_B64=$(base64 < "$EVENT_FILE" | tr -d '\n')
+
 aws lambda invoke \
   --function-name "$FUNCTION_NAME" \
-  --payload "file://$EVENT_FILE" \
+  --payload "$PAYLOAD_B64" \
   "${PROFILE_ARGS[@]}" \
   --region "$AWS_REGION" \
   "$RESPONSE_FILE"
