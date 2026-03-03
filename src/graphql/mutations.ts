@@ -22,12 +22,32 @@ export const createModelAI = /* GraphQL */ `mutation CreateModelAI(
     is_approved
     tokens_cost
     cost_tokens
+    modelAIParent {
+      id
+      name
+      description
+      document_link
+      api_link
+      version
+      is_approved
+      tokens_cost
+      cost_tokens
+      createdAt
+      updatedAt
+      modelAIModelAIsId
+      __typename
+    }
+    modelAIs {
+      nextToken
+      __typename
+    }
     calculations {
       nextToken
       __typename
     }
     createdAt
     updatedAt
+    modelAIModelAIsId
     __typename
   }
 }
@@ -49,12 +69,32 @@ export const updateModelAI = /* GraphQL */ `mutation UpdateModelAI(
     is_approved
     tokens_cost
     cost_tokens
+    modelAIParent {
+      id
+      name
+      description
+      document_link
+      api_link
+      version
+      is_approved
+      tokens_cost
+      cost_tokens
+      createdAt
+      updatedAt
+      modelAIModelAIsId
+      __typename
+    }
+    modelAIs {
+      nextToken
+      __typename
+    }
     calculations {
       nextToken
       __typename
     }
     createdAt
     updatedAt
+    modelAIModelAIsId
     __typename
   }
 }
@@ -76,12 +116,32 @@ export const deleteModelAI = /* GraphQL */ `mutation DeleteModelAI(
     is_approved
     tokens_cost
     cost_tokens
+    modelAIParent {
+      id
+      name
+      description
+      document_link
+      api_link
+      version
+      is_approved
+      tokens_cost
+      cost_tokens
+      createdAt
+      updatedAt
+      modelAIModelAIsId
+      __typename
+    }
+    modelAIs {
+      nextToken
+      __typename
+    }
     calculations {
       nextToken
       __typename
     }
     createdAt
     updatedAt
+    modelAIModelAIsId
     __typename
   }
 }
@@ -114,10 +174,13 @@ export const createCalculation = /* GraphQL */ `mutation CreateCalculation(
       cost_tokens
       createdAt
       updatedAt
+      modelAIModelAIsId
       __typename
     }
     user {
       id
+      departamento
+      municipio
       createdAt
       updatedAt
       __typename
@@ -158,10 +221,13 @@ export const updateCalculation = /* GraphQL */ `mutation UpdateCalculation(
       cost_tokens
       createdAt
       updatedAt
+      modelAIModelAIsId
       __typename
     }
     user {
       id
+      departamento
+      municipio
       createdAt
       updatedAt
       __typename
@@ -202,10 +268,13 @@ export const deleteCalculation = /* GraphQL */ `mutation DeleteCalculation(
       cost_tokens
       createdAt
       updatedAt
+      modelAIModelAIsId
       __typename
     }
     user {
       id
+      departamento
+      municipio
       createdAt
       updatedAt
       __typename
@@ -227,6 +296,8 @@ export const createUser = /* GraphQL */ `mutation CreateUser(
 ) {
   createUser(input: $input, condition: $condition) {
     id
+    departamento
+    municipio
     user_model_packages {
       nextToken
       __typename
@@ -250,6 +321,8 @@ export const updateUser = /* GraphQL */ `mutation UpdateUser(
 ) {
   updateUser(input: $input, condition: $condition) {
     id
+    departamento
+    municipio
     user_model_packages {
       nextToken
       __typename
@@ -273,6 +346,8 @@ export const deleteUser = /* GraphQL */ `mutation DeleteUser(
 ) {
   deleteUser(input: $input, condition: $condition) {
     id
+    departamento
+    municipio
     user_model_packages {
       nextToken
       __typename
@@ -365,6 +440,8 @@ export const createUserModelPackage = /* GraphQL */ `mutation CreateUserModelPac
     }
     user {
       id
+      departamento
+      municipio
       createdAt
       updatedAt
       __typename
@@ -395,6 +472,8 @@ export const updateUserModelPackage = /* GraphQL */ `mutation UpdateUserModelPac
     }
     user {
       id
+      departamento
+      municipio
       createdAt
       updatedAt
       __typename
@@ -425,6 +504,8 @@ export const deleteUserModelPackage = /* GraphQL */ `mutation DeleteUserModelPac
     }
     user {
       id
+      departamento
+      municipio
       createdAt
       updatedAt
       __typename

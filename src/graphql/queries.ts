@@ -19,12 +19,32 @@ export const getModelAI = /* GraphQL */ `query GetModelAI($id: ID!) {
     is_approved
     tokens_cost
     cost_tokens
+    modelAIParent {
+      id
+      name
+      description
+      document_link
+      api_link
+      version
+      is_approved
+      tokens_cost
+      cost_tokens
+      createdAt
+      updatedAt
+      modelAIModelAIsId
+      __typename
+    }
+    modelAIs {
+      nextToken
+      __typename
+    }
     calculations {
       nextToken
       __typename
     }
     createdAt
     updatedAt
+    modelAIModelAIsId
     __typename
   }
 }
@@ -50,6 +70,7 @@ export const listModelAIS = /* GraphQL */ `query ListModelAIS(
       cost_tokens
       createdAt
       updatedAt
+      modelAIModelAIsId
       __typename
     }
     nextToken
@@ -82,10 +103,13 @@ export const getCalculation = /* GraphQL */ `query GetCalculation($id: ID!) {
       cost_tokens
       createdAt
       updatedAt
+      modelAIModelAIsId
       __typename
     }
     user {
       id
+      departamento
+      municipio
       createdAt
       updatedAt
       __typename
@@ -133,6 +157,8 @@ export const listCalculations = /* GraphQL */ `query ListCalculations(
 export const getUser = /* GraphQL */ `query GetUser($id: ID!) {
   getUser(id: $id) {
     id
+    departamento
+    municipio
     user_model_packages {
       nextToken
       __typename
@@ -155,6 +181,8 @@ export const listUsers = /* GraphQL */ `query ListUsers(
   listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
+      departamento
+      municipio
       createdAt
       updatedAt
       __typename
@@ -214,6 +242,8 @@ export const getUserModelPackage = /* GraphQL */ `query GetUserModelPackage($id:
     }
     user {
       id
+      departamento
+      municipio
       createdAt
       updatedAt
       __typename

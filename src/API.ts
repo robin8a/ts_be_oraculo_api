@@ -12,6 +12,7 @@ export type CreateModelAIInput = {
   is_approved: boolean,
   tokens_cost: number,
   cost_tokens: number,
+  modelAIModelAIsId?: string | null,
 };
 
 export type ModelModelAIConditionInput = {
@@ -28,6 +29,7 @@ export type ModelModelAIConditionInput = {
   not?: ModelModelAIConditionInput | null,
   createdAt?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
+  modelAIModelAIsId?: ModelIDInput | null,
 };
 
 export type ModelStringInput = {
@@ -89,6 +91,22 @@ export type ModelIntInput = {
   attributeType?: ModelAttributeTypes | null,
 };
 
+export type ModelIDInput = {
+  ne?: string | null,
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  contains?: string | null,
+  notContains?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+  size?: ModelSizeInput | null,
+};
+
 export type ModelAI = {
   __typename: "ModelAI",
   id: string,
@@ -100,9 +118,18 @@ export type ModelAI = {
   is_approved: boolean,
   tokens_cost: number,
   cost_tokens: number,
+  modelAIParent?: ModelAI | null,
+  modelAIs?: ModelModelAIConnection | null,
   calculations?: ModelCalculationConnection | null,
   createdAt: string,
   updatedAt: string,
+  modelAIModelAIsId?: string | null,
+};
+
+export type ModelModelAIConnection = {
+  __typename: "ModelModelAIConnection",
+  items:  Array<ModelAI | null >,
+  nextToken?: string | null,
 };
 
 export type ModelCalculationConnection = {
@@ -132,6 +159,8 @@ export type Calculation = {
 export type User = {
   __typename: "User",
   id: string,
+  departamento?: string | null,
+  municipio?: string | null,
   user_model_packages?: ModelUserModelPackageConnection | null,
   calculations?: ModelCalculationConnection | null,
   createdAt: string,
@@ -174,6 +203,7 @@ export type UpdateModelAIInput = {
   is_approved?: boolean | null,
   tokens_cost?: number | null,
   cost_tokens?: number | null,
+  modelAIModelAIsId?: string | null,
 };
 
 export type DeleteModelAIInput = {
@@ -210,22 +240,6 @@ export type ModelCalculationConditionInput = {
   userCalculationsId?: ModelIDInput | null,
 };
 
-export type ModelIDInput = {
-  ne?: string | null,
-  eq?: string | null,
-  le?: string | null,
-  lt?: string | null,
-  ge?: string | null,
-  gt?: string | null,
-  contains?: string | null,
-  notContains?: string | null,
-  between?: Array< string | null > | null,
-  beginsWith?: string | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
-  size?: ModelSizeInput | null,
-};
-
 export type UpdateCalculationInput = {
   id: string,
   polygon?: string | null,
@@ -245,9 +259,13 @@ export type DeleteCalculationInput = {
 
 export type CreateUserInput = {
   id?: string | null,
+  departamento?: string | null,
+  municipio?: string | null,
 };
 
 export type ModelUserConditionInput = {
+  departamento?: ModelStringInput | null,
+  municipio?: ModelStringInput | null,
   and?: Array< ModelUserConditionInput | null > | null,
   or?: Array< ModelUserConditionInput | null > | null,
   not?: ModelUserConditionInput | null,
@@ -257,6 +275,8 @@ export type ModelUserConditionInput = {
 
 export type UpdateUserInput = {
   id: string,
+  departamento?: string | null,
+  municipio?: string | null,
 };
 
 export type DeleteUserInput = {
@@ -2254,12 +2274,7 @@ export type ModelModelAIFilterInput = {
   and?: Array< ModelModelAIFilterInput | null > | null,
   or?: Array< ModelModelAIFilterInput | null > | null,
   not?: ModelModelAIFilterInput | null,
-};
-
-export type ModelModelAIConnection = {
-  __typename: "ModelModelAIConnection",
-  items:  Array<ModelAI | null >,
-  nextToken?: string | null,
+  modelAIModelAIsId?: ModelIDInput | null,
 };
 
 export type ModelCalculationFilterInput = {
@@ -2282,6 +2297,8 @@ export type ModelCalculationFilterInput = {
 
 export type ModelUserFilterInput = {
   id?: ModelIDInput | null,
+  departamento?: ModelStringInput | null,
+  municipio?: ModelStringInput | null,
   createdAt?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
   and?: Array< ModelUserFilterInput | null > | null,
@@ -2918,6 +2935,7 @@ export type ModelSubscriptionModelAIFilterInput = {
   updatedAt?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionModelAIFilterInput | null > | null,
   or?: Array< ModelSubscriptionModelAIFilterInput | null > | null,
+  modelAIModelAIsId?: ModelSubscriptionIDInput | null,
   modelAICalculationsId?: ModelSubscriptionIDInput | null,
 };
 
@@ -2985,6 +3003,8 @@ export type ModelSubscriptionCalculationFilterInput = {
 
 export type ModelSubscriptionUserFilterInput = {
   id?: ModelSubscriptionIDInput | null,
+  departamento?: ModelSubscriptionStringInput | null,
+  municipio?: ModelSubscriptionStringInput | null,
   createdAt?: ModelSubscriptionStringInput | null,
   updatedAt?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionUserFilterInput | null > | null,
@@ -3494,12 +3514,32 @@ export type CreateModelAIMutation = {
     is_approved: boolean,
     tokens_cost: number,
     cost_tokens: number,
+    modelAIParent?:  {
+      __typename: "ModelAI",
+      id: string,
+      name: string,
+      description: string,
+      document_link: string,
+      api_link: string,
+      version: string,
+      is_approved: boolean,
+      tokens_cost: number,
+      cost_tokens: number,
+      createdAt: string,
+      updatedAt: string,
+      modelAIModelAIsId?: string | null,
+    } | null,
+    modelAIs?:  {
+      __typename: "ModelModelAIConnection",
+      nextToken?: string | null,
+    } | null,
     calculations?:  {
       __typename: "ModelCalculationConnection",
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
+    modelAIModelAIsId?: string | null,
   } | null,
 };
 
@@ -3520,12 +3560,32 @@ export type UpdateModelAIMutation = {
     is_approved: boolean,
     tokens_cost: number,
     cost_tokens: number,
+    modelAIParent?:  {
+      __typename: "ModelAI",
+      id: string,
+      name: string,
+      description: string,
+      document_link: string,
+      api_link: string,
+      version: string,
+      is_approved: boolean,
+      tokens_cost: number,
+      cost_tokens: number,
+      createdAt: string,
+      updatedAt: string,
+      modelAIModelAIsId?: string | null,
+    } | null,
+    modelAIs?:  {
+      __typename: "ModelModelAIConnection",
+      nextToken?: string | null,
+    } | null,
     calculations?:  {
       __typename: "ModelCalculationConnection",
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
+    modelAIModelAIsId?: string | null,
   } | null,
 };
 
@@ -3546,12 +3606,32 @@ export type DeleteModelAIMutation = {
     is_approved: boolean,
     tokens_cost: number,
     cost_tokens: number,
+    modelAIParent?:  {
+      __typename: "ModelAI",
+      id: string,
+      name: string,
+      description: string,
+      document_link: string,
+      api_link: string,
+      version: string,
+      is_approved: boolean,
+      tokens_cost: number,
+      cost_tokens: number,
+      createdAt: string,
+      updatedAt: string,
+      modelAIModelAIsId?: string | null,
+    } | null,
+    modelAIs?:  {
+      __typename: "ModelModelAIConnection",
+      nextToken?: string | null,
+    } | null,
     calculations?:  {
       __typename: "ModelCalculationConnection",
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
+    modelAIModelAIsId?: string | null,
   } | null,
 };
 
@@ -3584,10 +3664,13 @@ export type CreateCalculationMutation = {
       cost_tokens: number,
       createdAt: string,
       updatedAt: string,
+      modelAIModelAIsId?: string | null,
     } | null,
     user?:  {
       __typename: "User",
       id: string,
+      departamento?: string | null,
+      municipio?: string | null,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -3627,10 +3710,13 @@ export type UpdateCalculationMutation = {
       cost_tokens: number,
       createdAt: string,
       updatedAt: string,
+      modelAIModelAIsId?: string | null,
     } | null,
     user?:  {
       __typename: "User",
       id: string,
+      departamento?: string | null,
+      municipio?: string | null,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -3670,10 +3756,13 @@ export type DeleteCalculationMutation = {
       cost_tokens: number,
       createdAt: string,
       updatedAt: string,
+      modelAIModelAIsId?: string | null,
     } | null,
     user?:  {
       __typename: "User",
       id: string,
+      departamento?: string | null,
+      municipio?: string | null,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -3693,6 +3782,8 @@ export type CreateUserMutation = {
   createUser?:  {
     __typename: "User",
     id: string,
+    departamento?: string | null,
+    municipio?: string | null,
     user_model_packages?:  {
       __typename: "ModelUserModelPackageConnection",
       nextToken?: string | null,
@@ -3715,6 +3806,8 @@ export type UpdateUserMutation = {
   updateUser?:  {
     __typename: "User",
     id: string,
+    departamento?: string | null,
+    municipio?: string | null,
     user_model_packages?:  {
       __typename: "ModelUserModelPackageConnection",
       nextToken?: string | null,
@@ -3737,6 +3830,8 @@ export type DeleteUserMutation = {
   deleteUser?:  {
     __typename: "User",
     id: string,
+    departamento?: string | null,
+    municipio?: string | null,
     user_model_packages?:  {
       __typename: "ModelUserModelPackageConnection",
       nextToken?: string | null,
@@ -3826,6 +3921,8 @@ export type CreateUserModelPackageMutation = {
     user?:  {
       __typename: "User",
       id: string,
+      departamento?: string | null,
+      municipio?: string | null,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -3855,6 +3952,8 @@ export type UpdateUserModelPackageMutation = {
     user?:  {
       __typename: "User",
       id: string,
+      departamento?: string | null,
+      municipio?: string | null,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -3884,6 +3983,8 @@ export type DeleteUserModelPackageMutation = {
     user?:  {
       __typename: "User",
       id: string,
+      departamento?: string | null,
+      municipio?: string | null,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -7078,12 +7179,32 @@ export type GetModelAIQuery = {
     is_approved: boolean,
     tokens_cost: number,
     cost_tokens: number,
+    modelAIParent?:  {
+      __typename: "ModelAI",
+      id: string,
+      name: string,
+      description: string,
+      document_link: string,
+      api_link: string,
+      version: string,
+      is_approved: boolean,
+      tokens_cost: number,
+      cost_tokens: number,
+      createdAt: string,
+      updatedAt: string,
+      modelAIModelAIsId?: string | null,
+    } | null,
+    modelAIs?:  {
+      __typename: "ModelModelAIConnection",
+      nextToken?: string | null,
+    } | null,
     calculations?:  {
       __typename: "ModelCalculationConnection",
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
+    modelAIModelAIsId?: string | null,
   } | null,
 };
 
@@ -7109,6 +7230,7 @@ export type ListModelAISQuery = {
       cost_tokens: number,
       createdAt: string,
       updatedAt: string,
+      modelAIModelAIsId?: string | null,
     } | null >,
     nextToken?: string | null,
   } | null,
@@ -7142,10 +7264,13 @@ export type GetCalculationQuery = {
       cost_tokens: number,
       createdAt: string,
       updatedAt: string,
+      modelAIModelAIsId?: string | null,
     } | null,
     user?:  {
       __typename: "User",
       id: string,
+      departamento?: string | null,
+      municipio?: string | null,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -7192,6 +7317,8 @@ export type GetUserQuery = {
   getUser?:  {
     __typename: "User",
     id: string,
+    departamento?: string | null,
+    municipio?: string | null,
     user_model_packages?:  {
       __typename: "ModelUserModelPackageConnection",
       nextToken?: string | null,
@@ -7217,6 +7344,8 @@ export type ListUsersQuery = {
     items:  Array< {
       __typename: "User",
       id: string,
+      departamento?: string | null,
+      municipio?: string | null,
       createdAt: string,
       updatedAt: string,
     } | null >,
@@ -7280,6 +7409,8 @@ export type GetUserModelPackageQuery = {
     user?:  {
       __typename: "User",
       id: string,
+      departamento?: string | null,
+      municipio?: string | null,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -10183,12 +10314,32 @@ export type OnCreateModelAISubscription = {
     is_approved: boolean,
     tokens_cost: number,
     cost_tokens: number,
+    modelAIParent?:  {
+      __typename: "ModelAI",
+      id: string,
+      name: string,
+      description: string,
+      document_link: string,
+      api_link: string,
+      version: string,
+      is_approved: boolean,
+      tokens_cost: number,
+      cost_tokens: number,
+      createdAt: string,
+      updatedAt: string,
+      modelAIModelAIsId?: string | null,
+    } | null,
+    modelAIs?:  {
+      __typename: "ModelModelAIConnection",
+      nextToken?: string | null,
+    } | null,
     calculations?:  {
       __typename: "ModelCalculationConnection",
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
+    modelAIModelAIsId?: string | null,
   } | null,
 };
 
@@ -10208,12 +10359,32 @@ export type OnUpdateModelAISubscription = {
     is_approved: boolean,
     tokens_cost: number,
     cost_tokens: number,
+    modelAIParent?:  {
+      __typename: "ModelAI",
+      id: string,
+      name: string,
+      description: string,
+      document_link: string,
+      api_link: string,
+      version: string,
+      is_approved: boolean,
+      tokens_cost: number,
+      cost_tokens: number,
+      createdAt: string,
+      updatedAt: string,
+      modelAIModelAIsId?: string | null,
+    } | null,
+    modelAIs?:  {
+      __typename: "ModelModelAIConnection",
+      nextToken?: string | null,
+    } | null,
     calculations?:  {
       __typename: "ModelCalculationConnection",
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
+    modelAIModelAIsId?: string | null,
   } | null,
 };
 
@@ -10233,12 +10404,32 @@ export type OnDeleteModelAISubscription = {
     is_approved: boolean,
     tokens_cost: number,
     cost_tokens: number,
+    modelAIParent?:  {
+      __typename: "ModelAI",
+      id: string,
+      name: string,
+      description: string,
+      document_link: string,
+      api_link: string,
+      version: string,
+      is_approved: boolean,
+      tokens_cost: number,
+      cost_tokens: number,
+      createdAt: string,
+      updatedAt: string,
+      modelAIModelAIsId?: string | null,
+    } | null,
+    modelAIs?:  {
+      __typename: "ModelModelAIConnection",
+      nextToken?: string | null,
+    } | null,
     calculations?:  {
       __typename: "ModelCalculationConnection",
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
+    modelAIModelAIsId?: string | null,
   } | null,
 };
 
@@ -10270,10 +10461,13 @@ export type OnCreateCalculationSubscription = {
       cost_tokens: number,
       createdAt: string,
       updatedAt: string,
+      modelAIModelAIsId?: string | null,
     } | null,
     user?:  {
       __typename: "User",
       id: string,
+      departamento?: string | null,
+      municipio?: string | null,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -10312,10 +10506,13 @@ export type OnUpdateCalculationSubscription = {
       cost_tokens: number,
       createdAt: string,
       updatedAt: string,
+      modelAIModelAIsId?: string | null,
     } | null,
     user?:  {
       __typename: "User",
       id: string,
+      departamento?: string | null,
+      municipio?: string | null,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -10354,10 +10551,13 @@ export type OnDeleteCalculationSubscription = {
       cost_tokens: number,
       createdAt: string,
       updatedAt: string,
+      modelAIModelAIsId?: string | null,
     } | null,
     user?:  {
       __typename: "User",
       id: string,
+      departamento?: string | null,
+      municipio?: string | null,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -10376,6 +10576,8 @@ export type OnCreateUserSubscription = {
   onCreateUser?:  {
     __typename: "User",
     id: string,
+    departamento?: string | null,
+    municipio?: string | null,
     user_model_packages?:  {
       __typename: "ModelUserModelPackageConnection",
       nextToken?: string | null,
@@ -10397,6 +10599,8 @@ export type OnUpdateUserSubscription = {
   onUpdateUser?:  {
     __typename: "User",
     id: string,
+    departamento?: string | null,
+    municipio?: string | null,
     user_model_packages?:  {
       __typename: "ModelUserModelPackageConnection",
       nextToken?: string | null,
@@ -10418,6 +10622,8 @@ export type OnDeleteUserSubscription = {
   onDeleteUser?:  {
     __typename: "User",
     id: string,
+    departamento?: string | null,
+    municipio?: string | null,
     user_model_packages?:  {
       __typename: "ModelUserModelPackageConnection",
       nextToken?: string | null,
@@ -10503,6 +10709,8 @@ export type OnCreateUserModelPackageSubscription = {
     user?:  {
       __typename: "User",
       id: string,
+      departamento?: string | null,
+      municipio?: string | null,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -10531,6 +10739,8 @@ export type OnUpdateUserModelPackageSubscription = {
     user?:  {
       __typename: "User",
       id: string,
+      departamento?: string | null,
+      municipio?: string | null,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -10559,6 +10769,8 @@ export type OnDeleteUserModelPackageSubscription = {
     user?:  {
       __typename: "User",
       id: string,
+      departamento?: string | null,
+      municipio?: string | null,
       createdAt: string,
       updatedAt: string,
     } | null,

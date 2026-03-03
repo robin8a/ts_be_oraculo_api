@@ -19,12 +19,32 @@ export const onCreateModelAI = /* GraphQL */ `subscription OnCreateModelAI($filt
     is_approved
     tokens_cost
     cost_tokens
+    modelAIParent {
+      id
+      name
+      description
+      document_link
+      api_link
+      version
+      is_approved
+      tokens_cost
+      cost_tokens
+      createdAt
+      updatedAt
+      modelAIModelAIsId
+      __typename
+    }
+    modelAIs {
+      nextToken
+      __typename
+    }
     calculations {
       nextToken
       __typename
     }
     createdAt
     updatedAt
+    modelAIModelAIsId
     __typename
   }
 }
@@ -43,12 +63,32 @@ export const onUpdateModelAI = /* GraphQL */ `subscription OnUpdateModelAI($filt
     is_approved
     tokens_cost
     cost_tokens
+    modelAIParent {
+      id
+      name
+      description
+      document_link
+      api_link
+      version
+      is_approved
+      tokens_cost
+      cost_tokens
+      createdAt
+      updatedAt
+      modelAIModelAIsId
+      __typename
+    }
+    modelAIs {
+      nextToken
+      __typename
+    }
     calculations {
       nextToken
       __typename
     }
     createdAt
     updatedAt
+    modelAIModelAIsId
     __typename
   }
 }
@@ -67,12 +107,32 @@ export const onDeleteModelAI = /* GraphQL */ `subscription OnDeleteModelAI($filt
     is_approved
     tokens_cost
     cost_tokens
+    modelAIParent {
+      id
+      name
+      description
+      document_link
+      api_link
+      version
+      is_approved
+      tokens_cost
+      cost_tokens
+      createdAt
+      updatedAt
+      modelAIModelAIsId
+      __typename
+    }
+    modelAIs {
+      nextToken
+      __typename
+    }
     calculations {
       nextToken
       __typename
     }
     createdAt
     updatedAt
+    modelAIModelAIsId
     __typename
   }
 }
@@ -104,10 +164,13 @@ export const onCreateCalculation = /* GraphQL */ `subscription OnCreateCalculati
       cost_tokens
       createdAt
       updatedAt
+      modelAIModelAIsId
       __typename
     }
     user {
       id
+      departamento
+      municipio
       createdAt
       updatedAt
       __typename
@@ -147,10 +210,13 @@ export const onUpdateCalculation = /* GraphQL */ `subscription OnUpdateCalculati
       cost_tokens
       createdAt
       updatedAt
+      modelAIModelAIsId
       __typename
     }
     user {
       id
+      departamento
+      municipio
       createdAt
       updatedAt
       __typename
@@ -190,10 +256,13 @@ export const onDeleteCalculation = /* GraphQL */ `subscription OnDeleteCalculati
       cost_tokens
       createdAt
       updatedAt
+      modelAIModelAIsId
       __typename
     }
     user {
       id
+      departamento
+      municipio
       createdAt
       updatedAt
       __typename
@@ -212,6 +281,8 @@ export const onDeleteCalculation = /* GraphQL */ `subscription OnDeleteCalculati
 export const onCreateUser = /* GraphQL */ `subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
   onCreateUser(filter: $filter) {
     id
+    departamento
+    municipio
     user_model_packages {
       nextToken
       __typename
@@ -232,6 +303,8 @@ export const onCreateUser = /* GraphQL */ `subscription OnCreateUser($filter: Mo
 export const onUpdateUser = /* GraphQL */ `subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
   onUpdateUser(filter: $filter) {
     id
+    departamento
+    municipio
     user_model_packages {
       nextToken
       __typename
@@ -252,6 +325,8 @@ export const onUpdateUser = /* GraphQL */ `subscription OnUpdateUser($filter: Mo
 export const onDeleteUser = /* GraphQL */ `subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
   onDeleteUser(filter: $filter) {
     id
+    departamento
+    municipio
     user_model_packages {
       nextToken
       __typename
@@ -340,6 +415,8 @@ export const onCreateUserModelPackage = /* GraphQL */ `subscription OnCreateUser
     }
     user {
       id
+      departamento
+      municipio
       createdAt
       updatedAt
       __typename
@@ -369,6 +446,8 @@ export const onUpdateUserModelPackage = /* GraphQL */ `subscription OnUpdateUser
     }
     user {
       id
+      departamento
+      municipio
       createdAt
       updatedAt
       __typename
@@ -398,6 +477,8 @@ export const onDeleteUserModelPackage = /* GraphQL */ `subscription OnDeleteUser
     }
     user {
       id
+      departamento
+      municipio
       createdAt
       updatedAt
       __typename
