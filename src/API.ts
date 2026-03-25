@@ -2004,6 +2004,7 @@ export type Tree = {
   project?: Project | null,
   template?: Template | null,
   rawData?: ModelRawDataConnection | null,
+  topologyTrees?: ModelTopologyTreeConnection | null,
   createdAt: string,
   updatedAt: string,
   projectTreesId?: string | null,
@@ -2040,6 +2041,45 @@ export type RawData = {
   updatedAt: string,
   treeRawDataId?: string | null,
   featureRawDatasId?: string | null,
+};
+
+export type ModelTopologyTreeConnection = {
+  __typename: "ModelTopologyTreeConnection",
+  items:  Array<TopologyTree | null >,
+  nextToken?: string | null,
+};
+
+export type TopologyTree = {
+  __typename: "TopologyTree",
+  id: string,
+  topology?: Topology | null,
+  tree?: Tree | null,
+  createdAt: string,
+  updatedAt: string,
+  treeTopologyTreesId?: string | null,
+  topologyTopologyTreesId?: string | null,
+};
+
+export type Topology = {
+  __typename: "Topology",
+  id: string,
+  name: string,
+  string_code?: string | null,
+  number_code?: string | null,
+  status?: string | null,
+  polygon?: string | null,
+  topologyParent?: Topology | null,
+  topologies?: ModelTopologyConnection | null,
+  topologyTrees?: ModelTopologyTreeConnection | null,
+  createdAt: string,
+  updatedAt: string,
+  topologyTopologiesId?: string | null,
+};
+
+export type ModelTopologyConnection = {
+  __typename: "ModelTopologyConnection",
+  items:  Array<Topology | null >,
+  nextToken?: string | null,
 };
 
 export type UpdateUnitOfMeasureInput = {
@@ -2256,6 +2296,70 @@ export type UpdateRawDataInput = {
 };
 
 export type DeleteRawDataInput = {
+  id: string,
+};
+
+export type CreateTopologyInput = {
+  id?: string | null,
+  name: string,
+  string_code?: string | null,
+  number_code?: string | null,
+  status?: string | null,
+  polygon?: string | null,
+  topologyTopologiesId?: string | null,
+};
+
+export type ModelTopologyConditionInput = {
+  name?: ModelStringInput | null,
+  string_code?: ModelStringInput | null,
+  number_code?: ModelStringInput | null,
+  status?: ModelStringInput | null,
+  polygon?: ModelStringInput | null,
+  and?: Array< ModelTopologyConditionInput | null > | null,
+  or?: Array< ModelTopologyConditionInput | null > | null,
+  not?: ModelTopologyConditionInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  topologyTopologiesId?: ModelIDInput | null,
+};
+
+export type UpdateTopologyInput = {
+  id: string,
+  name?: string | null,
+  string_code?: string | null,
+  number_code?: string | null,
+  status?: string | null,
+  polygon?: string | null,
+  topologyTopologiesId?: string | null,
+};
+
+export type DeleteTopologyInput = {
+  id: string,
+};
+
+export type CreateTopologyTreeInput = {
+  id?: string | null,
+  treeTopologyTreesId?: string | null,
+  topologyTopologyTreesId?: string | null,
+};
+
+export type ModelTopologyTreeConditionInput = {
+  and?: Array< ModelTopologyTreeConditionInput | null > | null,
+  or?: Array< ModelTopologyTreeConditionInput | null > | null,
+  not?: ModelTopologyTreeConditionInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  treeTopologyTreesId?: ModelIDInput | null,
+  topologyTopologyTreesId?: ModelIDInput | null,
+};
+
+export type UpdateTopologyTreeInput = {
+  id: string,
+  treeTopologyTreesId?: string | null,
+  topologyTopologyTreesId?: string | null,
+};
+
+export type DeleteTopologyTreeInput = {
   id: string,
 };
 
@@ -2915,6 +3019,32 @@ export type ModelRawDataFilterInput = {
   featureRawDatasId?: ModelIDInput | null,
 };
 
+export type ModelTopologyFilterInput = {
+  id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  string_code?: ModelStringInput | null,
+  number_code?: ModelStringInput | null,
+  status?: ModelStringInput | null,
+  polygon?: ModelStringInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  and?: Array< ModelTopologyFilterInput | null > | null,
+  or?: Array< ModelTopologyFilterInput | null > | null,
+  not?: ModelTopologyFilterInput | null,
+  topologyTopologiesId?: ModelIDInput | null,
+};
+
+export type ModelTopologyTreeFilterInput = {
+  id?: ModelIDInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  and?: Array< ModelTopologyTreeFilterInput | null > | null,
+  or?: Array< ModelTopologyTreeFilterInput | null > | null,
+  not?: ModelTopologyTreeFilterInput | null,
+  treeTopologyTreesId?: ModelIDInput | null,
+  topologyTopologyTreesId?: ModelIDInput | null,
+};
+
 export enum ModelSortDirection {
   ASC = "ASC",
   DESC = "DESC",
@@ -3458,6 +3588,7 @@ export type ModelSubscriptionTreeFilterInput = {
   and?: Array< ModelSubscriptionTreeFilterInput | null > | null,
   or?: Array< ModelSubscriptionTreeFilterInput | null > | null,
   treeRawDataId?: ModelSubscriptionIDInput | null,
+  treeTopologyTreesId?: ModelSubscriptionIDInput | null,
 };
 
 export type ModelSubscriptionTemplateFeatureFilterInput = {
@@ -3495,6 +3626,29 @@ export type ModelSubscriptionRawDataFilterInput = {
   updatedAt?: ModelSubscriptionStringInput | null,
   and?: Array< ModelSubscriptionRawDataFilterInput | null > | null,
   or?: Array< ModelSubscriptionRawDataFilterInput | null > | null,
+};
+
+export type ModelSubscriptionTopologyFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  name?: ModelSubscriptionStringInput | null,
+  string_code?: ModelSubscriptionStringInput | null,
+  number_code?: ModelSubscriptionStringInput | null,
+  status?: ModelSubscriptionStringInput | null,
+  polygon?: ModelSubscriptionStringInput | null,
+  createdAt?: ModelSubscriptionStringInput | null,
+  updatedAt?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionTopologyFilterInput | null > | null,
+  or?: Array< ModelSubscriptionTopologyFilterInput | null > | null,
+  topologyTopologiesId?: ModelSubscriptionIDInput | null,
+  topologyTopologyTreesId?: ModelSubscriptionIDInput | null,
+};
+
+export type ModelSubscriptionTopologyTreeFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  createdAt?: ModelSubscriptionStringInput | null,
+  updatedAt?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionTopologyTreeFilterInput | null > | null,
+  or?: Array< ModelSubscriptionTopologyTreeFilterInput | null > | null,
 };
 
 export type CreateModelAIMutationVariables = {
@@ -6701,6 +6855,10 @@ export type CreateTreeMutation = {
       __typename: "ModelRawDataConnection",
       nextToken?: string | null,
     } | null,
+    topologyTrees?:  {
+      __typename: "ModelTopologyTreeConnection",
+      nextToken?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
     projectTreesId?: string | null,
@@ -6744,6 +6902,10 @@ export type UpdateTreeMutation = {
       __typename: "ModelRawDataConnection",
       nextToken?: string | null,
     } | null,
+    topologyTrees?:  {
+      __typename: "ModelTopologyTreeConnection",
+      nextToken?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
     projectTreesId?: string | null,
@@ -6785,6 +6947,10 @@ export type DeleteTreeMutation = {
     } | null,
     rawData?:  {
       __typename: "ModelRawDataConnection",
+      nextToken?: string | null,
+    } | null,
+    topologyTrees?:  {
+      __typename: "ModelTopologyTreeConnection",
       nextToken?: string | null,
     } | null,
     createdAt: string,
@@ -7160,6 +7326,243 @@ export type DeleteRawDataMutation = {
     updatedAt: string,
     treeRawDataId?: string | null,
     featureRawDatasId?: string | null,
+  } | null,
+};
+
+export type CreateTopologyMutationVariables = {
+  input: CreateTopologyInput,
+  condition?: ModelTopologyConditionInput | null,
+};
+
+export type CreateTopologyMutation = {
+  createTopology?:  {
+    __typename: "Topology",
+    id: string,
+    name: string,
+    string_code?: string | null,
+    number_code?: string | null,
+    status?: string | null,
+    polygon?: string | null,
+    topologyParent?:  {
+      __typename: "Topology",
+      id: string,
+      name: string,
+      string_code?: string | null,
+      number_code?: string | null,
+      status?: string | null,
+      polygon?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      topologyTopologiesId?: string | null,
+    } | null,
+    topologies?:  {
+      __typename: "ModelTopologyConnection",
+      nextToken?: string | null,
+    } | null,
+    topologyTrees?:  {
+      __typename: "ModelTopologyTreeConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    topologyTopologiesId?: string | null,
+  } | null,
+};
+
+export type UpdateTopologyMutationVariables = {
+  input: UpdateTopologyInput,
+  condition?: ModelTopologyConditionInput | null,
+};
+
+export type UpdateTopologyMutation = {
+  updateTopology?:  {
+    __typename: "Topology",
+    id: string,
+    name: string,
+    string_code?: string | null,
+    number_code?: string | null,
+    status?: string | null,
+    polygon?: string | null,
+    topologyParent?:  {
+      __typename: "Topology",
+      id: string,
+      name: string,
+      string_code?: string | null,
+      number_code?: string | null,
+      status?: string | null,
+      polygon?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      topologyTopologiesId?: string | null,
+    } | null,
+    topologies?:  {
+      __typename: "ModelTopologyConnection",
+      nextToken?: string | null,
+    } | null,
+    topologyTrees?:  {
+      __typename: "ModelTopologyTreeConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    topologyTopologiesId?: string | null,
+  } | null,
+};
+
+export type DeleteTopologyMutationVariables = {
+  input: DeleteTopologyInput,
+  condition?: ModelTopologyConditionInput | null,
+};
+
+export type DeleteTopologyMutation = {
+  deleteTopology?:  {
+    __typename: "Topology",
+    id: string,
+    name: string,
+    string_code?: string | null,
+    number_code?: string | null,
+    status?: string | null,
+    polygon?: string | null,
+    topologyParent?:  {
+      __typename: "Topology",
+      id: string,
+      name: string,
+      string_code?: string | null,
+      number_code?: string | null,
+      status?: string | null,
+      polygon?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      topologyTopologiesId?: string | null,
+    } | null,
+    topologies?:  {
+      __typename: "ModelTopologyConnection",
+      nextToken?: string | null,
+    } | null,
+    topologyTrees?:  {
+      __typename: "ModelTopologyTreeConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    topologyTopologiesId?: string | null,
+  } | null,
+};
+
+export type CreateTopologyTreeMutationVariables = {
+  input: CreateTopologyTreeInput,
+  condition?: ModelTopologyTreeConditionInput | null,
+};
+
+export type CreateTopologyTreeMutation = {
+  createTopologyTree?:  {
+    __typename: "TopologyTree",
+    id: string,
+    topology?:  {
+      __typename: "Topology",
+      id: string,
+      name: string,
+      string_code?: string | null,
+      number_code?: string | null,
+      status?: string | null,
+      polygon?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      topologyTopologiesId?: string | null,
+    } | null,
+    tree?:  {
+      __typename: "Tree",
+      id: string,
+      name: string,
+      are_audios_processed?: boolean | null,
+      status?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      projectTreesId?: string | null,
+      templateTreesId?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    treeTopologyTreesId?: string | null,
+    topologyTopologyTreesId?: string | null,
+  } | null,
+};
+
+export type UpdateTopologyTreeMutationVariables = {
+  input: UpdateTopologyTreeInput,
+  condition?: ModelTopologyTreeConditionInput | null,
+};
+
+export type UpdateTopologyTreeMutation = {
+  updateTopologyTree?:  {
+    __typename: "TopologyTree",
+    id: string,
+    topology?:  {
+      __typename: "Topology",
+      id: string,
+      name: string,
+      string_code?: string | null,
+      number_code?: string | null,
+      status?: string | null,
+      polygon?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      topologyTopologiesId?: string | null,
+    } | null,
+    tree?:  {
+      __typename: "Tree",
+      id: string,
+      name: string,
+      are_audios_processed?: boolean | null,
+      status?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      projectTreesId?: string | null,
+      templateTreesId?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    treeTopologyTreesId?: string | null,
+    topologyTopologyTreesId?: string | null,
+  } | null,
+};
+
+export type DeleteTopologyTreeMutationVariables = {
+  input: DeleteTopologyTreeInput,
+  condition?: ModelTopologyTreeConditionInput | null,
+};
+
+export type DeleteTopologyTreeMutation = {
+  deleteTopologyTree?:  {
+    __typename: "TopologyTree",
+    id: string,
+    topology?:  {
+      __typename: "Topology",
+      id: string,
+      name: string,
+      string_code?: string | null,
+      number_code?: string | null,
+      status?: string | null,
+      polygon?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      topologyTopologiesId?: string | null,
+    } | null,
+    tree?:  {
+      __typename: "Tree",
+      id: string,
+      name: string,
+      are_audios_processed?: boolean | null,
+      status?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      projectTreesId?: string | null,
+      templateTreesId?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    treeTopologyTreesId?: string | null,
+    topologyTopologyTreesId?: string | null,
   } | null,
 };
 
@@ -9048,6 +9451,10 @@ export type GetTreeQuery = {
       __typename: "ModelRawDataConnection",
       nextToken?: string | null,
     } | null,
+    topologyTrees?:  {
+      __typename: "ModelTopologyTreeConnection",
+      nextToken?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
     projectTreesId?: string | null,
@@ -9267,6 +9674,129 @@ export type ListRawDataQuery = {
       updatedAt: string,
       treeRawDataId?: string | null,
       featureRawDatasId?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetTopologyQueryVariables = {
+  id: string,
+};
+
+export type GetTopologyQuery = {
+  getTopology?:  {
+    __typename: "Topology",
+    id: string,
+    name: string,
+    string_code?: string | null,
+    number_code?: string | null,
+    status?: string | null,
+    polygon?: string | null,
+    topologyParent?:  {
+      __typename: "Topology",
+      id: string,
+      name: string,
+      string_code?: string | null,
+      number_code?: string | null,
+      status?: string | null,
+      polygon?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      topologyTopologiesId?: string | null,
+    } | null,
+    topologies?:  {
+      __typename: "ModelTopologyConnection",
+      nextToken?: string | null,
+    } | null,
+    topologyTrees?:  {
+      __typename: "ModelTopologyTreeConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    topologyTopologiesId?: string | null,
+  } | null,
+};
+
+export type ListTopologiesQueryVariables = {
+  filter?: ModelTopologyFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListTopologiesQuery = {
+  listTopologies?:  {
+    __typename: "ModelTopologyConnection",
+    items:  Array< {
+      __typename: "Topology",
+      id: string,
+      name: string,
+      string_code?: string | null,
+      number_code?: string | null,
+      status?: string | null,
+      polygon?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      topologyTopologiesId?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetTopologyTreeQueryVariables = {
+  id: string,
+};
+
+export type GetTopologyTreeQuery = {
+  getTopologyTree?:  {
+    __typename: "TopologyTree",
+    id: string,
+    topology?:  {
+      __typename: "Topology",
+      id: string,
+      name: string,
+      string_code?: string | null,
+      number_code?: string | null,
+      status?: string | null,
+      polygon?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      topologyTopologiesId?: string | null,
+    } | null,
+    tree?:  {
+      __typename: "Tree",
+      id: string,
+      name: string,
+      are_audios_processed?: boolean | null,
+      status?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      projectTreesId?: string | null,
+      templateTreesId?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    treeTopologyTreesId?: string | null,
+    topologyTopologyTreesId?: string | null,
+  } | null,
+};
+
+export type ListTopologyTreesQueryVariables = {
+  filter?: ModelTopologyTreeFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListTopologyTreesQuery = {
+  listTopologyTrees?:  {
+    __typename: "ModelTopologyTreeConnection",
+    items:  Array< {
+      __typename: "TopologyTree",
+      id: string,
+      createdAt: string,
+      updatedAt: string,
+      treeTopologyTreesId?: string | null,
+      topologyTopologyTreesId?: string | null,
     } | null >,
     nextToken?: string | null,
   } | null,
@@ -13402,6 +13932,10 @@ export type OnCreateTreeSubscription = {
       __typename: "ModelRawDataConnection",
       nextToken?: string | null,
     } | null,
+    topologyTrees?:  {
+      __typename: "ModelTopologyTreeConnection",
+      nextToken?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
     projectTreesId?: string | null,
@@ -13444,6 +13978,10 @@ export type OnUpdateTreeSubscription = {
       __typename: "ModelRawDataConnection",
       nextToken?: string | null,
     } | null,
+    topologyTrees?:  {
+      __typename: "ModelTopologyTreeConnection",
+      nextToken?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
     projectTreesId?: string | null,
@@ -13484,6 +14022,10 @@ export type OnDeleteTreeSubscription = {
     } | null,
     rawData?:  {
       __typename: "ModelRawDataConnection",
+      nextToken?: string | null,
+    } | null,
+    topologyTrees?:  {
+      __typename: "ModelTopologyTreeConnection",
       nextToken?: string | null,
     } | null,
     createdAt: string,
@@ -13850,5 +14392,236 @@ export type OnDeleteRawDataSubscription = {
     updatedAt: string,
     treeRawDataId?: string | null,
     featureRawDatasId?: string | null,
+  } | null,
+};
+
+export type OnCreateTopologySubscriptionVariables = {
+  filter?: ModelSubscriptionTopologyFilterInput | null,
+};
+
+export type OnCreateTopologySubscription = {
+  onCreateTopology?:  {
+    __typename: "Topology",
+    id: string,
+    name: string,
+    string_code?: string | null,
+    number_code?: string | null,
+    status?: string | null,
+    polygon?: string | null,
+    topologyParent?:  {
+      __typename: "Topology",
+      id: string,
+      name: string,
+      string_code?: string | null,
+      number_code?: string | null,
+      status?: string | null,
+      polygon?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      topologyTopologiesId?: string | null,
+    } | null,
+    topologies?:  {
+      __typename: "ModelTopologyConnection",
+      nextToken?: string | null,
+    } | null,
+    topologyTrees?:  {
+      __typename: "ModelTopologyTreeConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    topologyTopologiesId?: string | null,
+  } | null,
+};
+
+export type OnUpdateTopologySubscriptionVariables = {
+  filter?: ModelSubscriptionTopologyFilterInput | null,
+};
+
+export type OnUpdateTopologySubscription = {
+  onUpdateTopology?:  {
+    __typename: "Topology",
+    id: string,
+    name: string,
+    string_code?: string | null,
+    number_code?: string | null,
+    status?: string | null,
+    polygon?: string | null,
+    topologyParent?:  {
+      __typename: "Topology",
+      id: string,
+      name: string,
+      string_code?: string | null,
+      number_code?: string | null,
+      status?: string | null,
+      polygon?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      topologyTopologiesId?: string | null,
+    } | null,
+    topologies?:  {
+      __typename: "ModelTopologyConnection",
+      nextToken?: string | null,
+    } | null,
+    topologyTrees?:  {
+      __typename: "ModelTopologyTreeConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    topologyTopologiesId?: string | null,
+  } | null,
+};
+
+export type OnDeleteTopologySubscriptionVariables = {
+  filter?: ModelSubscriptionTopologyFilterInput | null,
+};
+
+export type OnDeleteTopologySubscription = {
+  onDeleteTopology?:  {
+    __typename: "Topology",
+    id: string,
+    name: string,
+    string_code?: string | null,
+    number_code?: string | null,
+    status?: string | null,
+    polygon?: string | null,
+    topologyParent?:  {
+      __typename: "Topology",
+      id: string,
+      name: string,
+      string_code?: string | null,
+      number_code?: string | null,
+      status?: string | null,
+      polygon?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      topologyTopologiesId?: string | null,
+    } | null,
+    topologies?:  {
+      __typename: "ModelTopologyConnection",
+      nextToken?: string | null,
+    } | null,
+    topologyTrees?:  {
+      __typename: "ModelTopologyTreeConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    topologyTopologiesId?: string | null,
+  } | null,
+};
+
+export type OnCreateTopologyTreeSubscriptionVariables = {
+  filter?: ModelSubscriptionTopologyTreeFilterInput | null,
+};
+
+export type OnCreateTopologyTreeSubscription = {
+  onCreateTopologyTree?:  {
+    __typename: "TopologyTree",
+    id: string,
+    topology?:  {
+      __typename: "Topology",
+      id: string,
+      name: string,
+      string_code?: string | null,
+      number_code?: string | null,
+      status?: string | null,
+      polygon?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      topologyTopologiesId?: string | null,
+    } | null,
+    tree?:  {
+      __typename: "Tree",
+      id: string,
+      name: string,
+      are_audios_processed?: boolean | null,
+      status?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      projectTreesId?: string | null,
+      templateTreesId?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    treeTopologyTreesId?: string | null,
+    topologyTopologyTreesId?: string | null,
+  } | null,
+};
+
+export type OnUpdateTopologyTreeSubscriptionVariables = {
+  filter?: ModelSubscriptionTopologyTreeFilterInput | null,
+};
+
+export type OnUpdateTopologyTreeSubscription = {
+  onUpdateTopologyTree?:  {
+    __typename: "TopologyTree",
+    id: string,
+    topology?:  {
+      __typename: "Topology",
+      id: string,
+      name: string,
+      string_code?: string | null,
+      number_code?: string | null,
+      status?: string | null,
+      polygon?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      topologyTopologiesId?: string | null,
+    } | null,
+    tree?:  {
+      __typename: "Tree",
+      id: string,
+      name: string,
+      are_audios_processed?: boolean | null,
+      status?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      projectTreesId?: string | null,
+      templateTreesId?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    treeTopologyTreesId?: string | null,
+    topologyTopologyTreesId?: string | null,
+  } | null,
+};
+
+export type OnDeleteTopologyTreeSubscriptionVariables = {
+  filter?: ModelSubscriptionTopologyTreeFilterInput | null,
+};
+
+export type OnDeleteTopologyTreeSubscription = {
+  onDeleteTopologyTree?:  {
+    __typename: "TopologyTree",
+    id: string,
+    topology?:  {
+      __typename: "Topology",
+      id: string,
+      name: string,
+      string_code?: string | null,
+      number_code?: string | null,
+      status?: string | null,
+      polygon?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      topologyTopologiesId?: string | null,
+    } | null,
+    tree?:  {
+      __typename: "Tree",
+      id: string,
+      name: string,
+      are_audios_processed?: boolean | null,
+      status?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      projectTreesId?: string | null,
+      templateTreesId?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    treeTopologyTreesId?: string | null,
+    topologyTopologyTreesId?: string | null,
   } | null,
 };

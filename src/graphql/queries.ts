@@ -1918,6 +1918,10 @@ export const getTree = /* GraphQL */ `query GetTree($id: ID!) {
       nextToken
       __typename
     }
+    topologyTrees {
+      nextToken
+      __typename
+    }
     createdAt
     updatedAt
     projectTreesId
@@ -2140,6 +2144,129 @@ export const listRawData = /* GraphQL */ `query ListRawData(
 ` as GeneratedQuery<
   APITypes.ListRawDataQueryVariables,
   APITypes.ListRawDataQuery
+>;
+export const getTopology = /* GraphQL */ `query GetTopology($id: ID!) {
+  getTopology(id: $id) {
+    id
+    name
+    string_code
+    number_code
+    status
+    polygon
+    topologyParent {
+      id
+      name
+      string_code
+      number_code
+      status
+      polygon
+      createdAt
+      updatedAt
+      topologyTopologiesId
+      __typename
+    }
+    topologies {
+      nextToken
+      __typename
+    }
+    topologyTrees {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    topologyTopologiesId
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.GetTopologyQueryVariables,
+  APITypes.GetTopologyQuery
+>;
+export const listTopologies = /* GraphQL */ `query ListTopologies(
+  $filter: ModelTopologyFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTopologies(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      string_code
+      number_code
+      status
+      polygon
+      createdAt
+      updatedAt
+      topologyTopologiesId
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.ListTopologiesQueryVariables,
+  APITypes.ListTopologiesQuery
+>;
+export const getTopologyTree = /* GraphQL */ `query GetTopologyTree($id: ID!) {
+  getTopologyTree(id: $id) {
+    id
+    topology {
+      id
+      name
+      string_code
+      number_code
+      status
+      polygon
+      createdAt
+      updatedAt
+      topologyTopologiesId
+      __typename
+    }
+    tree {
+      id
+      name
+      are_audios_processed
+      status
+      createdAt
+      updatedAt
+      projectTreesId
+      templateTreesId
+      __typename
+    }
+    createdAt
+    updatedAt
+    treeTopologyTreesId
+    topologyTopologyTreesId
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.GetTopologyTreeQueryVariables,
+  APITypes.GetTopologyTreeQuery
+>;
+export const listTopologyTrees = /* GraphQL */ `query ListTopologyTrees(
+  $filter: ModelTopologyTreeFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTopologyTrees(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      createdAt
+      updatedAt
+      treeTopologyTreesId
+      topologyTopologyTreesId
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.ListTopologyTreesQueryVariables,
+  APITypes.ListTopologyTreesQuery
 >;
 export const consultaAnalisesByProyectoId = /* GraphQL */ `query ConsultaAnalisesByProyectoId(
   $proyectoId: ID!

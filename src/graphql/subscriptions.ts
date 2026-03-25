@@ -3170,6 +3170,10 @@ export const onCreateTree = /* GraphQL */ `subscription OnCreateTree($filter: Mo
       nextToken
       __typename
     }
+    topologyTrees {
+      nextToken
+      __typename
+    }
     createdAt
     updatedAt
     projectTreesId
@@ -3211,6 +3215,10 @@ export const onUpdateTree = /* GraphQL */ `subscription OnUpdateTree($filter: Mo
       nextToken
       __typename
     }
+    topologyTrees {
+      nextToken
+      __typename
+    }
     createdAt
     updatedAt
     projectTreesId
@@ -3249,6 +3257,10 @@ export const onDeleteTree = /* GraphQL */ `subscription OnDeleteTree($filter: Mo
       __typename
     }
     rawData {
+      nextToken
+      __typename
+    }
+    topologyTrees {
       nextToken
       __typename
     }
@@ -3619,4 +3631,235 @@ export const onDeleteRawData = /* GraphQL */ `subscription OnDeleteRawData($filt
 ` as GeneratedSubscription<
   APITypes.OnDeleteRawDataSubscriptionVariables,
   APITypes.OnDeleteRawDataSubscription
+>;
+export const onCreateTopology = /* GraphQL */ `subscription OnCreateTopology($filter: ModelSubscriptionTopologyFilterInput) {
+  onCreateTopology(filter: $filter) {
+    id
+    name
+    string_code
+    number_code
+    status
+    polygon
+    topologyParent {
+      id
+      name
+      string_code
+      number_code
+      status
+      polygon
+      createdAt
+      updatedAt
+      topologyTopologiesId
+      __typename
+    }
+    topologies {
+      nextToken
+      __typename
+    }
+    topologyTrees {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    topologyTopologiesId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnCreateTopologySubscriptionVariables,
+  APITypes.OnCreateTopologySubscription
+>;
+export const onUpdateTopology = /* GraphQL */ `subscription OnUpdateTopology($filter: ModelSubscriptionTopologyFilterInput) {
+  onUpdateTopology(filter: $filter) {
+    id
+    name
+    string_code
+    number_code
+    status
+    polygon
+    topologyParent {
+      id
+      name
+      string_code
+      number_code
+      status
+      polygon
+      createdAt
+      updatedAt
+      topologyTopologiesId
+      __typename
+    }
+    topologies {
+      nextToken
+      __typename
+    }
+    topologyTrees {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    topologyTopologiesId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnUpdateTopologySubscriptionVariables,
+  APITypes.OnUpdateTopologySubscription
+>;
+export const onDeleteTopology = /* GraphQL */ `subscription OnDeleteTopology($filter: ModelSubscriptionTopologyFilterInput) {
+  onDeleteTopology(filter: $filter) {
+    id
+    name
+    string_code
+    number_code
+    status
+    polygon
+    topologyParent {
+      id
+      name
+      string_code
+      number_code
+      status
+      polygon
+      createdAt
+      updatedAt
+      topologyTopologiesId
+      __typename
+    }
+    topologies {
+      nextToken
+      __typename
+    }
+    topologyTrees {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    topologyTopologiesId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnDeleteTopologySubscriptionVariables,
+  APITypes.OnDeleteTopologySubscription
+>;
+export const onCreateTopologyTree = /* GraphQL */ `subscription OnCreateTopologyTree(
+  $filter: ModelSubscriptionTopologyTreeFilterInput
+) {
+  onCreateTopologyTree(filter: $filter) {
+    id
+    topology {
+      id
+      name
+      string_code
+      number_code
+      status
+      polygon
+      createdAt
+      updatedAt
+      topologyTopologiesId
+      __typename
+    }
+    tree {
+      id
+      name
+      are_audios_processed
+      status
+      createdAt
+      updatedAt
+      projectTreesId
+      templateTreesId
+      __typename
+    }
+    createdAt
+    updatedAt
+    treeTopologyTreesId
+    topologyTopologyTreesId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnCreateTopologyTreeSubscriptionVariables,
+  APITypes.OnCreateTopologyTreeSubscription
+>;
+export const onUpdateTopologyTree = /* GraphQL */ `subscription OnUpdateTopologyTree(
+  $filter: ModelSubscriptionTopologyTreeFilterInput
+) {
+  onUpdateTopologyTree(filter: $filter) {
+    id
+    topology {
+      id
+      name
+      string_code
+      number_code
+      status
+      polygon
+      createdAt
+      updatedAt
+      topologyTopologiesId
+      __typename
+    }
+    tree {
+      id
+      name
+      are_audios_processed
+      status
+      createdAt
+      updatedAt
+      projectTreesId
+      templateTreesId
+      __typename
+    }
+    createdAt
+    updatedAt
+    treeTopologyTreesId
+    topologyTopologyTreesId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnUpdateTopologyTreeSubscriptionVariables,
+  APITypes.OnUpdateTopologyTreeSubscription
+>;
+export const onDeleteTopologyTree = /* GraphQL */ `subscription OnDeleteTopologyTree(
+  $filter: ModelSubscriptionTopologyTreeFilterInput
+) {
+  onDeleteTopologyTree(filter: $filter) {
+    id
+    topology {
+      id
+      name
+      string_code
+      number_code
+      status
+      polygon
+      createdAt
+      updatedAt
+      topologyTopologiesId
+      __typename
+    }
+    tree {
+      id
+      name
+      are_audios_processed
+      status
+      createdAt
+      updatedAt
+      projectTreesId
+      templateTreesId
+      __typename
+    }
+    createdAt
+    updatedAt
+    treeTopologyTreesId
+    topologyTopologyTreesId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnDeleteTopologyTreeSubscriptionVariables,
+  APITypes.OnDeleteTopologyTreeSubscription
 >;

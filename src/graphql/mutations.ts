@@ -3308,6 +3308,10 @@ export const createTree = /* GraphQL */ `mutation CreateTree(
       nextToken
       __typename
     }
+    topologyTrees {
+      nextToken
+      __typename
+    }
     createdAt
     updatedAt
     projectTreesId
@@ -3352,6 +3356,10 @@ export const updateTree = /* GraphQL */ `mutation UpdateTree(
       nextToken
       __typename
     }
+    topologyTrees {
+      nextToken
+      __typename
+    }
     createdAt
     updatedAt
     projectTreesId
@@ -3393,6 +3401,10 @@ export const deleteTree = /* GraphQL */ `mutation DeleteTree(
       __typename
     }
     rawData {
+      nextToken
+      __typename
+    }
+    topologyTrees {
       nextToken
       __typename
     }
@@ -3784,4 +3796,247 @@ export const deleteRawData = /* GraphQL */ `mutation DeleteRawData(
 ` as GeneratedMutation<
   APITypes.DeleteRawDataMutationVariables,
   APITypes.DeleteRawDataMutation
+>;
+export const createTopology = /* GraphQL */ `mutation CreateTopology(
+  $input: CreateTopologyInput!
+  $condition: ModelTopologyConditionInput
+) {
+  createTopology(input: $input, condition: $condition) {
+    id
+    name
+    string_code
+    number_code
+    status
+    polygon
+    topologyParent {
+      id
+      name
+      string_code
+      number_code
+      status
+      polygon
+      createdAt
+      updatedAt
+      topologyTopologiesId
+      __typename
+    }
+    topologies {
+      nextToken
+      __typename
+    }
+    topologyTrees {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    topologyTopologiesId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.CreateTopologyMutationVariables,
+  APITypes.CreateTopologyMutation
+>;
+export const updateTopology = /* GraphQL */ `mutation UpdateTopology(
+  $input: UpdateTopologyInput!
+  $condition: ModelTopologyConditionInput
+) {
+  updateTopology(input: $input, condition: $condition) {
+    id
+    name
+    string_code
+    number_code
+    status
+    polygon
+    topologyParent {
+      id
+      name
+      string_code
+      number_code
+      status
+      polygon
+      createdAt
+      updatedAt
+      topologyTopologiesId
+      __typename
+    }
+    topologies {
+      nextToken
+      __typename
+    }
+    topologyTrees {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    topologyTopologiesId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.UpdateTopologyMutationVariables,
+  APITypes.UpdateTopologyMutation
+>;
+export const deleteTopology = /* GraphQL */ `mutation DeleteTopology(
+  $input: DeleteTopologyInput!
+  $condition: ModelTopologyConditionInput
+) {
+  deleteTopology(input: $input, condition: $condition) {
+    id
+    name
+    string_code
+    number_code
+    status
+    polygon
+    topologyParent {
+      id
+      name
+      string_code
+      number_code
+      status
+      polygon
+      createdAt
+      updatedAt
+      topologyTopologiesId
+      __typename
+    }
+    topologies {
+      nextToken
+      __typename
+    }
+    topologyTrees {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    topologyTopologiesId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.DeleteTopologyMutationVariables,
+  APITypes.DeleteTopologyMutation
+>;
+export const createTopologyTree = /* GraphQL */ `mutation CreateTopologyTree(
+  $input: CreateTopologyTreeInput!
+  $condition: ModelTopologyTreeConditionInput
+) {
+  createTopologyTree(input: $input, condition: $condition) {
+    id
+    topology {
+      id
+      name
+      string_code
+      number_code
+      status
+      polygon
+      createdAt
+      updatedAt
+      topologyTopologiesId
+      __typename
+    }
+    tree {
+      id
+      name
+      are_audios_processed
+      status
+      createdAt
+      updatedAt
+      projectTreesId
+      templateTreesId
+      __typename
+    }
+    createdAt
+    updatedAt
+    treeTopologyTreesId
+    topologyTopologyTreesId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.CreateTopologyTreeMutationVariables,
+  APITypes.CreateTopologyTreeMutation
+>;
+export const updateTopologyTree = /* GraphQL */ `mutation UpdateTopologyTree(
+  $input: UpdateTopologyTreeInput!
+  $condition: ModelTopologyTreeConditionInput
+) {
+  updateTopologyTree(input: $input, condition: $condition) {
+    id
+    topology {
+      id
+      name
+      string_code
+      number_code
+      status
+      polygon
+      createdAt
+      updatedAt
+      topologyTopologiesId
+      __typename
+    }
+    tree {
+      id
+      name
+      are_audios_processed
+      status
+      createdAt
+      updatedAt
+      projectTreesId
+      templateTreesId
+      __typename
+    }
+    createdAt
+    updatedAt
+    treeTopologyTreesId
+    topologyTopologyTreesId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.UpdateTopologyTreeMutationVariables,
+  APITypes.UpdateTopologyTreeMutation
+>;
+export const deleteTopologyTree = /* GraphQL */ `mutation DeleteTopologyTree(
+  $input: DeleteTopologyTreeInput!
+  $condition: ModelTopologyTreeConditionInput
+) {
+  deleteTopologyTree(input: $input, condition: $condition) {
+    id
+    topology {
+      id
+      name
+      string_code
+      number_code
+      status
+      polygon
+      createdAt
+      updatedAt
+      topologyTopologiesId
+      __typename
+    }
+    tree {
+      id
+      name
+      are_audios_processed
+      status
+      createdAt
+      updatedAt
+      projectTreesId
+      templateTreesId
+      __typename
+    }
+    createdAt
+    updatedAt
+    treeTopologyTreesId
+    topologyTopologyTreesId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.DeleteTopologyTreeMutationVariables,
+  APITypes.DeleteTopologyTreeMutation
 >;
