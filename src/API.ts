@@ -2017,8 +2017,50 @@ export type Project = {
   name: string,
   status: string,
   trees?: ModelTreeConnection | null,
+  topologies?: ModelTopologyConnection | null,
   createdAt: string,
   updatedAt: string,
+};
+
+export type ModelTopologyConnection = {
+  __typename: "ModelTopologyConnection",
+  items:  Array<Topology | null >,
+  nextToken?: string | null,
+};
+
+export type Topology = {
+  __typename: "Topology",
+  id: string,
+  name: string,
+  string_code?: string | null,
+  number_code?: string | null,
+  status?: string | null,
+  polygon?: string | null,
+  project?: Project | null,
+  topologyParent?: Topology | null,
+  topologies?: ModelTopologyConnection | null,
+  topologyTrees?: ModelTopologyTreeConnection | null,
+  createdAt: string,
+  updatedAt: string,
+  projectTopologiesId?: string | null,
+  topologyTopologiesId?: string | null,
+};
+
+export type ModelTopologyTreeConnection = {
+  __typename: "ModelTopologyTreeConnection",
+  items:  Array<TopologyTree | null >,
+  nextToken?: string | null,
+};
+
+export type TopologyTree = {
+  __typename: "TopologyTree",
+  id: string,
+  topology?: Topology | null,
+  tree?: Tree | null,
+  createdAt: string,
+  updatedAt: string,
+  treeTopologyTreesId?: string | null,
+  topologyTopologyTreesId?: string | null,
 };
 
 export type ModelRawDataConnection = {
@@ -2041,45 +2083,6 @@ export type RawData = {
   updatedAt: string,
   treeRawDataId?: string | null,
   featureRawDatasId?: string | null,
-};
-
-export type ModelTopologyTreeConnection = {
-  __typename: "ModelTopologyTreeConnection",
-  items:  Array<TopologyTree | null >,
-  nextToken?: string | null,
-};
-
-export type TopologyTree = {
-  __typename: "TopologyTree",
-  id: string,
-  topology?: Topology | null,
-  tree?: Tree | null,
-  createdAt: string,
-  updatedAt: string,
-  treeTopologyTreesId?: string | null,
-  topologyTopologyTreesId?: string | null,
-};
-
-export type Topology = {
-  __typename: "Topology",
-  id: string,
-  name: string,
-  string_code?: string | null,
-  number_code?: string | null,
-  status?: string | null,
-  polygon?: string | null,
-  topologyParent?: Topology | null,
-  topologies?: ModelTopologyConnection | null,
-  topologyTrees?: ModelTopologyTreeConnection | null,
-  createdAt: string,
-  updatedAt: string,
-  topologyTopologiesId?: string | null,
-};
-
-export type ModelTopologyConnection = {
-  __typename: "ModelTopologyConnection",
-  items:  Array<Topology | null >,
-  nextToken?: string | null,
 };
 
 export type UpdateUnitOfMeasureInput = {
@@ -2306,6 +2309,7 @@ export type CreateTopologyInput = {
   number_code?: string | null,
   status?: string | null,
   polygon?: string | null,
+  projectTopologiesId?: string | null,
   topologyTopologiesId?: string | null,
 };
 
@@ -2320,6 +2324,7 @@ export type ModelTopologyConditionInput = {
   not?: ModelTopologyConditionInput | null,
   createdAt?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
+  projectTopologiesId?: ModelIDInput | null,
   topologyTopologiesId?: ModelIDInput | null,
 };
 
@@ -2330,6 +2335,7 @@ export type UpdateTopologyInput = {
   number_code?: string | null,
   status?: string | null,
   polygon?: string | null,
+  projectTopologiesId?: string | null,
   topologyTopologiesId?: string | null,
 };
 
@@ -3031,6 +3037,7 @@ export type ModelTopologyFilterInput = {
   and?: Array< ModelTopologyFilterInput | null > | null,
   or?: Array< ModelTopologyFilterInput | null > | null,
   not?: ModelTopologyFilterInput | null,
+  projectTopologiesId?: ModelIDInput | null,
   topologyTopologiesId?: ModelIDInput | null,
 };
 
@@ -3560,6 +3567,7 @@ export type ModelSubscriptionProjectFilterInput = {
   and?: Array< ModelSubscriptionProjectFilterInput | null > | null,
   or?: Array< ModelSubscriptionProjectFilterInput | null > | null,
   projectTreesId?: ModelSubscriptionIDInput | null,
+  projectTopologiesId?: ModelSubscriptionIDInput | null,
 };
 
 export type ModelSubscriptionTemplateFilterInput = {
@@ -6642,6 +6650,10 @@ export type CreateProjectMutation = {
       __typename: "ModelTreeConnection",
       nextToken?: string | null,
     } | null,
+    topologies?:  {
+      __typename: "ModelTopologyConnection",
+      nextToken?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -6662,6 +6674,10 @@ export type UpdateProjectMutation = {
       __typename: "ModelTreeConnection",
       nextToken?: string | null,
     } | null,
+    topologies?:  {
+      __typename: "ModelTopologyConnection",
+      nextToken?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -6680,6 +6696,10 @@ export type DeleteProjectMutation = {
     status: string,
     trees?:  {
       __typename: "ModelTreeConnection",
+      nextToken?: string | null,
+    } | null,
+    topologies?:  {
+      __typename: "ModelTopologyConnection",
       nextToken?: string | null,
     } | null,
     createdAt: string,
@@ -7343,6 +7363,14 @@ export type CreateTopologyMutation = {
     number_code?: string | null,
     status?: string | null,
     polygon?: string | null,
+    project?:  {
+      __typename: "Project",
+      id: string,
+      name: string,
+      status: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
     topologyParent?:  {
       __typename: "Topology",
       id: string,
@@ -7353,6 +7381,7 @@ export type CreateTopologyMutation = {
       polygon?: string | null,
       createdAt: string,
       updatedAt: string,
+      projectTopologiesId?: string | null,
       topologyTopologiesId?: string | null,
     } | null,
     topologies?:  {
@@ -7365,6 +7394,7 @@ export type CreateTopologyMutation = {
     } | null,
     createdAt: string,
     updatedAt: string,
+    projectTopologiesId?: string | null,
     topologyTopologiesId?: string | null,
   } | null,
 };
@@ -7383,6 +7413,14 @@ export type UpdateTopologyMutation = {
     number_code?: string | null,
     status?: string | null,
     polygon?: string | null,
+    project?:  {
+      __typename: "Project",
+      id: string,
+      name: string,
+      status: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
     topologyParent?:  {
       __typename: "Topology",
       id: string,
@@ -7393,6 +7431,7 @@ export type UpdateTopologyMutation = {
       polygon?: string | null,
       createdAt: string,
       updatedAt: string,
+      projectTopologiesId?: string | null,
       topologyTopologiesId?: string | null,
     } | null,
     topologies?:  {
@@ -7405,6 +7444,7 @@ export type UpdateTopologyMutation = {
     } | null,
     createdAt: string,
     updatedAt: string,
+    projectTopologiesId?: string | null,
     topologyTopologiesId?: string | null,
   } | null,
 };
@@ -7423,6 +7463,14 @@ export type DeleteTopologyMutation = {
     number_code?: string | null,
     status?: string | null,
     polygon?: string | null,
+    project?:  {
+      __typename: "Project",
+      id: string,
+      name: string,
+      status: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
     topologyParent?:  {
       __typename: "Topology",
       id: string,
@@ -7433,6 +7481,7 @@ export type DeleteTopologyMutation = {
       polygon?: string | null,
       createdAt: string,
       updatedAt: string,
+      projectTopologiesId?: string | null,
       topologyTopologiesId?: string | null,
     } | null,
     topologies?:  {
@@ -7445,6 +7494,7 @@ export type DeleteTopologyMutation = {
     } | null,
     createdAt: string,
     updatedAt: string,
+    projectTopologiesId?: string | null,
     topologyTopologiesId?: string | null,
   } | null,
 };
@@ -7468,6 +7518,7 @@ export type CreateTopologyTreeMutation = {
       polygon?: string | null,
       createdAt: string,
       updatedAt: string,
+      projectTopologiesId?: string | null,
       topologyTopologiesId?: string | null,
     } | null,
     tree?:  {
@@ -7507,6 +7558,7 @@ export type UpdateTopologyTreeMutation = {
       polygon?: string | null,
       createdAt: string,
       updatedAt: string,
+      projectTopologiesId?: string | null,
       topologyTopologiesId?: string | null,
     } | null,
     tree?:  {
@@ -7546,6 +7598,7 @@ export type DeleteTopologyTreeMutation = {
       polygon?: string | null,
       createdAt: string,
       updatedAt: string,
+      projectTopologiesId?: string | null,
       topologyTopologiesId?: string | null,
     } | null,
     tree?:  {
@@ -9322,6 +9375,10 @@ export type GetProjectQuery = {
       __typename: "ModelTreeConnection",
       nextToken?: string | null,
     } | null,
+    topologies?:  {
+      __typename: "ModelTopologyConnection",
+      nextToken?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -9692,6 +9749,14 @@ export type GetTopologyQuery = {
     number_code?: string | null,
     status?: string | null,
     polygon?: string | null,
+    project?:  {
+      __typename: "Project",
+      id: string,
+      name: string,
+      status: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
     topologyParent?:  {
       __typename: "Topology",
       id: string,
@@ -9702,6 +9767,7 @@ export type GetTopologyQuery = {
       polygon?: string | null,
       createdAt: string,
       updatedAt: string,
+      projectTopologiesId?: string | null,
       topologyTopologiesId?: string | null,
     } | null,
     topologies?:  {
@@ -9714,6 +9780,7 @@ export type GetTopologyQuery = {
     } | null,
     createdAt: string,
     updatedAt: string,
+    projectTopologiesId?: string | null,
     topologyTopologiesId?: string | null,
   } | null,
 };
@@ -9737,6 +9804,7 @@ export type ListTopologiesQuery = {
       polygon?: string | null,
       createdAt: string,
       updatedAt: string,
+      projectTopologiesId?: string | null,
       topologyTopologiesId?: string | null,
     } | null >,
     nextToken?: string | null,
@@ -9761,6 +9829,7 @@ export type GetTopologyTreeQuery = {
       polygon?: string | null,
       createdAt: string,
       updatedAt: string,
+      projectTopologiesId?: string | null,
       topologyTopologiesId?: string | null,
     } | null,
     tree?:  {
@@ -13725,6 +13794,10 @@ export type OnCreateProjectSubscription = {
       __typename: "ModelTreeConnection",
       nextToken?: string | null,
     } | null,
+    topologies?:  {
+      __typename: "ModelTopologyConnection",
+      nextToken?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -13744,6 +13817,10 @@ export type OnUpdateProjectSubscription = {
       __typename: "ModelTreeConnection",
       nextToken?: string | null,
     } | null,
+    topologies?:  {
+      __typename: "ModelTopologyConnection",
+      nextToken?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -13761,6 +13838,10 @@ export type OnDeleteProjectSubscription = {
     status: string,
     trees?:  {
       __typename: "ModelTreeConnection",
+      nextToken?: string | null,
+    } | null,
+    topologies?:  {
+      __typename: "ModelTopologyConnection",
       nextToken?: string | null,
     } | null,
     createdAt: string,
@@ -14408,6 +14489,14 @@ export type OnCreateTopologySubscription = {
     number_code?: string | null,
     status?: string | null,
     polygon?: string | null,
+    project?:  {
+      __typename: "Project",
+      id: string,
+      name: string,
+      status: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
     topologyParent?:  {
       __typename: "Topology",
       id: string,
@@ -14418,6 +14507,7 @@ export type OnCreateTopologySubscription = {
       polygon?: string | null,
       createdAt: string,
       updatedAt: string,
+      projectTopologiesId?: string | null,
       topologyTopologiesId?: string | null,
     } | null,
     topologies?:  {
@@ -14430,6 +14520,7 @@ export type OnCreateTopologySubscription = {
     } | null,
     createdAt: string,
     updatedAt: string,
+    projectTopologiesId?: string | null,
     topologyTopologiesId?: string | null,
   } | null,
 };
@@ -14447,6 +14538,14 @@ export type OnUpdateTopologySubscription = {
     number_code?: string | null,
     status?: string | null,
     polygon?: string | null,
+    project?:  {
+      __typename: "Project",
+      id: string,
+      name: string,
+      status: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
     topologyParent?:  {
       __typename: "Topology",
       id: string,
@@ -14457,6 +14556,7 @@ export type OnUpdateTopologySubscription = {
       polygon?: string | null,
       createdAt: string,
       updatedAt: string,
+      projectTopologiesId?: string | null,
       topologyTopologiesId?: string | null,
     } | null,
     topologies?:  {
@@ -14469,6 +14569,7 @@ export type OnUpdateTopologySubscription = {
     } | null,
     createdAt: string,
     updatedAt: string,
+    projectTopologiesId?: string | null,
     topologyTopologiesId?: string | null,
   } | null,
 };
@@ -14486,6 +14587,14 @@ export type OnDeleteTopologySubscription = {
     number_code?: string | null,
     status?: string | null,
     polygon?: string | null,
+    project?:  {
+      __typename: "Project",
+      id: string,
+      name: string,
+      status: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
     topologyParent?:  {
       __typename: "Topology",
       id: string,
@@ -14496,6 +14605,7 @@ export type OnDeleteTopologySubscription = {
       polygon?: string | null,
       createdAt: string,
       updatedAt: string,
+      projectTopologiesId?: string | null,
       topologyTopologiesId?: string | null,
     } | null,
     topologies?:  {
@@ -14508,6 +14618,7 @@ export type OnDeleteTopologySubscription = {
     } | null,
     createdAt: string,
     updatedAt: string,
+    projectTopologiesId?: string | null,
     topologyTopologiesId?: string | null,
   } | null,
 };
@@ -14530,6 +14641,7 @@ export type OnCreateTopologyTreeSubscription = {
       polygon?: string | null,
       createdAt: string,
       updatedAt: string,
+      projectTopologiesId?: string | null,
       topologyTopologiesId?: string | null,
     } | null,
     tree?:  {
@@ -14568,6 +14680,7 @@ export type OnUpdateTopologyTreeSubscription = {
       polygon?: string | null,
       createdAt: string,
       updatedAt: string,
+      projectTopologiesId?: string | null,
       topologyTopologiesId?: string | null,
     } | null,
     tree?:  {
@@ -14606,6 +14719,7 @@ export type OnDeleteTopologyTreeSubscription = {
       polygon?: string | null,
       createdAt: string,
       updatedAt: string,
+      projectTopologiesId?: string | null,
       topologyTopologiesId?: string | null,
     } | null,
     tree?:  {

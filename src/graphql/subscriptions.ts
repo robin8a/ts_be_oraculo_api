@@ -2969,6 +2969,10 @@ export const onCreateProject = /* GraphQL */ `subscription OnCreateProject($filt
       nextToken
       __typename
     }
+    topologies {
+      nextToken
+      __typename
+    }
     createdAt
     updatedAt
     __typename
@@ -2987,6 +2991,10 @@ export const onUpdateProject = /* GraphQL */ `subscription OnUpdateProject($filt
       nextToken
       __typename
     }
+    topologies {
+      nextToken
+      __typename
+    }
     createdAt
     updatedAt
     __typename
@@ -3002,6 +3010,10 @@ export const onDeleteProject = /* GraphQL */ `subscription OnDeleteProject($filt
     name
     status
     trees {
+      nextToken
+      __typename
+    }
+    topologies {
       nextToken
       __typename
     }
@@ -3640,6 +3652,14 @@ export const onCreateTopology = /* GraphQL */ `subscription OnCreateTopology($fi
     number_code
     status
     polygon
+    project {
+      id
+      name
+      status
+      createdAt
+      updatedAt
+      __typename
+    }
     topologyParent {
       id
       name
@@ -3649,6 +3669,7 @@ export const onCreateTopology = /* GraphQL */ `subscription OnCreateTopology($fi
       polygon
       createdAt
       updatedAt
+      projectTopologiesId
       topologyTopologiesId
       __typename
     }
@@ -3662,6 +3683,7 @@ export const onCreateTopology = /* GraphQL */ `subscription OnCreateTopology($fi
     }
     createdAt
     updatedAt
+    projectTopologiesId
     topologyTopologiesId
     __typename
   }
@@ -3678,6 +3700,14 @@ export const onUpdateTopology = /* GraphQL */ `subscription OnUpdateTopology($fi
     number_code
     status
     polygon
+    project {
+      id
+      name
+      status
+      createdAt
+      updatedAt
+      __typename
+    }
     topologyParent {
       id
       name
@@ -3687,6 +3717,7 @@ export const onUpdateTopology = /* GraphQL */ `subscription OnUpdateTopology($fi
       polygon
       createdAt
       updatedAt
+      projectTopologiesId
       topologyTopologiesId
       __typename
     }
@@ -3700,6 +3731,7 @@ export const onUpdateTopology = /* GraphQL */ `subscription OnUpdateTopology($fi
     }
     createdAt
     updatedAt
+    projectTopologiesId
     topologyTopologiesId
     __typename
   }
@@ -3716,6 +3748,14 @@ export const onDeleteTopology = /* GraphQL */ `subscription OnDeleteTopology($fi
     number_code
     status
     polygon
+    project {
+      id
+      name
+      status
+      createdAt
+      updatedAt
+      __typename
+    }
     topologyParent {
       id
       name
@@ -3725,6 +3765,7 @@ export const onDeleteTopology = /* GraphQL */ `subscription OnDeleteTopology($fi
       polygon
       createdAt
       updatedAt
+      projectTopologiesId
       topologyTopologiesId
       __typename
     }
@@ -3738,6 +3779,7 @@ export const onDeleteTopology = /* GraphQL */ `subscription OnDeleteTopology($fi
     }
     createdAt
     updatedAt
+    projectTopologiesId
     topologyTopologiesId
     __typename
   }
@@ -3760,6 +3802,7 @@ export const onCreateTopologyTree = /* GraphQL */ `subscription OnCreateTopology
       polygon
       createdAt
       updatedAt
+      projectTopologiesId
       topologyTopologiesId
       __typename
     }
@@ -3799,6 +3842,7 @@ export const onUpdateTopologyTree = /* GraphQL */ `subscription OnUpdateTopology
       polygon
       createdAt
       updatedAt
+      projectTopologiesId
       topologyTopologiesId
       __typename
     }
@@ -3838,6 +3882,7 @@ export const onDeleteTopologyTree = /* GraphQL */ `subscription OnDeleteTopology
       polygon
       createdAt
       updatedAt
+      projectTopologiesId
       topologyTopologiesId
       __typename
     }

@@ -3089,6 +3089,10 @@ export const createProject = /* GraphQL */ `mutation CreateProject(
       nextToken
       __typename
     }
+    topologies {
+      nextToken
+      __typename
+    }
     createdAt
     updatedAt
     __typename
@@ -3110,6 +3114,10 @@ export const updateProject = /* GraphQL */ `mutation UpdateProject(
       nextToken
       __typename
     }
+    topologies {
+      nextToken
+      __typename
+    }
     createdAt
     updatedAt
     __typename
@@ -3128,6 +3136,10 @@ export const deleteProject = /* GraphQL */ `mutation DeleteProject(
     name
     status
     trees {
+      nextToken
+      __typename
+    }
+    topologies {
       nextToken
       __typename
     }
@@ -3808,6 +3820,14 @@ export const createTopology = /* GraphQL */ `mutation CreateTopology(
     number_code
     status
     polygon
+    project {
+      id
+      name
+      status
+      createdAt
+      updatedAt
+      __typename
+    }
     topologyParent {
       id
       name
@@ -3817,6 +3837,7 @@ export const createTopology = /* GraphQL */ `mutation CreateTopology(
       polygon
       createdAt
       updatedAt
+      projectTopologiesId
       topologyTopologiesId
       __typename
     }
@@ -3830,6 +3851,7 @@ export const createTopology = /* GraphQL */ `mutation CreateTopology(
     }
     createdAt
     updatedAt
+    projectTopologiesId
     topologyTopologiesId
     __typename
   }
@@ -3849,6 +3871,14 @@ export const updateTopology = /* GraphQL */ `mutation UpdateTopology(
     number_code
     status
     polygon
+    project {
+      id
+      name
+      status
+      createdAt
+      updatedAt
+      __typename
+    }
     topologyParent {
       id
       name
@@ -3858,6 +3888,7 @@ export const updateTopology = /* GraphQL */ `mutation UpdateTopology(
       polygon
       createdAt
       updatedAt
+      projectTopologiesId
       topologyTopologiesId
       __typename
     }
@@ -3871,6 +3902,7 @@ export const updateTopology = /* GraphQL */ `mutation UpdateTopology(
     }
     createdAt
     updatedAt
+    projectTopologiesId
     topologyTopologiesId
     __typename
   }
@@ -3890,6 +3922,14 @@ export const deleteTopology = /* GraphQL */ `mutation DeleteTopology(
     number_code
     status
     polygon
+    project {
+      id
+      name
+      status
+      createdAt
+      updatedAt
+      __typename
+    }
     topologyParent {
       id
       name
@@ -3899,6 +3939,7 @@ export const deleteTopology = /* GraphQL */ `mutation DeleteTopology(
       polygon
       createdAt
       updatedAt
+      projectTopologiesId
       topologyTopologiesId
       __typename
     }
@@ -3912,6 +3953,7 @@ export const deleteTopology = /* GraphQL */ `mutation DeleteTopology(
     }
     createdAt
     updatedAt
+    projectTopologiesId
     topologyTopologiesId
     __typename
   }
@@ -3935,6 +3977,7 @@ export const createTopologyTree = /* GraphQL */ `mutation CreateTopologyTree(
       polygon
       createdAt
       updatedAt
+      projectTopologiesId
       topologyTopologiesId
       __typename
     }
@@ -3975,6 +4018,7 @@ export const updateTopologyTree = /* GraphQL */ `mutation UpdateTopologyTree(
       polygon
       createdAt
       updatedAt
+      projectTopologiesId
       topologyTopologiesId
       __typename
     }
@@ -4015,6 +4059,7 @@ export const deleteTopologyTree = /* GraphQL */ `mutation DeleteTopologyTree(
       polygon
       createdAt
       updatedAt
+      projectTopologiesId
       topologyTopologiesId
       __typename
     }

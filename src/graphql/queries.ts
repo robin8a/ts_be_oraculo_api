@@ -1789,6 +1789,10 @@ export const getProject = /* GraphQL */ `query GetProject($id: ID!) {
       nextToken
       __typename
     }
+    topologies {
+      nextToken
+      __typename
+    }
     createdAt
     updatedAt
     __typename
@@ -2153,6 +2157,14 @@ export const getTopology = /* GraphQL */ `query GetTopology($id: ID!) {
     number_code
     status
     polygon
+    project {
+      id
+      name
+      status
+      createdAt
+      updatedAt
+      __typename
+    }
     topologyParent {
       id
       name
@@ -2162,6 +2174,7 @@ export const getTopology = /* GraphQL */ `query GetTopology($id: ID!) {
       polygon
       createdAt
       updatedAt
+      projectTopologiesId
       topologyTopologiesId
       __typename
     }
@@ -2175,6 +2188,7 @@ export const getTopology = /* GraphQL */ `query GetTopology($id: ID!) {
     }
     createdAt
     updatedAt
+    projectTopologiesId
     topologyTopologiesId
     __typename
   }
@@ -2198,6 +2212,7 @@ export const listTopologies = /* GraphQL */ `query ListTopologies(
       polygon
       createdAt
       updatedAt
+      projectTopologiesId
       topologyTopologiesId
       __typename
     }
@@ -2221,6 +2236,7 @@ export const getTopologyTree = /* GraphQL */ `query GetTopologyTree($id: ID!) {
       polygon
       createdAt
       updatedAt
+      projectTopologiesId
       topologyTopologiesId
       __typename
     }
