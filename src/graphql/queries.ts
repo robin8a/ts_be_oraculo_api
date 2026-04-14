@@ -8,9 +8,72 @@ type GeneratedQuery<InputType, OutputType> = string & {
   __generatedQueryOutput: OutputType;
 };
 
+export const getSatelliteTopology = /* GraphQL */ `query GetSatelliteTopology($id: ID!) {
+  getSatelliteTopology(id: $id) {
+    id
+    type
+    name
+    description
+    satelliteTopologyParent {
+      id
+      type
+      name
+      description
+      createdAt
+      updatedAt
+      satelliteTopologySatelliteTopologiesId
+      __typename
+    }
+    satelliteTopologies {
+      nextToken
+      __typename
+    }
+    modelAIs {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    satelliteTopologySatelliteTopologiesId
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.GetSatelliteTopologyQueryVariables,
+  APITypes.GetSatelliteTopologyQuery
+>;
+export const listSatelliteTopologies = /* GraphQL */ `query ListSatelliteTopologies(
+  $filter: ModelSatelliteTopologyFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listSatelliteTopologies(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      type
+      name
+      description
+      createdAt
+      updatedAt
+      satelliteTopologySatelliteTopologiesId
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.ListSatelliteTopologiesQueryVariables,
+  APITypes.ListSatelliteTopologiesQuery
+>;
 export const getModelAI = /* GraphQL */ `query GetModelAI($id: ID!) {
   getModelAI(id: $id) {
     id
+    group
     name
     description
     document_link
@@ -21,6 +84,7 @@ export const getModelAI = /* GraphQL */ `query GetModelAI($id: ID!) {
     cost_tokens
     modelAIParent {
       id
+      group
       name
       description
       document_link
@@ -31,6 +95,7 @@ export const getModelAI = /* GraphQL */ `query GetModelAI($id: ID!) {
       cost_tokens
       createdAt
       updatedAt
+      satelliteTopologyModelAIsId
       modelAIModelAIsId
       __typename
     }
@@ -42,8 +107,19 @@ export const getModelAI = /* GraphQL */ `query GetModelAI($id: ID!) {
       nextToken
       __typename
     }
+    satelliteTopology {
+      id
+      type
+      name
+      description
+      createdAt
+      updatedAt
+      satelliteTopologySatelliteTopologiesId
+      __typename
+    }
     createdAt
     updatedAt
+    satelliteTopologyModelAIsId
     modelAIModelAIsId
     __typename
   }
@@ -60,6 +136,7 @@ export const listModelAIS = /* GraphQL */ `query ListModelAIS(
   listModelAIS(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
+      group
       name
       description
       document_link
@@ -70,6 +147,7 @@ export const listModelAIS = /* GraphQL */ `query ListModelAIS(
       cost_tokens
       createdAt
       updatedAt
+      satelliteTopologyModelAIsId
       modelAIModelAIsId
       __typename
     }
@@ -93,6 +171,7 @@ export const getCalculation = /* GraphQL */ `query GetCalculation($id: ID!) {
     is_to_block_chain
     modelAI {
       id
+      group
       name
       description
       document_link
@@ -103,6 +182,7 @@ export const getCalculation = /* GraphQL */ `query GetCalculation($id: ID!) {
       cost_tokens
       createdAt
       updatedAt
+      satelliteTopologyModelAIsId
       modelAIModelAIsId
       __typename
     }

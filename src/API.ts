@@ -2,34 +2,24 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateModelAIInput = {
+export type CreateSatelliteTopologyInput = {
   id?: string | null,
+  type: string,
   name: string,
   description: string,
-  document_link: string,
-  api_link: string,
-  version: string,
-  is_approved: boolean,
-  tokens_cost: number,
-  cost_tokens: number,
-  modelAIModelAIsId?: string | null,
+  satelliteTopologySatelliteTopologiesId?: string | null,
 };
 
-export type ModelModelAIConditionInput = {
+export type ModelSatelliteTopologyConditionInput = {
+  type?: ModelStringInput | null,
   name?: ModelStringInput | null,
   description?: ModelStringInput | null,
-  document_link?: ModelStringInput | null,
-  api_link?: ModelStringInput | null,
-  version?: ModelStringInput | null,
-  is_approved?: ModelBooleanInput | null,
-  tokens_cost?: ModelIntInput | null,
-  cost_tokens?: ModelIntInput | null,
-  and?: Array< ModelModelAIConditionInput | null > | null,
-  or?: Array< ModelModelAIConditionInput | null > | null,
-  not?: ModelModelAIConditionInput | null,
+  and?: Array< ModelSatelliteTopologyConditionInput | null > | null,
+  or?: Array< ModelSatelliteTopologyConditionInput | null > | null,
+  not?: ModelSatelliteTopologyConditionInput | null,
   createdAt?: ModelStringInput | null,
   updatedAt?: ModelStringInput | null,
-  modelAIModelAIsId?: ModelIDInput | null,
+  satelliteTopologySatelliteTopologiesId?: ModelIDInput | null,
 };
 
 export type ModelStringInput = {
@@ -72,25 +62,6 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
-export type ModelBooleanInput = {
-  ne?: boolean | null,
-  eq?: boolean | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
-};
-
-export type ModelIntInput = {
-  ne?: number | null,
-  eq?: number | null,
-  le?: number | null,
-  lt?: number | null,
-  ge?: number | null,
-  gt?: number | null,
-  between?: Array< number | null > | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
-};
-
 export type ModelIDInput = {
   ne?: string | null,
   eq?: string | null,
@@ -107,9 +78,36 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
+export type SatelliteTopology = {
+  __typename: "SatelliteTopology",
+  id: string,
+  type: string,
+  name: string,
+  description: string,
+  satelliteTopologyParent?: SatelliteTopology | null,
+  satelliteTopologies?: ModelSatelliteTopologyConnection | null,
+  modelAIs?: ModelModelAIConnection | null,
+  createdAt: string,
+  updatedAt: string,
+  satelliteTopologySatelliteTopologiesId?: string | null,
+};
+
+export type ModelSatelliteTopologyConnection = {
+  __typename: "ModelSatelliteTopologyConnection",
+  items:  Array<SatelliteTopology | null >,
+  nextToken?: string | null,
+};
+
+export type ModelModelAIConnection = {
+  __typename: "ModelModelAIConnection",
+  items:  Array<ModelAI | null >,
+  nextToken?: string | null,
+};
+
 export type ModelAI = {
   __typename: "ModelAI",
   id: string,
+  group?: string | null,
   name: string,
   description: string,
   document_link: string,
@@ -121,15 +119,11 @@ export type ModelAI = {
   modelAIParent?: ModelAI | null,
   modelAIs?: ModelModelAIConnection | null,
   calculations?: ModelCalculationConnection | null,
+  satelliteTopology?: SatelliteTopology | null,
   createdAt: string,
   updatedAt: string,
+  satelliteTopologyModelAIsId?: string | null,
   modelAIModelAIsId?: string | null,
-};
-
-export type ModelModelAIConnection = {
-  __typename: "ModelModelAIConnection",
-  items:  Array<ModelAI | null >,
-  nextToken?: string | null,
 };
 
 export type ModelCalculationConnection = {
@@ -193,8 +187,74 @@ export type ModelPackage = {
   updatedAt: string,
 };
 
+export type UpdateSatelliteTopologyInput = {
+  id: string,
+  type?: string | null,
+  name?: string | null,
+  description?: string | null,
+  satelliteTopologySatelliteTopologiesId?: string | null,
+};
+
+export type DeleteSatelliteTopologyInput = {
+  id: string,
+};
+
+export type CreateModelAIInput = {
+  id?: string | null,
+  group?: string | null,
+  name: string,
+  description: string,
+  document_link: string,
+  api_link: string,
+  version: string,
+  is_approved: boolean,
+  tokens_cost: number,
+  cost_tokens: number,
+  satelliteTopologyModelAIsId?: string | null,
+  modelAIModelAIsId?: string | null,
+};
+
+export type ModelModelAIConditionInput = {
+  group?: ModelStringInput | null,
+  name?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  document_link?: ModelStringInput | null,
+  api_link?: ModelStringInput | null,
+  version?: ModelStringInput | null,
+  is_approved?: ModelBooleanInput | null,
+  tokens_cost?: ModelIntInput | null,
+  cost_tokens?: ModelIntInput | null,
+  and?: Array< ModelModelAIConditionInput | null > | null,
+  or?: Array< ModelModelAIConditionInput | null > | null,
+  not?: ModelModelAIConditionInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  satelliteTopologyModelAIsId?: ModelIDInput | null,
+  modelAIModelAIsId?: ModelIDInput | null,
+};
+
+export type ModelBooleanInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+};
+
+export type ModelIntInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+};
+
 export type UpdateModelAIInput = {
   id: string,
+  group?: string | null,
   name?: string | null,
   description?: string | null,
   document_link?: string | null,
@@ -203,6 +263,7 @@ export type UpdateModelAIInput = {
   is_approved?: boolean | null,
   tokens_cost?: number | null,
   cost_tokens?: number | null,
+  satelliteTopologyModelAIsId?: string | null,
   modelAIModelAIsId?: string | null,
 };
 
@@ -2369,8 +2430,22 @@ export type DeleteTopologyTreeInput = {
   id: string,
 };
 
+export type ModelSatelliteTopologyFilterInput = {
+  id?: ModelIDInput | null,
+  type?: ModelStringInput | null,
+  name?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  createdAt?: ModelStringInput | null,
+  updatedAt?: ModelStringInput | null,
+  and?: Array< ModelSatelliteTopologyFilterInput | null > | null,
+  or?: Array< ModelSatelliteTopologyFilterInput | null > | null,
+  not?: ModelSatelliteTopologyFilterInput | null,
+  satelliteTopologySatelliteTopologiesId?: ModelIDInput | null,
+};
+
 export type ModelModelAIFilterInput = {
   id?: ModelIDInput | null,
+  group?: ModelStringInput | null,
   name?: ModelStringInput | null,
   description?: ModelStringInput | null,
   document_link?: ModelStringInput | null,
@@ -2384,6 +2459,7 @@ export type ModelModelAIFilterInput = {
   and?: Array< ModelModelAIFilterInput | null > | null,
   or?: Array< ModelModelAIFilterInput | null > | null,
   not?: ModelModelAIFilterInput | null,
+  satelliteTopologyModelAIsId?: ModelIDInput | null,
   modelAIModelAIsId?: ModelIDInput | null,
 };
 
@@ -3058,22 +3134,17 @@ export enum ModelSortDirection {
 }
 
 
-export type ModelSubscriptionModelAIFilterInput = {
+export type ModelSubscriptionSatelliteTopologyFilterInput = {
   id?: ModelSubscriptionIDInput | null,
+  type?: ModelSubscriptionStringInput | null,
   name?: ModelSubscriptionStringInput | null,
   description?: ModelSubscriptionStringInput | null,
-  document_link?: ModelSubscriptionStringInput | null,
-  api_link?: ModelSubscriptionStringInput | null,
-  version?: ModelSubscriptionStringInput | null,
-  is_approved?: ModelSubscriptionBooleanInput | null,
-  tokens_cost?: ModelSubscriptionIntInput | null,
-  cost_tokens?: ModelSubscriptionIntInput | null,
   createdAt?: ModelSubscriptionStringInput | null,
   updatedAt?: ModelSubscriptionStringInput | null,
-  and?: Array< ModelSubscriptionModelAIFilterInput | null > | null,
-  or?: Array< ModelSubscriptionModelAIFilterInput | null > | null,
-  modelAIModelAIsId?: ModelSubscriptionIDInput | null,
-  modelAICalculationsId?: ModelSubscriptionIDInput | null,
+  and?: Array< ModelSubscriptionSatelliteTopologyFilterInput | null > | null,
+  or?: Array< ModelSubscriptionSatelliteTopologyFilterInput | null > | null,
+  satelliteTopologySatelliteTopologiesId?: ModelSubscriptionIDInput | null,
+  satelliteTopologyModelAIsId?: ModelSubscriptionIDInput | null,
 };
 
 export type ModelSubscriptionIDInput = {
@@ -3104,6 +3175,25 @@ export type ModelSubscriptionStringInput = {
   beginsWith?: string | null,
   in?: Array< string | null > | null,
   notIn?: Array< string | null > | null,
+};
+
+export type ModelSubscriptionModelAIFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  group?: ModelSubscriptionStringInput | null,
+  name?: ModelSubscriptionStringInput | null,
+  description?: ModelSubscriptionStringInput | null,
+  document_link?: ModelSubscriptionStringInput | null,
+  api_link?: ModelSubscriptionStringInput | null,
+  version?: ModelSubscriptionStringInput | null,
+  is_approved?: ModelSubscriptionBooleanInput | null,
+  tokens_cost?: ModelSubscriptionIntInput | null,
+  cost_tokens?: ModelSubscriptionIntInput | null,
+  createdAt?: ModelSubscriptionStringInput | null,
+  updatedAt?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionModelAIFilterInput | null > | null,
+  or?: Array< ModelSubscriptionModelAIFilterInput | null > | null,
+  modelAIModelAIsId?: ModelSubscriptionIDInput | null,
+  modelAICalculationsId?: ModelSubscriptionIDInput | null,
 };
 
 export type ModelSubscriptionBooleanInput = {
@@ -3659,6 +3749,114 @@ export type ModelSubscriptionTopologyTreeFilterInput = {
   or?: Array< ModelSubscriptionTopologyTreeFilterInput | null > | null,
 };
 
+export type CreateSatelliteTopologyMutationVariables = {
+  input: CreateSatelliteTopologyInput,
+  condition?: ModelSatelliteTopologyConditionInput | null,
+};
+
+export type CreateSatelliteTopologyMutation = {
+  createSatelliteTopology?:  {
+    __typename: "SatelliteTopology",
+    id: string,
+    type: string,
+    name: string,
+    description: string,
+    satelliteTopologyParent?:  {
+      __typename: "SatelliteTopology",
+      id: string,
+      type: string,
+      name: string,
+      description: string,
+      createdAt: string,
+      updatedAt: string,
+      satelliteTopologySatelliteTopologiesId?: string | null,
+    } | null,
+    satelliteTopologies?:  {
+      __typename: "ModelSatelliteTopologyConnection",
+      nextToken?: string | null,
+    } | null,
+    modelAIs?:  {
+      __typename: "ModelModelAIConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    satelliteTopologySatelliteTopologiesId?: string | null,
+  } | null,
+};
+
+export type UpdateSatelliteTopologyMutationVariables = {
+  input: UpdateSatelliteTopologyInput,
+  condition?: ModelSatelliteTopologyConditionInput | null,
+};
+
+export type UpdateSatelliteTopologyMutation = {
+  updateSatelliteTopology?:  {
+    __typename: "SatelliteTopology",
+    id: string,
+    type: string,
+    name: string,
+    description: string,
+    satelliteTopologyParent?:  {
+      __typename: "SatelliteTopology",
+      id: string,
+      type: string,
+      name: string,
+      description: string,
+      createdAt: string,
+      updatedAt: string,
+      satelliteTopologySatelliteTopologiesId?: string | null,
+    } | null,
+    satelliteTopologies?:  {
+      __typename: "ModelSatelliteTopologyConnection",
+      nextToken?: string | null,
+    } | null,
+    modelAIs?:  {
+      __typename: "ModelModelAIConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    satelliteTopologySatelliteTopologiesId?: string | null,
+  } | null,
+};
+
+export type DeleteSatelliteTopologyMutationVariables = {
+  input: DeleteSatelliteTopologyInput,
+  condition?: ModelSatelliteTopologyConditionInput | null,
+};
+
+export type DeleteSatelliteTopologyMutation = {
+  deleteSatelliteTopology?:  {
+    __typename: "SatelliteTopology",
+    id: string,
+    type: string,
+    name: string,
+    description: string,
+    satelliteTopologyParent?:  {
+      __typename: "SatelliteTopology",
+      id: string,
+      type: string,
+      name: string,
+      description: string,
+      createdAt: string,
+      updatedAt: string,
+      satelliteTopologySatelliteTopologiesId?: string | null,
+    } | null,
+    satelliteTopologies?:  {
+      __typename: "ModelSatelliteTopologyConnection",
+      nextToken?: string | null,
+    } | null,
+    modelAIs?:  {
+      __typename: "ModelModelAIConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    satelliteTopologySatelliteTopologiesId?: string | null,
+  } | null,
+};
+
 export type CreateModelAIMutationVariables = {
   input: CreateModelAIInput,
   condition?: ModelModelAIConditionInput | null,
@@ -3668,6 +3866,7 @@ export type CreateModelAIMutation = {
   createModelAI?:  {
     __typename: "ModelAI",
     id: string,
+    group?: string | null,
     name: string,
     description: string,
     document_link: string,
@@ -3679,6 +3878,7 @@ export type CreateModelAIMutation = {
     modelAIParent?:  {
       __typename: "ModelAI",
       id: string,
+      group?: string | null,
       name: string,
       description: string,
       document_link: string,
@@ -3689,6 +3889,7 @@ export type CreateModelAIMutation = {
       cost_tokens: number,
       createdAt: string,
       updatedAt: string,
+      satelliteTopologyModelAIsId?: string | null,
       modelAIModelAIsId?: string | null,
     } | null,
     modelAIs?:  {
@@ -3699,8 +3900,19 @@ export type CreateModelAIMutation = {
       __typename: "ModelCalculationConnection",
       nextToken?: string | null,
     } | null,
+    satelliteTopology?:  {
+      __typename: "SatelliteTopology",
+      id: string,
+      type: string,
+      name: string,
+      description: string,
+      createdAt: string,
+      updatedAt: string,
+      satelliteTopologySatelliteTopologiesId?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
+    satelliteTopologyModelAIsId?: string | null,
     modelAIModelAIsId?: string | null,
   } | null,
 };
@@ -3714,6 +3926,7 @@ export type UpdateModelAIMutation = {
   updateModelAI?:  {
     __typename: "ModelAI",
     id: string,
+    group?: string | null,
     name: string,
     description: string,
     document_link: string,
@@ -3725,6 +3938,7 @@ export type UpdateModelAIMutation = {
     modelAIParent?:  {
       __typename: "ModelAI",
       id: string,
+      group?: string | null,
       name: string,
       description: string,
       document_link: string,
@@ -3735,6 +3949,7 @@ export type UpdateModelAIMutation = {
       cost_tokens: number,
       createdAt: string,
       updatedAt: string,
+      satelliteTopologyModelAIsId?: string | null,
       modelAIModelAIsId?: string | null,
     } | null,
     modelAIs?:  {
@@ -3745,8 +3960,19 @@ export type UpdateModelAIMutation = {
       __typename: "ModelCalculationConnection",
       nextToken?: string | null,
     } | null,
+    satelliteTopology?:  {
+      __typename: "SatelliteTopology",
+      id: string,
+      type: string,
+      name: string,
+      description: string,
+      createdAt: string,
+      updatedAt: string,
+      satelliteTopologySatelliteTopologiesId?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
+    satelliteTopologyModelAIsId?: string | null,
     modelAIModelAIsId?: string | null,
   } | null,
 };
@@ -3760,6 +3986,7 @@ export type DeleteModelAIMutation = {
   deleteModelAI?:  {
     __typename: "ModelAI",
     id: string,
+    group?: string | null,
     name: string,
     description: string,
     document_link: string,
@@ -3771,6 +3998,7 @@ export type DeleteModelAIMutation = {
     modelAIParent?:  {
       __typename: "ModelAI",
       id: string,
+      group?: string | null,
       name: string,
       description: string,
       document_link: string,
@@ -3781,6 +4009,7 @@ export type DeleteModelAIMutation = {
       cost_tokens: number,
       createdAt: string,
       updatedAt: string,
+      satelliteTopologyModelAIsId?: string | null,
       modelAIModelAIsId?: string | null,
     } | null,
     modelAIs?:  {
@@ -3791,8 +4020,19 @@ export type DeleteModelAIMutation = {
       __typename: "ModelCalculationConnection",
       nextToken?: string | null,
     } | null,
+    satelliteTopology?:  {
+      __typename: "SatelliteTopology",
+      id: string,
+      type: string,
+      name: string,
+      description: string,
+      createdAt: string,
+      updatedAt: string,
+      satelliteTopologySatelliteTopologiesId?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
+    satelliteTopologyModelAIsId?: string | null,
     modelAIModelAIsId?: string | null,
   } | null,
 };
@@ -3816,6 +4056,7 @@ export type CreateCalculationMutation = {
     modelAI?:  {
       __typename: "ModelAI",
       id: string,
+      group?: string | null,
       name: string,
       description: string,
       document_link: string,
@@ -3826,6 +4067,7 @@ export type CreateCalculationMutation = {
       cost_tokens: number,
       createdAt: string,
       updatedAt: string,
+      satelliteTopologyModelAIsId?: string | null,
       modelAIModelAIsId?: string | null,
     } | null,
     user?:  {
@@ -3862,6 +4104,7 @@ export type UpdateCalculationMutation = {
     modelAI?:  {
       __typename: "ModelAI",
       id: string,
+      group?: string | null,
       name: string,
       description: string,
       document_link: string,
@@ -3872,6 +4115,7 @@ export type UpdateCalculationMutation = {
       cost_tokens: number,
       createdAt: string,
       updatedAt: string,
+      satelliteTopologyModelAIsId?: string | null,
       modelAIModelAIsId?: string | null,
     } | null,
     user?:  {
@@ -3908,6 +4152,7 @@ export type DeleteCalculationMutation = {
     modelAI?:  {
       __typename: "ModelAI",
       id: string,
+      group?: string | null,
       name: string,
       description: string,
       document_link: string,
@@ -3918,6 +4163,7 @@ export type DeleteCalculationMutation = {
       cost_tokens: number,
       createdAt: string,
       updatedAt: string,
+      satelliteTopologyModelAIsId?: string | null,
       modelAIModelAIsId?: string | null,
     } | null,
     user?:  {
@@ -7619,6 +7865,64 @@ export type DeleteTopologyTreeMutation = {
   } | null,
 };
 
+export type GetSatelliteTopologyQueryVariables = {
+  id: string,
+};
+
+export type GetSatelliteTopologyQuery = {
+  getSatelliteTopology?:  {
+    __typename: "SatelliteTopology",
+    id: string,
+    type: string,
+    name: string,
+    description: string,
+    satelliteTopologyParent?:  {
+      __typename: "SatelliteTopology",
+      id: string,
+      type: string,
+      name: string,
+      description: string,
+      createdAt: string,
+      updatedAt: string,
+      satelliteTopologySatelliteTopologiesId?: string | null,
+    } | null,
+    satelliteTopologies?:  {
+      __typename: "ModelSatelliteTopologyConnection",
+      nextToken?: string | null,
+    } | null,
+    modelAIs?:  {
+      __typename: "ModelModelAIConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    satelliteTopologySatelliteTopologiesId?: string | null,
+  } | null,
+};
+
+export type ListSatelliteTopologiesQueryVariables = {
+  filter?: ModelSatelliteTopologyFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListSatelliteTopologiesQuery = {
+  listSatelliteTopologies?:  {
+    __typename: "ModelSatelliteTopologyConnection",
+    items:  Array< {
+      __typename: "SatelliteTopology",
+      id: string,
+      type: string,
+      name: string,
+      description: string,
+      createdAt: string,
+      updatedAt: string,
+      satelliteTopologySatelliteTopologiesId?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
 export type GetModelAIQueryVariables = {
   id: string,
 };
@@ -7627,6 +7931,7 @@ export type GetModelAIQuery = {
   getModelAI?:  {
     __typename: "ModelAI",
     id: string,
+    group?: string | null,
     name: string,
     description: string,
     document_link: string,
@@ -7638,6 +7943,7 @@ export type GetModelAIQuery = {
     modelAIParent?:  {
       __typename: "ModelAI",
       id: string,
+      group?: string | null,
       name: string,
       description: string,
       document_link: string,
@@ -7648,6 +7954,7 @@ export type GetModelAIQuery = {
       cost_tokens: number,
       createdAt: string,
       updatedAt: string,
+      satelliteTopologyModelAIsId?: string | null,
       modelAIModelAIsId?: string | null,
     } | null,
     modelAIs?:  {
@@ -7658,8 +7965,19 @@ export type GetModelAIQuery = {
       __typename: "ModelCalculationConnection",
       nextToken?: string | null,
     } | null,
+    satelliteTopology?:  {
+      __typename: "SatelliteTopology",
+      id: string,
+      type: string,
+      name: string,
+      description: string,
+      createdAt: string,
+      updatedAt: string,
+      satelliteTopologySatelliteTopologiesId?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
+    satelliteTopologyModelAIsId?: string | null,
     modelAIModelAIsId?: string | null,
   } | null,
 };
@@ -7676,6 +7994,7 @@ export type ListModelAISQuery = {
     items:  Array< {
       __typename: "ModelAI",
       id: string,
+      group?: string | null,
       name: string,
       description: string,
       document_link: string,
@@ -7686,6 +8005,7 @@ export type ListModelAISQuery = {
       cost_tokens: number,
       createdAt: string,
       updatedAt: string,
+      satelliteTopologyModelAIsId?: string | null,
       modelAIModelAIsId?: string | null,
     } | null >,
     nextToken?: string | null,
@@ -7710,6 +8030,7 @@ export type GetCalculationQuery = {
     modelAI?:  {
       __typename: "ModelAI",
       id: string,
+      group?: string | null,
       name: string,
       description: string,
       document_link: string,
@@ -7720,6 +8041,7 @@ export type GetCalculationQuery = {
       cost_tokens: number,
       createdAt: string,
       updatedAt: string,
+      satelliteTopologyModelAIsId?: string | null,
       modelAIModelAIsId?: string | null,
     } | null,
     user?:  {
@@ -10897,6 +11219,111 @@ export type FormulaHistorialsByFechaModificacionQuery = {
   } | null,
 };
 
+export type OnCreateSatelliteTopologySubscriptionVariables = {
+  filter?: ModelSubscriptionSatelliteTopologyFilterInput | null,
+};
+
+export type OnCreateSatelliteTopologySubscription = {
+  onCreateSatelliteTopology?:  {
+    __typename: "SatelliteTopology",
+    id: string,
+    type: string,
+    name: string,
+    description: string,
+    satelliteTopologyParent?:  {
+      __typename: "SatelliteTopology",
+      id: string,
+      type: string,
+      name: string,
+      description: string,
+      createdAt: string,
+      updatedAt: string,
+      satelliteTopologySatelliteTopologiesId?: string | null,
+    } | null,
+    satelliteTopologies?:  {
+      __typename: "ModelSatelliteTopologyConnection",
+      nextToken?: string | null,
+    } | null,
+    modelAIs?:  {
+      __typename: "ModelModelAIConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    satelliteTopologySatelliteTopologiesId?: string | null,
+  } | null,
+};
+
+export type OnUpdateSatelliteTopologySubscriptionVariables = {
+  filter?: ModelSubscriptionSatelliteTopologyFilterInput | null,
+};
+
+export type OnUpdateSatelliteTopologySubscription = {
+  onUpdateSatelliteTopology?:  {
+    __typename: "SatelliteTopology",
+    id: string,
+    type: string,
+    name: string,
+    description: string,
+    satelliteTopologyParent?:  {
+      __typename: "SatelliteTopology",
+      id: string,
+      type: string,
+      name: string,
+      description: string,
+      createdAt: string,
+      updatedAt: string,
+      satelliteTopologySatelliteTopologiesId?: string | null,
+    } | null,
+    satelliteTopologies?:  {
+      __typename: "ModelSatelliteTopologyConnection",
+      nextToken?: string | null,
+    } | null,
+    modelAIs?:  {
+      __typename: "ModelModelAIConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    satelliteTopologySatelliteTopologiesId?: string | null,
+  } | null,
+};
+
+export type OnDeleteSatelliteTopologySubscriptionVariables = {
+  filter?: ModelSubscriptionSatelliteTopologyFilterInput | null,
+};
+
+export type OnDeleteSatelliteTopologySubscription = {
+  onDeleteSatelliteTopology?:  {
+    __typename: "SatelliteTopology",
+    id: string,
+    type: string,
+    name: string,
+    description: string,
+    satelliteTopologyParent?:  {
+      __typename: "SatelliteTopology",
+      id: string,
+      type: string,
+      name: string,
+      description: string,
+      createdAt: string,
+      updatedAt: string,
+      satelliteTopologySatelliteTopologiesId?: string | null,
+    } | null,
+    satelliteTopologies?:  {
+      __typename: "ModelSatelliteTopologyConnection",
+      nextToken?: string | null,
+    } | null,
+    modelAIs?:  {
+      __typename: "ModelModelAIConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    satelliteTopologySatelliteTopologiesId?: string | null,
+  } | null,
+};
+
 export type OnCreateModelAISubscriptionVariables = {
   filter?: ModelSubscriptionModelAIFilterInput | null,
 };
@@ -10905,6 +11332,7 @@ export type OnCreateModelAISubscription = {
   onCreateModelAI?:  {
     __typename: "ModelAI",
     id: string,
+    group?: string | null,
     name: string,
     description: string,
     document_link: string,
@@ -10916,6 +11344,7 @@ export type OnCreateModelAISubscription = {
     modelAIParent?:  {
       __typename: "ModelAI",
       id: string,
+      group?: string | null,
       name: string,
       description: string,
       document_link: string,
@@ -10926,6 +11355,7 @@ export type OnCreateModelAISubscription = {
       cost_tokens: number,
       createdAt: string,
       updatedAt: string,
+      satelliteTopologyModelAIsId?: string | null,
       modelAIModelAIsId?: string | null,
     } | null,
     modelAIs?:  {
@@ -10936,8 +11366,19 @@ export type OnCreateModelAISubscription = {
       __typename: "ModelCalculationConnection",
       nextToken?: string | null,
     } | null,
+    satelliteTopology?:  {
+      __typename: "SatelliteTopology",
+      id: string,
+      type: string,
+      name: string,
+      description: string,
+      createdAt: string,
+      updatedAt: string,
+      satelliteTopologySatelliteTopologiesId?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
+    satelliteTopologyModelAIsId?: string | null,
     modelAIModelAIsId?: string | null,
   } | null,
 };
@@ -10950,6 +11391,7 @@ export type OnUpdateModelAISubscription = {
   onUpdateModelAI?:  {
     __typename: "ModelAI",
     id: string,
+    group?: string | null,
     name: string,
     description: string,
     document_link: string,
@@ -10961,6 +11403,7 @@ export type OnUpdateModelAISubscription = {
     modelAIParent?:  {
       __typename: "ModelAI",
       id: string,
+      group?: string | null,
       name: string,
       description: string,
       document_link: string,
@@ -10971,6 +11414,7 @@ export type OnUpdateModelAISubscription = {
       cost_tokens: number,
       createdAt: string,
       updatedAt: string,
+      satelliteTopologyModelAIsId?: string | null,
       modelAIModelAIsId?: string | null,
     } | null,
     modelAIs?:  {
@@ -10981,8 +11425,19 @@ export type OnUpdateModelAISubscription = {
       __typename: "ModelCalculationConnection",
       nextToken?: string | null,
     } | null,
+    satelliteTopology?:  {
+      __typename: "SatelliteTopology",
+      id: string,
+      type: string,
+      name: string,
+      description: string,
+      createdAt: string,
+      updatedAt: string,
+      satelliteTopologySatelliteTopologiesId?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
+    satelliteTopologyModelAIsId?: string | null,
     modelAIModelAIsId?: string | null,
   } | null,
 };
@@ -10995,6 +11450,7 @@ export type OnDeleteModelAISubscription = {
   onDeleteModelAI?:  {
     __typename: "ModelAI",
     id: string,
+    group?: string | null,
     name: string,
     description: string,
     document_link: string,
@@ -11006,6 +11462,7 @@ export type OnDeleteModelAISubscription = {
     modelAIParent?:  {
       __typename: "ModelAI",
       id: string,
+      group?: string | null,
       name: string,
       description: string,
       document_link: string,
@@ -11016,6 +11473,7 @@ export type OnDeleteModelAISubscription = {
       cost_tokens: number,
       createdAt: string,
       updatedAt: string,
+      satelliteTopologyModelAIsId?: string | null,
       modelAIModelAIsId?: string | null,
     } | null,
     modelAIs?:  {
@@ -11026,8 +11484,19 @@ export type OnDeleteModelAISubscription = {
       __typename: "ModelCalculationConnection",
       nextToken?: string | null,
     } | null,
+    satelliteTopology?:  {
+      __typename: "SatelliteTopology",
+      id: string,
+      type: string,
+      name: string,
+      description: string,
+      createdAt: string,
+      updatedAt: string,
+      satelliteTopologySatelliteTopologiesId?: string | null,
+    } | null,
     createdAt: string,
     updatedAt: string,
+    satelliteTopologyModelAIsId?: string | null,
     modelAIModelAIsId?: string | null,
   } | null,
 };
@@ -11050,6 +11519,7 @@ export type OnCreateCalculationSubscription = {
     modelAI?:  {
       __typename: "ModelAI",
       id: string,
+      group?: string | null,
       name: string,
       description: string,
       document_link: string,
@@ -11060,6 +11530,7 @@ export type OnCreateCalculationSubscription = {
       cost_tokens: number,
       createdAt: string,
       updatedAt: string,
+      satelliteTopologyModelAIsId?: string | null,
       modelAIModelAIsId?: string | null,
     } | null,
     user?:  {
@@ -11095,6 +11566,7 @@ export type OnUpdateCalculationSubscription = {
     modelAI?:  {
       __typename: "ModelAI",
       id: string,
+      group?: string | null,
       name: string,
       description: string,
       document_link: string,
@@ -11105,6 +11577,7 @@ export type OnUpdateCalculationSubscription = {
       cost_tokens: number,
       createdAt: string,
       updatedAt: string,
+      satelliteTopologyModelAIsId?: string | null,
       modelAIModelAIsId?: string | null,
     } | null,
     user?:  {
@@ -11140,6 +11613,7 @@ export type OnDeleteCalculationSubscription = {
     modelAI?:  {
       __typename: "ModelAI",
       id: string,
+      group?: string | null,
       name: string,
       description: string,
       document_link: string,
@@ -11150,6 +11624,7 @@ export type OnDeleteCalculationSubscription = {
       cost_tokens: number,
       createdAt: string,
       updatedAt: string,
+      satelliteTopologyModelAIsId?: string | null,
       modelAIModelAIsId?: string | null,
     } | null,
     user?:  {

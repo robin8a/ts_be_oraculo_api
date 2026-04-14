@@ -8,12 +8,124 @@ type GeneratedMutation<InputType, OutputType> = string & {
   __generatedMutationOutput: OutputType;
 };
 
+export const createSatelliteTopology = /* GraphQL */ `mutation CreateSatelliteTopology(
+  $input: CreateSatelliteTopologyInput!
+  $condition: ModelSatelliteTopologyConditionInput
+) {
+  createSatelliteTopology(input: $input, condition: $condition) {
+    id
+    type
+    name
+    description
+    satelliteTopologyParent {
+      id
+      type
+      name
+      description
+      createdAt
+      updatedAt
+      satelliteTopologySatelliteTopologiesId
+      __typename
+    }
+    satelliteTopologies {
+      nextToken
+      __typename
+    }
+    modelAIs {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    satelliteTopologySatelliteTopologiesId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.CreateSatelliteTopologyMutationVariables,
+  APITypes.CreateSatelliteTopologyMutation
+>;
+export const updateSatelliteTopology = /* GraphQL */ `mutation UpdateSatelliteTopology(
+  $input: UpdateSatelliteTopologyInput!
+  $condition: ModelSatelliteTopologyConditionInput
+) {
+  updateSatelliteTopology(input: $input, condition: $condition) {
+    id
+    type
+    name
+    description
+    satelliteTopologyParent {
+      id
+      type
+      name
+      description
+      createdAt
+      updatedAt
+      satelliteTopologySatelliteTopologiesId
+      __typename
+    }
+    satelliteTopologies {
+      nextToken
+      __typename
+    }
+    modelAIs {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    satelliteTopologySatelliteTopologiesId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.UpdateSatelliteTopologyMutationVariables,
+  APITypes.UpdateSatelliteTopologyMutation
+>;
+export const deleteSatelliteTopology = /* GraphQL */ `mutation DeleteSatelliteTopology(
+  $input: DeleteSatelliteTopologyInput!
+  $condition: ModelSatelliteTopologyConditionInput
+) {
+  deleteSatelliteTopology(input: $input, condition: $condition) {
+    id
+    type
+    name
+    description
+    satelliteTopologyParent {
+      id
+      type
+      name
+      description
+      createdAt
+      updatedAt
+      satelliteTopologySatelliteTopologiesId
+      __typename
+    }
+    satelliteTopologies {
+      nextToken
+      __typename
+    }
+    modelAIs {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    satelliteTopologySatelliteTopologiesId
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.DeleteSatelliteTopologyMutationVariables,
+  APITypes.DeleteSatelliteTopologyMutation
+>;
 export const createModelAI = /* GraphQL */ `mutation CreateModelAI(
   $input: CreateModelAIInput!
   $condition: ModelModelAIConditionInput
 ) {
   createModelAI(input: $input, condition: $condition) {
     id
+    group
     name
     description
     document_link
@@ -24,6 +136,7 @@ export const createModelAI = /* GraphQL */ `mutation CreateModelAI(
     cost_tokens
     modelAIParent {
       id
+      group
       name
       description
       document_link
@@ -34,6 +147,7 @@ export const createModelAI = /* GraphQL */ `mutation CreateModelAI(
       cost_tokens
       createdAt
       updatedAt
+      satelliteTopologyModelAIsId
       modelAIModelAIsId
       __typename
     }
@@ -45,8 +159,19 @@ export const createModelAI = /* GraphQL */ `mutation CreateModelAI(
       nextToken
       __typename
     }
+    satelliteTopology {
+      id
+      type
+      name
+      description
+      createdAt
+      updatedAt
+      satelliteTopologySatelliteTopologiesId
+      __typename
+    }
     createdAt
     updatedAt
+    satelliteTopologyModelAIsId
     modelAIModelAIsId
     __typename
   }
@@ -61,6 +186,7 @@ export const updateModelAI = /* GraphQL */ `mutation UpdateModelAI(
 ) {
   updateModelAI(input: $input, condition: $condition) {
     id
+    group
     name
     description
     document_link
@@ -71,6 +197,7 @@ export const updateModelAI = /* GraphQL */ `mutation UpdateModelAI(
     cost_tokens
     modelAIParent {
       id
+      group
       name
       description
       document_link
@@ -81,6 +208,7 @@ export const updateModelAI = /* GraphQL */ `mutation UpdateModelAI(
       cost_tokens
       createdAt
       updatedAt
+      satelliteTopologyModelAIsId
       modelAIModelAIsId
       __typename
     }
@@ -92,8 +220,19 @@ export const updateModelAI = /* GraphQL */ `mutation UpdateModelAI(
       nextToken
       __typename
     }
+    satelliteTopology {
+      id
+      type
+      name
+      description
+      createdAt
+      updatedAt
+      satelliteTopologySatelliteTopologiesId
+      __typename
+    }
     createdAt
     updatedAt
+    satelliteTopologyModelAIsId
     modelAIModelAIsId
     __typename
   }
@@ -108,6 +247,7 @@ export const deleteModelAI = /* GraphQL */ `mutation DeleteModelAI(
 ) {
   deleteModelAI(input: $input, condition: $condition) {
     id
+    group
     name
     description
     document_link
@@ -118,6 +258,7 @@ export const deleteModelAI = /* GraphQL */ `mutation DeleteModelAI(
     cost_tokens
     modelAIParent {
       id
+      group
       name
       description
       document_link
@@ -128,6 +269,7 @@ export const deleteModelAI = /* GraphQL */ `mutation DeleteModelAI(
       cost_tokens
       createdAt
       updatedAt
+      satelliteTopologyModelAIsId
       modelAIModelAIsId
       __typename
     }
@@ -139,8 +281,19 @@ export const deleteModelAI = /* GraphQL */ `mutation DeleteModelAI(
       nextToken
       __typename
     }
+    satelliteTopology {
+      id
+      type
+      name
+      description
+      createdAt
+      updatedAt
+      satelliteTopologySatelliteTopologiesId
+      __typename
+    }
     createdAt
     updatedAt
+    satelliteTopologyModelAIsId
     modelAIModelAIsId
     __typename
   }
@@ -164,6 +317,7 @@ export const createCalculation = /* GraphQL */ `mutation CreateCalculation(
     is_to_block_chain
     modelAI {
       id
+      group
       name
       description
       document_link
@@ -174,6 +328,7 @@ export const createCalculation = /* GraphQL */ `mutation CreateCalculation(
       cost_tokens
       createdAt
       updatedAt
+      satelliteTopologyModelAIsId
       modelAIModelAIsId
       __typename
     }
@@ -211,6 +366,7 @@ export const updateCalculation = /* GraphQL */ `mutation UpdateCalculation(
     is_to_block_chain
     modelAI {
       id
+      group
       name
       description
       document_link
@@ -221,6 +377,7 @@ export const updateCalculation = /* GraphQL */ `mutation UpdateCalculation(
       cost_tokens
       createdAt
       updatedAt
+      satelliteTopologyModelAIsId
       modelAIModelAIsId
       __typename
     }
@@ -258,6 +415,7 @@ export const deleteCalculation = /* GraphQL */ `mutation DeleteCalculation(
     is_to_block_chain
     modelAI {
       id
+      group
       name
       description
       document_link
@@ -268,6 +426,7 @@ export const deleteCalculation = /* GraphQL */ `mutation DeleteCalculation(
       cost_tokens
       createdAt
       updatedAt
+      satelliteTopologyModelAIsId
       modelAIModelAIsId
       __typename
     }
