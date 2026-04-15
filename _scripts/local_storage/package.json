@@ -1,0 +1,14 @@
+{
+  "name": "tsbeoraculoapi-local-scripts",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "backfill:datastore": "node ./backfill_datastore_metadata.mjs"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.888.0",
+    "@aws-sdk/client-lambda": "^3.888.0",
+    "@aws-sdk/lib-dynamodb": "^3.888.0"
+  }
+}
+
