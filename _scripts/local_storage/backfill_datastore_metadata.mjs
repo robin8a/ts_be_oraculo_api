@@ -326,8 +326,8 @@ async function main() {
           TableName: tableName,
           Limit: args.pageSize,
           ExclusiveStartKey,
-          ProjectionExpression: "id, #v, #lca, _deleted",
-          ExpressionAttributeNames: { "#v": "_version", "#lca": "_lastChangedAt" },
+          ProjectionExpression: "id, #v, #lca, #del",
+          ExpressionAttributeNames: { "#v": "_version", "#lca": "_lastChangedAt", "#del": "_deleted" },
         })
       );
 
