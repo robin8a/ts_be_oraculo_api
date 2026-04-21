@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "seed:satellite-topology": "node _INCEPTION/_SEED/seedSatelliteTopology.js",
+    "seed:satellite-topology:dry": "node _INCEPTION/_SEED/seedSatelliteTopology.js --dry-run"
   },
   "devDependencies": {
     "ts-node": "^10.9.2",

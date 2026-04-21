@@ -11,7 +11,7 @@ type SatelliteTopology @model {
   satelliteTopologyParent: SatelliteTopology @belongsTo # Self-referencing
   satelliteTopologies: [SatelliteTopology] @hasMany
 
-  modelAIs: [ModelAI] @hasMany
+  satelliteTopologyModelAIs: [SatelliteTopologyModelAI] @hasMany
 }
 
 type ModelAI @model {
@@ -19,16 +19,23 @@ type ModelAI @model {
   group: String
   name: String!
   description: String!
-  document_link: String!
-  api_link: String!
   version: String!
+  document_link: String!
+  is_latest: Boolean!
+  api_link: String!
   is_approved: Boolean!
   tokens_cost: Int!
   cost_tokens: Int!
   modelAIParent: ModelAI @belongsTo # Self-referencing
   modelAIs: [ModelAI] @hasMany
   calculations: [Calculation] @hasMany
+  satelliteTopologyModelAIs: [SatelliteTopologyModelAI] @hasMany
+}
+
+type SatelliteTopologyModelAI @model {
+  id: ID!
   satelliteTopology: SatelliteTopology @belongsTo
+  modelAI: ModelAI @belongsTo
 }
 
 type Calculation @model {

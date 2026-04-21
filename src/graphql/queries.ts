@@ -28,7 +28,7 @@ export const getSatelliteTopology = /* GraphQL */ `query GetSatelliteTopology($i
       nextToken
       __typename
     }
-    modelAIs {
+    satelliteTopologyModelAIs {
       nextToken
       __typename
     }
@@ -76,9 +76,10 @@ export const getModelAI = /* GraphQL */ `query GetModelAI($id: ID!) {
     group
     name
     description
-    document_link
-    api_link
     version
+    document_link
+    is_latest
+    api_link
     is_approved
     tokens_cost
     cost_tokens
@@ -87,15 +88,15 @@ export const getModelAI = /* GraphQL */ `query GetModelAI($id: ID!) {
       group
       name
       description
-      document_link
-      api_link
       version
+      document_link
+      is_latest
+      api_link
       is_approved
       tokens_cost
       cost_tokens
       createdAt
       updatedAt
-      satelliteTopologyModelAIsId
       modelAIModelAIsId
       __typename
     }
@@ -107,19 +108,12 @@ export const getModelAI = /* GraphQL */ `query GetModelAI($id: ID!) {
       nextToken
       __typename
     }
-    satelliteTopology {
-      id
-      type
-      name
-      description
-      createdAt
-      updatedAt
-      satelliteTopologySatelliteTopologiesId
+    satelliteTopologyModelAIs {
+      nextToken
       __typename
     }
     createdAt
     updatedAt
-    satelliteTopologyModelAIsId
     modelAIModelAIsId
     __typename
   }
@@ -139,15 +133,15 @@ export const listModelAIS = /* GraphQL */ `query ListModelAIS(
       group
       name
       description
-      document_link
-      api_link
       version
+      document_link
+      is_latest
+      api_link
       is_approved
       tokens_cost
       cost_tokens
       createdAt
       updatedAt
-      satelliteTopologyModelAIsId
       modelAIModelAIsId
       __typename
     }
@@ -158,6 +152,73 @@ export const listModelAIS = /* GraphQL */ `query ListModelAIS(
 ` as GeneratedQuery<
   APITypes.ListModelAISQueryVariables,
   APITypes.ListModelAISQuery
+>;
+export const getSatelliteTopologyModelAI = /* GraphQL */ `query GetSatelliteTopologyModelAI($id: ID!) {
+  getSatelliteTopologyModelAI(id: $id) {
+    id
+    satelliteTopology {
+      id
+      type
+      name
+      description
+      createdAt
+      updatedAt
+      satelliteTopologySatelliteTopologiesId
+      __typename
+    }
+    modelAI {
+      id
+      group
+      name
+      description
+      version
+      document_link
+      is_latest
+      api_link
+      is_approved
+      tokens_cost
+      cost_tokens
+      createdAt
+      updatedAt
+      modelAIModelAIsId
+      __typename
+    }
+    createdAt
+    updatedAt
+    satelliteTopologySatelliteTopologyModelAIsId
+    modelAISatelliteTopologyModelAIsId
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.GetSatelliteTopologyModelAIQueryVariables,
+  APITypes.GetSatelliteTopologyModelAIQuery
+>;
+export const listSatelliteTopologyModelAIS = /* GraphQL */ `query ListSatelliteTopologyModelAIS(
+  $filter: ModelSatelliteTopologyModelAIFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listSatelliteTopologyModelAIS(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      createdAt
+      updatedAt
+      satelliteTopologySatelliteTopologyModelAIsId
+      modelAISatelliteTopologyModelAIsId
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.ListSatelliteTopologyModelAISQueryVariables,
+  APITypes.ListSatelliteTopologyModelAISQuery
 >;
 export const getCalculation = /* GraphQL */ `query GetCalculation($id: ID!) {
   getCalculation(id: $id) {
@@ -174,15 +235,15 @@ export const getCalculation = /* GraphQL */ `query GetCalculation($id: ID!) {
       group
       name
       description
-      document_link
-      api_link
       version
+      document_link
+      is_latest
+      api_link
       is_approved
       tokens_cost
       cost_tokens
       createdAt
       updatedAt
-      satelliteTopologyModelAIsId
       modelAIModelAIsId
       __typename
     }

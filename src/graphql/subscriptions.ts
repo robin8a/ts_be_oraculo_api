@@ -30,7 +30,7 @@ export const onCreateSatelliteTopology = /* GraphQL */ `subscription OnCreateSat
       nextToken
       __typename
     }
-    modelAIs {
+    satelliteTopologyModelAIs {
       nextToken
       __typename
     }
@@ -66,7 +66,7 @@ export const onUpdateSatelliteTopology = /* GraphQL */ `subscription OnUpdateSat
       nextToken
       __typename
     }
-    modelAIs {
+    satelliteTopologyModelAIs {
       nextToken
       __typename
     }
@@ -102,7 +102,7 @@ export const onDeleteSatelliteTopology = /* GraphQL */ `subscription OnDeleteSat
       nextToken
       __typename
     }
-    modelAIs {
+    satelliteTopologyModelAIs {
       nextToken
       __typename
     }
@@ -122,9 +122,10 @@ export const onCreateModelAI = /* GraphQL */ `subscription OnCreateModelAI($filt
     group
     name
     description
-    document_link
-    api_link
     version
+    document_link
+    is_latest
+    api_link
     is_approved
     tokens_cost
     cost_tokens
@@ -133,15 +134,15 @@ export const onCreateModelAI = /* GraphQL */ `subscription OnCreateModelAI($filt
       group
       name
       description
-      document_link
-      api_link
       version
+      document_link
+      is_latest
+      api_link
       is_approved
       tokens_cost
       cost_tokens
       createdAt
       updatedAt
-      satelliteTopologyModelAIsId
       modelAIModelAIsId
       __typename
     }
@@ -153,19 +154,12 @@ export const onCreateModelAI = /* GraphQL */ `subscription OnCreateModelAI($filt
       nextToken
       __typename
     }
-    satelliteTopology {
-      id
-      type
-      name
-      description
-      createdAt
-      updatedAt
-      satelliteTopologySatelliteTopologiesId
+    satelliteTopologyModelAIs {
+      nextToken
       __typename
     }
     createdAt
     updatedAt
-    satelliteTopologyModelAIsId
     modelAIModelAIsId
     __typename
   }
@@ -180,9 +174,10 @@ export const onUpdateModelAI = /* GraphQL */ `subscription OnUpdateModelAI($filt
     group
     name
     description
-    document_link
-    api_link
     version
+    document_link
+    is_latest
+    api_link
     is_approved
     tokens_cost
     cost_tokens
@@ -191,15 +186,15 @@ export const onUpdateModelAI = /* GraphQL */ `subscription OnUpdateModelAI($filt
       group
       name
       description
-      document_link
-      api_link
       version
+      document_link
+      is_latest
+      api_link
       is_approved
       tokens_cost
       cost_tokens
       createdAt
       updatedAt
-      satelliteTopologyModelAIsId
       modelAIModelAIsId
       __typename
     }
@@ -211,19 +206,12 @@ export const onUpdateModelAI = /* GraphQL */ `subscription OnUpdateModelAI($filt
       nextToken
       __typename
     }
-    satelliteTopology {
-      id
-      type
-      name
-      description
-      createdAt
-      updatedAt
-      satelliteTopologySatelliteTopologiesId
+    satelliteTopologyModelAIs {
+      nextToken
       __typename
     }
     createdAt
     updatedAt
-    satelliteTopologyModelAIsId
     modelAIModelAIsId
     __typename
   }
@@ -238,9 +226,10 @@ export const onDeleteModelAI = /* GraphQL */ `subscription OnDeleteModelAI($filt
     group
     name
     description
-    document_link
-    api_link
     version
+    document_link
+    is_latest
+    api_link
     is_approved
     tokens_cost
     cost_tokens
@@ -249,15 +238,15 @@ export const onDeleteModelAI = /* GraphQL */ `subscription OnDeleteModelAI($filt
       group
       name
       description
-      document_link
-      api_link
       version
+      document_link
+      is_latest
+      api_link
       is_approved
       tokens_cost
       cost_tokens
       createdAt
       updatedAt
-      satelliteTopologyModelAIsId
       modelAIModelAIsId
       __typename
     }
@@ -269,6 +258,25 @@ export const onDeleteModelAI = /* GraphQL */ `subscription OnDeleteModelAI($filt
       nextToken
       __typename
     }
+    satelliteTopologyModelAIs {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    modelAIModelAIsId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnDeleteModelAISubscriptionVariables,
+  APITypes.OnDeleteModelAISubscription
+>;
+export const onCreateSatelliteTopologyModelAI = /* GraphQL */ `subscription OnCreateSatelliteTopologyModelAI(
+  $filter: ModelSubscriptionSatelliteTopologyModelAIFilterInput
+) {
+  onCreateSatelliteTopologyModelAI(filter: $filter) {
+    id
     satelliteTopology {
       id
       type
@@ -279,16 +287,119 @@ export const onDeleteModelAI = /* GraphQL */ `subscription OnDeleteModelAI($filt
       satelliteTopologySatelliteTopologiesId
       __typename
     }
+    modelAI {
+      id
+      group
+      name
+      description
+      version
+      document_link
+      is_latest
+      api_link
+      is_approved
+      tokens_cost
+      cost_tokens
+      createdAt
+      updatedAt
+      modelAIModelAIsId
+      __typename
+    }
     createdAt
     updatedAt
-    satelliteTopologyModelAIsId
-    modelAIModelAIsId
+    satelliteTopologySatelliteTopologyModelAIsId
+    modelAISatelliteTopologyModelAIsId
     __typename
   }
 }
 ` as GeneratedSubscription<
-  APITypes.OnDeleteModelAISubscriptionVariables,
-  APITypes.OnDeleteModelAISubscription
+  APITypes.OnCreateSatelliteTopologyModelAISubscriptionVariables,
+  APITypes.OnCreateSatelliteTopologyModelAISubscription
+>;
+export const onUpdateSatelliteTopologyModelAI = /* GraphQL */ `subscription OnUpdateSatelliteTopologyModelAI(
+  $filter: ModelSubscriptionSatelliteTopologyModelAIFilterInput
+) {
+  onUpdateSatelliteTopologyModelAI(filter: $filter) {
+    id
+    satelliteTopology {
+      id
+      type
+      name
+      description
+      createdAt
+      updatedAt
+      satelliteTopologySatelliteTopologiesId
+      __typename
+    }
+    modelAI {
+      id
+      group
+      name
+      description
+      version
+      document_link
+      is_latest
+      api_link
+      is_approved
+      tokens_cost
+      cost_tokens
+      createdAt
+      updatedAt
+      modelAIModelAIsId
+      __typename
+    }
+    createdAt
+    updatedAt
+    satelliteTopologySatelliteTopologyModelAIsId
+    modelAISatelliteTopologyModelAIsId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnUpdateSatelliteTopologyModelAISubscriptionVariables,
+  APITypes.OnUpdateSatelliteTopologyModelAISubscription
+>;
+export const onDeleteSatelliteTopologyModelAI = /* GraphQL */ `subscription OnDeleteSatelliteTopologyModelAI(
+  $filter: ModelSubscriptionSatelliteTopologyModelAIFilterInput
+) {
+  onDeleteSatelliteTopologyModelAI(filter: $filter) {
+    id
+    satelliteTopology {
+      id
+      type
+      name
+      description
+      createdAt
+      updatedAt
+      satelliteTopologySatelliteTopologiesId
+      __typename
+    }
+    modelAI {
+      id
+      group
+      name
+      description
+      version
+      document_link
+      is_latest
+      api_link
+      is_approved
+      tokens_cost
+      cost_tokens
+      createdAt
+      updatedAt
+      modelAIModelAIsId
+      __typename
+    }
+    createdAt
+    updatedAt
+    satelliteTopologySatelliteTopologyModelAIsId
+    modelAISatelliteTopologyModelAIsId
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnDeleteSatelliteTopologyModelAISubscriptionVariables,
+  APITypes.OnDeleteSatelliteTopologyModelAISubscription
 >;
 export const onCreateCalculation = /* GraphQL */ `subscription OnCreateCalculation(
   $filter: ModelSubscriptionCalculationFilterInput
@@ -307,15 +418,15 @@ export const onCreateCalculation = /* GraphQL */ `subscription OnCreateCalculati
       group
       name
       description
-      document_link
-      api_link
       version
+      document_link
+      is_latest
+      api_link
       is_approved
       tokens_cost
       cost_tokens
       createdAt
       updatedAt
-      satelliteTopologyModelAIsId
       modelAIModelAIsId
       __typename
     }
@@ -355,15 +466,15 @@ export const onUpdateCalculation = /* GraphQL */ `subscription OnUpdateCalculati
       group
       name
       description
-      document_link
-      api_link
       version
+      document_link
+      is_latest
+      api_link
       is_approved
       tokens_cost
       cost_tokens
       createdAt
       updatedAt
-      satelliteTopologyModelAIsId
       modelAIModelAIsId
       __typename
     }
@@ -403,15 +514,15 @@ export const onDeleteCalculation = /* GraphQL */ `subscription OnDeleteCalculati
       group
       name
       description
-      document_link
-      api_link
       version
+      document_link
+      is_latest
+      api_link
       is_approved
       tokens_cost
       cost_tokens
       createdAt
       updatedAt
-      satelliteTopologyModelAIsId
       modelAIModelAIsId
       __typename
     }
